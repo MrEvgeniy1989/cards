@@ -26,6 +26,12 @@ coverage
 # Production
 build
 /.idea
+!.idea/rcb-settings.xml
 
 # Miscellaneous
 *.local
+
+# env
+#.env.development
+#.env.production
+.env*

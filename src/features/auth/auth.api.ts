@@ -1,8 +1,8 @@
 import { AuthInstance } from "@/features/auth/auth.instance"
 
 export const AuthApi = {
-  register: (params: RegisterArgs) => {
-    return AuthInstance.post<RegisterResponse>("register", params).then(
+  registration: (params: RegistrationArgs) => {
+    return AuthInstance.post<RegistrationResponse>("register", params).then(
       (res) => res.data,
     )
   },
@@ -19,8 +19,8 @@ export type LoginArgs = {
 }
 
 // export type RegisterArgs = { email: string; password: string }
-export type RegisterArgs = Pick<LoginArgs, "email" | "password">
-export type RegisterResponse = {
+export type RegistrationArgs = Pick<LoginArgs, "email" | "password">
+export type RegistrationResponse = {
   addedUser: AddedUser
 }
 export type AddedUser = Omit<UserType, "token" | "tokenDeathTime">

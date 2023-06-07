@@ -1,55 +1,65 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import {
   AuthApi,
   LoginArgs,
-  RegisterArgs,
+  RegistrationArgs,
+  RegistrationResponse,
   UserType,
 } from "@/features/auth/auth.api"
 import { createAppAsyncThunk } from "@/common"
+import { thunkTryCatch } from "@/common/utils/thunk-try-catch"
 
 // type ButtonProps = ComponentPropsWithoutRef<"button">
 
 const THUNK_PREFIXES = {
-  REGISTER: "auth/register",
+  REGISTRATION: "auth/registration",
   LOGIN: "auth/login",
 }
 
-const register = createAppAsyncThunk<any, RegisterArgs>(
-  THUNK_PREFIXES.REGISTER,
-  (arg) => {
-    AuthApi.register(arg)
-      .then((res) => console.log(res))
-      .catch((e) => {
-        console.error(e)
-      })
-  },
-)
+const registration = createAppAsyncThunk<
+  { user: RegistrationResponse },
+  RegistrationArgs
+>(THUNK_PREFIXES.REGISTRATION, async (arg, thunkAPI) => {
+  return thunkTryCatch(
+    thunkAPI,
+    async () => {
+      return await AuthApi.registration(arg)
+    },
+    { showGlobalError: true },
+  )
+})
 
 const login = createAppAsyncThunk<{ user: UserType }, LoginArgs>(
   THUNK_PREFIXES.LOGIN,
-  async (arg) => {
-    const res = await AuthApi.login(arg)
-    return { user: res }
+  async (arg, thunkAPI) => {
+    return thunkTryCatch(thunkAPI, async () => {
+      const response = await AuthApi.login(arg)
+      return { user: response }
+    })
   },
 )
 const slice = createSlice({
   name: "auth",
-  initialState: { user: null as UserType | null, isLoading: false },
-  reducers: {},
+  initialState: {
+    user: null as UserType | null,
+    isAuthed: null as boolean | null,
+    isLoading: false,
+  },
+  reducers: {
+    setAuthed: (state, action: PayloadAction<{ isAuthed: boolean | null }>) => {
+      state.isAuthed = action.payload.isAuthed
+    },
+  },
   extraReducers: (builder) => {
-    builder
-      .addCase(login.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        if (action.payload) state.user = action.payload.user
-        state.isLoading = false
-      })
-      .addCase(login.rejected, (state) => {
-        state.isLoading = false
-      })
+    builder.addCase(login.fulfilled, (state, action) => {
+      if (action.payload) state.user = action.payload.user
+    })
+    // .addCase(login.fulfilled, (state, action) => {
+    //   if (action.payload) state.user = action.payload.user
+    // })
   },
 })
 
 export const authReducer = slice.reducer
-export const authThunks = { register, login }
+export const authActions = slice.actions
+export const authThunks = { registration, login }

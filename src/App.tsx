@@ -1,68 +1,37 @@
-import { Counter } from "./features/counter/Counter"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { RouterProvider } from "react-router-dom"
 import "./App.css"
-import { store } from "@/app/store"
-import { Provider } from "react-redux"
-import { createTheme, ThemeProvider } from "@mui/material"
-import { useAppDispatch, useAppSelector } from "@/app/hooks"
-import React, { useCallback, useEffect } from "react"
-import { appActions } from "@/features/app/app.slice"
-import { authThunks } from "@/features/auth/auth.slice"
-
-export const Test = () => {
-  const isLoading = useAppSelector((state) => state.app.isLoading)
-  const error = useAppSelector((state) => state.app.error)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(appActions.setIsLoading({ isLoading: false }))
-    }, 3000)
-  }, [dispatch])
-
-  const handleErrorButtonClicked = useCallback(() => {
-    dispatch(appActions.setError({ error: "new error" }))
-  }, [dispatch])
-
-  if (isLoading) return <div>loading...</div>
-  return (
-    <div>
-      <button
-        onClick={() =>
-          dispatch(
-            authThunks.login({
-              email: "",
-              password: "",
-              rememberMe: true,
-            }),
-          )
-        }
-      >
-        Login
-      </button>
-      <button onClick={handleErrorButtonClicked}>create error</button>
-      {!!error && <h2>{error}</h2>}
-      <Counter />
-    </div>
-  )
-}
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Test />,
-  },
-])
+import "react-toastify/dist/ReactToastify.css"
+import {
+  createTheme,
+  CssBaseline,
+  LinearProgress,
+  ThemeProvider,
+} from "@mui/material"
+import React from "react"
+import { ToastContainer } from "react-toastify"
+import { router } from "@/common/routes/Routes"
+import { useAppSelector } from "@/app/hooks"
 
 const theme = createTheme()
 
 function App() {
+  const isLoading = useAppSelector((state) => state.app.isLoading)
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ToastContainer
+        position="top-center"
+        autoClose={4000}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {isLoading && <LinearProgress />}
+      <RouterProvider router={router} />
+    </ThemeProvider>
   )
 }
 

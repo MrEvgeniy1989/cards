@@ -1,0 +1,102 @@
+.typography {
+  margin: 0;
+  color: var(--color-light-100);
+}
+
+.h1 {
+  composes: typography;
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-l);
+}
+
+.h2 {
+  composes: typography;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-l);
+}
+
+.h3 {
+  composes: typography;
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+}
+
+.h4 {
+  composes: typography;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+}
+
+.body1 {
+  composes: typography;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+}
+
+.subtitle1 {
+  composes: typography;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+}
+
+.body2 {
+  composes: typography;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+}
+
+.subtitle2 {
+  composes: typography;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+}
+
+.caption {
+  composes: typography;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-s);
+}
+
+.overline {
+  composes: typography;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-s);
+}
+
+.link1,
+.link1:visited {
+  cursor: pointer;
+
+  margin: 0;
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-info-500);
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.link2,
+.link2:visited {
+  cursor: pointer;
+
+  margin: 0;
+
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-s);
+  color: var(--color-info-500);
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}

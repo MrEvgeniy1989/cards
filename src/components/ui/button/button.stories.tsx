@@ -1,12 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import LogOutIcon from '@/assets/icons/log-out.svg'
+
 import { Button } from './'
 
 const meta = {
   argTypes: {
     variant: {
       control: { type: 'radio' },
-      options: ['primary', 'secondary', 'tertiary', 'link'],
+      options: ['primary', 'secondary'],
     },
   },
   component: Button,
@@ -25,6 +27,17 @@ export const Primary: Story = {
   },
 }
 
+export const PrimaryWithIcon: Story = {
+  args: {
+    children: [
+      <img alt={'Logout button'} key={'primary-logout-icon'} src={LogOutIcon} />,
+      'Primary Button',
+    ],
+    disabled: false,
+    variant: 'primary',
+  },
+}
+
 export const Secondary: Story = {
   args: {
     children: 'Secondary Button',
@@ -32,18 +45,15 @@ export const Secondary: Story = {
     variant: 'secondary',
   },
 }
-export const Tertiary: Story = {
+
+export const SecondaryWithIcon: Story = {
   args: {
-    children: 'Tertiary Button',
+    children: [
+      <img alt={'Logout button'} key={'secondary-logout-icon'} src={LogOutIcon} />,
+      'Primary Button',
+    ],
     disabled: false,
-    variant: 'tertiary',
-  },
-}
-export const Link: Story = {
-  args: {
-    children: 'Tertiary Button',
-    disabled: false,
-    variant: 'link',
+    variant: 'secondary',
   },
 }
 

@@ -14,16 +14,47 @@
 
 .SelectContent {
   box-sizing: border-box;
-  width: 100%;
-  min-width: 13.12rem;
-
   background-color: var(--color-dark-900);
   border: 1px solid var(--color-dark-300);
   border-radius: 0.12rem;
 }
 
-.SelectIcon {
+.SelectItem {
+  user-select: none;
+
   display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 53px;
+  height: 26px;
+  padding: 0 0.13rem 0 0.38rem;
+
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+
+  &[data-disabled] {
+    pointer-events: none;
+    color: white;
+  }
+
+  &[data-highlighted] {
+    color: var(--color-accent-300);
+    background-color: var(--color-accent-900);
+    outline: none;
+  }
+}
+
+.SelectValue {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+}
+
+.SelectIcon {
   fill: var(--color-light-100);
 }
 
@@ -31,18 +62,14 @@
   all: unset;
 
   display: inline-flex;
+  gap: 0.12rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   box-sizing: border-box;
-  width: 13.12rem;
-  height: 2.25rem;
-  padding: 0 12px;
-
-  font-size: var(--font-size-m);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-m);
-  color: var(--color-light-100);
+  width: 55px;
+  min-height: 26px;
+  padding: 0 0.13rem 0 0.38rem;
 
   background-color: var(--color-dark-900);
   border: 1px solid var(--color-dark-300);
@@ -72,32 +99,5 @@
     .SelectIcon {
       fill: var(--color-dark-300);
     }
-  }
-}
-
-.SelectItem {
-  user-select: none;
-
-  display: flex;
-  align-items: center;
-
-  box-sizing: border-box;
-  min-height: 2.25rem;
-  padding: 0 12px;
-
-  font-size: var(--font-size-m);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-m);
-  color: var(--color-light-100);
-
-  &[data-disabled] {
-    pointer-events: none;
-    color: white;
-  }
-
-  &[data-highlighted] {
-    color: var(--color-accent-300);
-    background-color: var(--color-accent-900);
-    outline: none;
   }
 }

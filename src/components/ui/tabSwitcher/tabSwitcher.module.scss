@@ -34,26 +34,18 @@ input {
 
   background-color: var(--color-dark-900);
   border: 1px solid var(--color-dark-300);
+  border-left: 0;
 }
 
-//.TabsTrigger:first-child {
-//  border-right: 0;
-//  border-top-left-radius: 2px;
-//  border-bottom-left-radius: 2px;
-//}
-//
-//.TabsTrigger:last-child {
-//  border-left: 0;
-//  border-top-right-radius: 2px;
-//  border-bottom-right-radius: 2px;
-//}
-
-.TabsTrigger:nth-child(even) {
-  border-left: 1px solid var(--color-dark-300);
+.TabsTrigger:first-child {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 
-.TabsTrigger:nth-child(odd) {
-  border-right: 1px solid var(--color-dark-300);
+.TabsTrigger:last-child {
+  border-left: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .TabsTrigger:hover {

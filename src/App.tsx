@@ -23,7 +23,7 @@ export function App() {
           { buttonsName: 'Switcher', isButtonsEnable: true, values: 'tabs2' },
           { buttonsName: 'Switcher', isButtonsEnable: true, values: 'tabs3' },
           { buttonsName: 'Switcher', isButtonsEnable: true, values: 'tabs4' },
-          { buttonsName: 'Switcher', isButtonsEnable: true, values: 'tabs4' },
+          { buttonsName: 'Switcher', isButtonsEnable: false, values: 'tabs4' },
         ]}
       />
     </div>

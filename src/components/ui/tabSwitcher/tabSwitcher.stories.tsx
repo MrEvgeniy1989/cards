@@ -28,6 +28,10 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   args: {
-    buttons: [{ buttonsName: 'switcher', isButtonsEnable: false, values: 'tab1' }],
+    buttons: [
+      { buttonsName: 'switcher', isButtonsEnable: false, values: 'tab1' },
+      { buttonsName: 'switcher', isButtonsEnable: false, values: 'tab2' },
+      { buttonsName: 'switcher', isButtonsEnable: false, values: 'tab3' },
+    ],
   },
 }

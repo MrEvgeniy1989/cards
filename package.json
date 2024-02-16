@@ -2,6 +2,7 @@
   "name": "cards",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://MrEvgeniy1989.github.io/cards",
   "type": "module",
   "scripts": {
     "dev": "vite --open",
@@ -11,7 +12,9 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "sb": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.0.8",
@@ -22,6 +25,7 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slider": "^1.1.2",
     "clsx": "^2.1.0",
+    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

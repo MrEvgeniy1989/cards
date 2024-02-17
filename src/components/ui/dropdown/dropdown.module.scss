@@ -27,8 +27,12 @@
     -webkit-text-decoration-color;
 
   &:focus-visible {
-    background-color: var(--color-dark-100);
+    background-color: var(--color-accent-900);
     outline: none;
+  }
+
+  &:hover {
+    background-color: var(--color-accent-900);
   }
 
   &[data-disabled] {

@@ -1,17 +1,17 @@
-import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
 
 import { IconClose, IconEye, IconSearch } from '@/assets'
 import { Typography } from '@/components/ui/typography'
 import cx from 'clsx'
 
-import s from './input.module.scss'
+import s from './text-field.module.scss'
 
-type InputProps = {
+type TextFieldProps = {
   error?: string
   label?: string
 } & ComponentPropsWithoutRef<'input'>
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
   ({ children, error, label, type = 'text', ...rest }, ref) => {
     const [value, setValue] = useState('')
     const [show, setShow] = useState(false)

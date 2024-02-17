@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Checkbox } from '@/components/ui/checkbox'
-import { Input } from '@/components/ui/input'
+import { TextField } from '@/components/ui/input'
 
 export function App() {
   const [editMode, setEditMode] = useState(false)
@@ -15,7 +15,7 @@ export function App() {
           setEditMode(!editMode)
         }}
       />
-      <Input label={'input'} type={'password'} />
+      <TextField label={'input'} type={'password'} />
     </div>
   )
 }

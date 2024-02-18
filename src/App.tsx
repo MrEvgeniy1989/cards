@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Checkbox } from '@/components/ui/checkbox'
-import { TextField } from '@/components/ui/input'
+import { TextField } from '@/components/ui/textField'
 
 export function App() {
   const [editMode, setEditMode] = useState(false)

@@ -6,9 +6,9 @@ import { IconImage } from '@/assets/icons/iconImage'
 import reactImg from '@/assets/images/reactImg.png'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Input } from '@/components/ui/input'
 import { Modal } from '@/components/ui/modal/modal'
 import { MySelect } from '@/components/ui/select'
+import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 
 const meta = {
@@ -88,8 +88,8 @@ export const ModalWithForm: Story = {
         <Modal {...args} onOpenChange={setOpen} open={open}>
           <div style={{ padding: '24px' }}>
             <MySelect items={items} label={'Select-box'} />
-            <Input label={'Input'} />
-            <Input label={'Input'} />
+            <TextField label={'Input'} />
+            <TextField label={'Input'} />
             <Checkbox checked={checked} label={'Check-box'} onChange={setChecked} />
             <div
               style={{
@@ -127,7 +127,7 @@ export const ModalWithQuestionAndAnswer: Story = {
           <div style={{ padding: '24px' }}>
             <div style={{ marginBottom: '20px' }}>
               <Typography variant={'subtitle2'}>Question</Typography>
-              <Input label={'Question?'} placeholder={'Name'} />
+              <TextField label={'Question?'} placeholder={'Name'} />
               <div style={{ marginBottom: '12px' }}>
                 <img alt={'react'} src={reactImg} style={{ width: '100%' }} />
               </div>
@@ -138,7 +138,7 @@ export const ModalWithQuestionAndAnswer: Story = {
             </div>
             <div>
               <Typography variant={'subtitle2'}>Answer</Typography>
-              <Input label={'Answer?'} placeholder={'Name'} />
+              <TextField label={'Answer?'} placeholder={'Name'} />
               <div style={{ marginBottom: '12px' }}>
                 <img alt={'react'} src={reactImg} style={{ width: '100%' }} />
               </div>
@@ -146,7 +146,7 @@ export const ModalWithQuestionAndAnswer: Story = {
                 <IconImage />
                 Change cover
               </Button>
-              <Input label={'Input'} />
+              <TextField label={'Input'} />
               <Checkbox checked={checked} label={'Check-box'} onChange={setChecked} />
             </div>
           </div>

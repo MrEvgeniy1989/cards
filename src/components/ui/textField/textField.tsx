@@ -4,7 +4,7 @@ import { IconClose, IconEye, IconSearch } from '@/assets'
 import { Typography } from '@/components/ui/typography'
 import cx from 'clsx'
 
-import s from './text-field.module.scss'
+import s from 'src/components/ui/textField/textField.module.scss'
 
 type TextFieldProps = {
   error?: string

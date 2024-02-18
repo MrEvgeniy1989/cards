@@ -94,6 +94,13 @@
   background: var(--color-dark-300);
 }
 
+.label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 8px;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

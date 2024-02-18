@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { clsx } from 'clsx'
@@ -9,22 +9,17 @@ const DropdownMenu = DropdownMenuPrimitive.Root
 
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
 
-type DropdownMenuContentProps = {
-  children: ReactNode
-} & ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
-const DropdownMenuContent = ({
-  align = 'end',
-  children,
-  className,
-  sideOffset = 8,
-  ...props
-}: DropdownMenuContentProps) => {
+const DropdownMenuContent = forwardRef<
+  ElementRef<typeof DropdownMenuPrimitive.Content>,
+  ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
+>(({ align = 'end', children, className, sideOffset = 8, ...props }, ref) => {
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
         align={align}
         className={clsx(s.content, className)}
-        sideOffset={8}
+        ref={ref}
+        sideOffset={sideOffset}
         {...props}
       >
         <DropdownMenuPrimitive.Arrow asChild>
@@ -34,26 +29,40 @@ const DropdownMenuContent = ({
       </DropdownMenuPrimitive.Content>
     </DropdownMenuPrimitive.Portal>
   )
-}
+})
 
-const DropdownMenuItem = ({
-  className,
-  ...props
-}: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>) => {
-  return <DropdownMenuPrimitive.Item className={clsx(s.item, className)} {...props} />
-}
+const DropdownMenuItem = forwardRef<
+  ElementRef<typeof DropdownMenuPrimitive.Item>,
+  ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>
+>(({ className, ...props }, ref) => {
+  return <DropdownMenuPrimitive.Item className={clsx(s.item, className)} ref={ref} {...props} />
+})
 
-const DropdownMenuSeparator = ({
-  className,
-  ...props
-}: ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>) => {
-  return <DropdownMenuPrimitive.Separator className={clsx(s.separator, className)} {...props} />
-}
+const DropdownMenuSeparator = forwardRef<
+  ElementRef<typeof DropdownMenuPrimitive.Separator>,
+  ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>
+>(({ className, ...props }, ref) => {
+  return (
+    <DropdownMenuPrimitive.Separator
+      className={clsx(s.separator, className)}
+      ref={ref}
+      {...props}
+    />
+  )
+})
+
+const DropdownMenuLabel = forwardRef<
+  ElementRef<typeof DropdownMenuPrimitive.Label>,
+  ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label>
+>(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.Label className={clsx(s.label, className)} ref={ref} {...props} />
+))
 
 export {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 }

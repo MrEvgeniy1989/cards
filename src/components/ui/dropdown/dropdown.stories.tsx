@@ -11,6 +11,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './'
@@ -104,17 +105,15 @@ export const HeaderDropdown: Story = {
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>
-            <div style={{ alignItems: 'center', display: 'flex', gap: '8px' }}>
-              <img src={userPhotoSmall} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                Ivan
-                <span style={{ color: '#808080', fontSize: '12px', fontWeight: '400' }}>
-                  j&johnson@gmail.com
-                </span>
-              </div>
+          <DropdownMenuLabel>
+            <img src={userPhotoSmall} />
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              Ivan
+              <span style={{ color: '#808080', fontSize: '12px', fontWeight: '400' }}>
+                j&johnson@gmail.com
+              </span>
             </div>
-          </DropdownMenuItem>
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <PersonIcon />

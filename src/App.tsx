@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Checkbox } from '@/components/ui/checkbox'
+import { BaseTable } from '@/components/ui/deksTabel/baseTable'
 import { TextField } from '@/components/ui/textField'
 
 export function App() {
@@ -16,6 +17,7 @@ export function App() {
         }}
       />
       <TextField label={'input'} type={'password'} />
+      <BaseTable />
     </div>
   )
 }

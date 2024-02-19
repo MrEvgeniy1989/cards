@@ -90,7 +90,11 @@ export const ModalWithForm: Story = {
             <MySelect items={items} label={'Select-box'} />
             <TextField label={'Input'} />
             <TextField label={'Input'} />
-            <Checkbox checked={checked} label={'Check-box'} onChange={setChecked} />
+            <Checkbox
+              checked={checked}
+              label={'Check-box'}
+              onCheckedChange={() => setChecked(!checked)}
+            />
             <div
               style={{
                 alignItems: 'center',
@@ -147,7 +151,11 @@ export const ModalWithQuestionAndAnswer: Story = {
                 Change cover
               </Button>
               <TextField label={'Input'} />
-              <Checkbox checked={checked} label={'Check-box'} onChange={setChecked} />
+              <Checkbox
+                checked={checked}
+                label={'Check-box'}
+                onCheckedChange={() => setChecked(!checked)}
+              />
             </div>
           </div>
         </Modal>

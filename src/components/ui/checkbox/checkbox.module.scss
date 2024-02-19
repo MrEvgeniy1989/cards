@@ -2,6 +2,10 @@
   user-select: none;
   display: flex;
   align-items: center;
+
+  &.left {
+    margin-left: -9px;
+  }
 }
 
 .label {

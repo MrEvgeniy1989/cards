@@ -14,6 +14,7 @@ export const App = () => {
 
   return (
     <div className={s.app}>
+      <Header isLoggedIn />
       <Checkbox
         checked={checked}
         label={'Check-box'}
@@ -24,7 +25,6 @@ export const App = () => {
       <TextField label={'input'} type={'password'} />
       <Slider max={100} value={[25, 75]} />
       <BaseTable />
-      <Header isLoggedIn />
       <LoginForm onSubmit={(data: LoginFormValues) => console.log(data)} />
     </div>
   )

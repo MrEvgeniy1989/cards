@@ -23,7 +23,7 @@ export function App() {
       <Slider max={100} value={[25, 75]} />
       <LoginForm />
       <BaseTable />
-      <Header isLoggedIn />
+      <Header isLoggedIn={false} />
     </div>
   )
 }

@@ -33,18 +33,18 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
     )
 
     return (
-      <div className={s.box}>
+      <div className={s.box + ' ' + rest.className}>
         <Typography as={'label'} className={s.label} variant={'body1'}>
           {type === 'search' ? '' : label}
         </Typography>
         <div className={s.inputBox}>
           {type === 'search' && <IconSearch className={s.searchIcon} />}
           <input
-            className={classInput}
-            type={(show && 'text') || type}
             {...rest}
+            className={classInput}
             onChange={e => setValue(e.currentTarget.value)}
             ref={ref}
+            type={(show && 'text') || type}
             value={value}
           />
           {showClearButton && clearButton}

@@ -5,10 +5,10 @@ import { PlayCircle } from '@/assets/icons/playСircle'
 import { Star } from '@/assets/icons/star'
 import { Trash } from '@/assets/icons/trash'
 import deckImg from '@/assets/images/defaultImg.png'
+import { Table } from '@/components/ui/baseTable/table'
 import { Button } from '@/components/ui/button'
-import { Table } from '@/components/ui/deksTabel/table'
 
-import s from '@/components/ui/deksTabel/baseTable.module.scss'
+import s from '@/components/ui/baseTable/baseTable.module.scss'
 
 export function BaseTable() {
   return (

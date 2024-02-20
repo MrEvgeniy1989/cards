@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { BaseTable } from '@/components/ui/deksTabel/baseTable'
+import { BaseTable } from '@/components/ui/baseTable/baseTable'
 
 const meta = {
   argTypes: {},

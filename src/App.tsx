@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
+import { BaseTable } from '@/components/ui/baseTable/baseTable'
 import { Checkbox } from '@/components/ui/checkbox'
-import { BaseTable } from '@/components/ui/deksTabel/baseTable'
 import { TextField } from '@/components/ui/textField'
 
 export function App() {

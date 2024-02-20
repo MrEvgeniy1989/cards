@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-import { BaseTable } from '@/components/ui/baseTable/baseTable'
 import { LoginForm } from '@/components/auth/loginForm'
+import { BaseTable } from '@/components/ui/baseTable/baseTable'
 import { Checkbox } from '@/components/ui/checkbox'
-import { TextField } from '@/components/ui/textField'
+import { Header } from '@/components/ui/header'
 import { Slider } from '@/components/ui/slider'
+import { TextField } from '@/components/ui/textField'
 
 export function App() {
   const [checked, setChecked] = useState(false)
@@ -22,6 +23,7 @@ export function App() {
       <Slider max={100} value={[25, 75]} />
       <LoginForm />
       <BaseTable />
+      <Header isLoggedIn />
     </div>
   )
 }

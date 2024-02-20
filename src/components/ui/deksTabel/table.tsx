@@ -2,7 +2,7 @@ import { ComponentProps, FC } from 'react'
 
 import { clsx } from 'clsx'
 
-import s from './tabel.module.scss'
+import s from './baseTable.module.scss'
 
 import { Typography } from '../typography'
 

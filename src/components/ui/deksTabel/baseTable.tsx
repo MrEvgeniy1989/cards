@@ -8,7 +8,7 @@ import deckImg from '@/assets/images/defaultImg.png'
 import { Button } from '@/components/ui/button'
 import { Table } from '@/components/ui/deksTabel/table'
 
-import s from '@/components/ui/deksTabel/tabel.module.scss'
+import s from '@/components/ui/deksTabel/baseTable.module.scss'
 
 export function BaseTable() {
   return (
@@ -18,7 +18,7 @@ export function BaseTable() {
           <Table.Row>
             <Table.HeadCell>Name</Table.HeadCell>
 
-            <Table.HeadCell className={s.headCard}>
+            <Table.HeadCell className={s.headCards}>
               Cards
               <ArrowUp className={s.arrowUp} />
             </Table.HeadCell>
@@ -29,7 +29,7 @@ export function BaseTable() {
         </Table.Head>
         <Table.Body>
           <Table.Row className={s.height60}>
-            <Table.Cell className={s.displayFlex}>
+            <Table.Cell className={s.displayFlex + ' ' + s.height60}>
               <img alt={'Deck image'} className={s.deckImg} src={deckImg} />
               <label className={s.displayFlex}>Name</label>
             </Table.Cell>
@@ -54,12 +54,28 @@ export function BaseTable() {
               </Button>
             </Table.Cell>
           </Table.Row>
-          <Table.Row>
+          <Table.Row className={s.height60}>
             <Table.Cell>Row 2 Cell 1</Table.Cell>
             <Table.Cell>Row 2 Cell 2</Table.Cell>
             <Table.Cell>Row 2 Cell 3</Table.Cell>
-            <Table.Cell>Row 2 Cell 4</Table.Cell>
-            <Table.Cell>Row 2 Cell 5</Table.Cell>
+            <Table.Cell>
+              <Star />
+              <Star />
+              <Star />
+              <Star />
+              <EmptyStar />
+            </Table.Cell>
+            <Table.Cell key={5}>
+              <Button as={'a'} className={s.link}>
+                <PlayCircle />
+              </Button>{' '}
+              <Button as={'a'} className={s.link}>
+                <EditIcon />
+              </Button>{' '}
+              <Button as={'a'} className={s.link}>
+                <Trash />
+              </Button>
+            </Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table.Root>

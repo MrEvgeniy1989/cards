@@ -1,7 +1,7 @@
 .table {
   border-collapse: collapse;
   width: 100%;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--color-dark-500);
   border-radius: var(--border-radius-s);
 }
 
@@ -49,7 +49,7 @@
   fill: var(--color-light-100);
 }
 
-.headCard {
+.headCards {
   display: flex;
   align-items: center;
 }

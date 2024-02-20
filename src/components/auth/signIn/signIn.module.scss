@@ -5,6 +5,14 @@
 
   width: 420px;
   padding: 33px 36px;
+
+  @media screen and (width <= 600px) {
+    width: calc(100% - 40px);
+    min-width: 280px;
+    max-width: 420px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
 }
 
 .formHeader {

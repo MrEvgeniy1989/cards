@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { RadioGroupDemo } from '.'
+import { CustomRadioGroup } from '.'
 
 const meta = {
   argTypes: {
@@ -10,10 +10,10 @@ const meta = {
       control: { type: 'boolean' },
     },
   },
-  component: RadioGroupDemo,
+  component: CustomRadioGroup,
   tags: ['autodocs'],
   title: 'Components/Radio',
-} satisfies Meta<typeof RadioGroupDemo>
+} satisfies Meta<typeof CustomRadioGroup>
 
 export default meta
 
@@ -48,14 +48,18 @@ export const Controlled: Story = {
     options,
   },
   render: () => {
-    const [current, setCurrent] = useState('r1')
+    const [current, setCurrent] = useState(options[0].value)
 
     const handleChangeCurrentRadio = (radioValue: string) => {
       setCurrent(radioValue)
     }
 
     return (
-      <RadioGroupDemo onValueChange={handleChangeCurrentRadio} options={options} value={current} />
+      <CustomRadioGroup
+        onValueChange={handleChangeCurrentRadio}
+        options={options}
+        value={current}
+      />
     )
   },
 }

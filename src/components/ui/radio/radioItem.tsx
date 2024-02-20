@@ -6,7 +6,7 @@ import s from './radio.module.scss'
 
 import { Typography } from '../typography'
 
-export type RadioOption = {
+type RadioOption = {
   label: string
 } & ComponentPropsWithoutRef<typeof RadioGroup.Item>
 

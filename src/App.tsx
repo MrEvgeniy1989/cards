@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { BaseTable } from '@/components/ui/baseTable/baseTable'
 import { LoginForm } from '@/components/auth/loginForm'
 import { Checkbox } from '@/components/ui/checkbox'
 import { TextField } from '@/components/ui/textField'
@@ -20,6 +21,7 @@ export function App() {
       <TextField label={'input'} type={'password'} />
       <Slider max={100} value={[25, 75]} />
       <LoginForm />
+      <BaseTable />
     </div>
   )
 }

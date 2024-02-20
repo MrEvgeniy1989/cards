@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import { LoginForm, LoginFormValues } from '@/components/auth/loginForm/LoginForm'
-import { LoginForm } from '@/components/auth/loginForm'
 import { BaseTable } from '@/components/ui/baseTable/baseTable'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Header } from '@/components/ui/header'

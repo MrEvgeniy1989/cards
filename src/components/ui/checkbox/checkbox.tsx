@@ -22,13 +22,13 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
         <Typography as={'label'} className={disabled ? s.labelDisabled : s.label} variant={'body2'}>
           <div aria-disabled={disabled} className={s.buttonWrapper}>
             <CheckboxRadix.Root
+              {...restProps}
               checked={checked}
-              className={s.root}
+              className={s.root + ' ' + restProps.className ?? ''}
               disabled={disabled}
               id={id}
               onCheckedChange={onCheckedChange}
               ref={ref}
-              {...restProps}
             >
               {checked && (
                 <CheckboxRadix.Indicator className={s.indicator}>

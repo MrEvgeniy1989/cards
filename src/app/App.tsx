@@ -1,15 +1,17 @@
 import { useState } from 'react'
 
-import { LoginForm } from '@/components/auth/loginForm'
+import { LoginForm, LoginFormValues } from '@/components/auth/loginForm/LoginForm'
 import { Checkbox } from '@/components/ui/checkbox'
-import { TextField } from '@/components/ui/textField'
 import { Slider } from '@/components/ui/slider'
+import { TextField } from '@/components/ui/textField'
 
-export function App() {
+import s from './app.module.scss'
+
+export const App = () => {
   const [checked, setChecked] = useState(false)
 
   return (
-    <div>
+    <div className={s.app}>
       <Checkbox
         checked={checked}
         label={'Check-box'}
@@ -19,7 +21,7 @@ export function App() {
       />
       <TextField label={'input'} type={'password'} />
       <Slider max={100} value={[25, 75]} />
-      <LoginForm />
+      <LoginForm onSubmit={(data: LoginFormValues) => console.log(data)} />
     </div>
   )
 }

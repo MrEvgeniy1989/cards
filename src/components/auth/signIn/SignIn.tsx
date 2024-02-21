@@ -81,7 +81,7 @@ export const SignIn = ({ onSubmit }: Props) => {
       <Typography className={s.infoText} variant={'body2'}>
         {`Don't have an account?`}
       </Typography>
-      <Typography as={'a'} className={s.signUpLink} href={'/'} variant={'h4'}>
+      <Typography as={'a'} className={s.signInLink} href={'/'} variant={'h4'}>
         Sign Up
       </Typography>
     </Card>

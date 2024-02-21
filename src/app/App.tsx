@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-import { SignIn, SingInValues } from '@/components/auth/signIn/SignIn'
+import { CheckEmail } from '@/components/auth/checkEmail'
+import { SignIn } from '@/components/auth/signIn/SignIn'
 import { BaseTable } from '@/components/ui/baseTable/baseTable'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Header } from '@/components/ui/header'
@@ -25,7 +26,8 @@ export const App = () => {
       <Slider max={100} value={[25, 75]} />
       <BaseTable />
       <Header isLoggedIn={false} />
-      <SignIn onSubmit={(data: SingInValues) => console.log(data)} />
+      <SignIn onSubmit={() => {}} />
+      <CheckEmail email={'example@mail.com'} />
     </div>
   )
 }

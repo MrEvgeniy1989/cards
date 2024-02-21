@@ -8,7 +8,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Auth/LoginForm',
+  title: 'Auth/SignIn',
 } satisfies Meta<typeof SignIn>
 
 export default meta

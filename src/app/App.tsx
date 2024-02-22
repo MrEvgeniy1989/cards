@@ -29,6 +29,7 @@ export const App = () => {
       <SignIn onSubmit={() => {}} />
       <CheckEmail email={'example@mail.com'} />
       <CheckEmail email={'example@mail.com'} />
+      <CheckEmail email={'example@mail.com'} />
     </div>
   )
 }

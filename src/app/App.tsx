@@ -32,6 +32,7 @@ export const App = () => {
       <CheckEmail email={'example@mail.com'} />
       <CheckEmail email={'example@mail.com'} />
       <CheckEmail email={'example@mail.com'} />
+      <CheckEmail email={'example@mail.com'} />
     </div>
   )
 }

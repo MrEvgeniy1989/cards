@@ -46,7 +46,7 @@ export const SignUp = ({ onSubmit }: Props) => {
   })
 
   return (
-    <Card className={s.signUpWrapper} style={{ width: '420px' }}>
+    <Card className={s.signUpWrapper}>
       <Typography as={'h1'} className={s.formTitle} variant={'h1'}>
         Sign Up
       </Typography>

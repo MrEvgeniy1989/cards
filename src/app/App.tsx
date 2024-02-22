@@ -28,6 +28,7 @@ export const App = () => {
       <Header isLoggedIn={false} />
       <SignIn onSubmit={() => {}} />
       <CheckEmail email={'example@mail.com'} />
+      <CheckEmail email={'example@mail.com'} />
     </div>
   )
 }

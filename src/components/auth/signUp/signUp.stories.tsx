@@ -4,9 +4,7 @@ import { SignUp } from './SignUp'
 
 const meta = {
   component: SignUp,
-  parameters: {
-    layout: 'centered',
-  },
+  parameters: {},
   tags: ['autodocs'],
   title: 'Auth/SignUp',
 } satisfies Meta<typeof SignUp>

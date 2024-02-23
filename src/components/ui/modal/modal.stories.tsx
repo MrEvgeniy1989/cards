@@ -78,7 +78,13 @@ export const ModalWithForm: Story = {
   render: args => {
     const [open, setOpen] = useState(false)
     const [checked, setChecked] = useState(false)
-    const items = ['Select-box_1', 'Select-box_2', 'Select-box_3', 'Select-box_4', 'Select-box_5']
+    const options = [
+      { title: 'Select-box_1', value: 'Select-box_1' },
+      { title: 'Select-box_2', value: 'Select-box_2' },
+      { title: 'Select-box_3', value: 'Select-box_3' },
+      { title: 'Select-box_4', value: 'Select-box_4' },
+      { title: 'Select-box_5', value: 'Select-box_5' },
+    ]
 
     return (
       <>
@@ -87,7 +93,7 @@ export const ModalWithForm: Story = {
         </Button>
         <Modal {...args} onOpenChange={setOpen} open={open}>
           <div style={{ padding: '24px' }}>
-            <MySelect label={'Select-box'} options={items} />
+            <MySelect label={'Select-box'} options={options} />
             <TextField label={'Input'} />
             <TextField label={'Input'} />
             <Checkbox

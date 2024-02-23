@@ -6,26 +6,33 @@ import s from './radio.module.scss'
 
 import { RadioItem } from './radioItem'
 
-type RadioOption = {
+export type RadioOption = {
   disabled?: boolean
   label: string
   value: string
 }
 
-type Group = {
+export type GroupProps = {
   options: RadioOption[]
 } & ComponentPropsWithoutRef<typeof RadioGroup.Root>
 
-export const CustomRadioGroup = forwardRef<ElementRef<typeof RadioGroup.Root>, Group>(
+export const CustomRadioGroup = forwardRef<ElementRef<typeof RadioGroup.Root>, GroupProps>(
   (props, ref) => {
-    const { options, ...rest } = props
+    const { className, options, ...rest } = props
 
     return (
-      <RadioGroup.Root className={s.root} ref={ref} {...rest} defaultValue={options[0].value}>
-        {options.map((item, index) => (
-          <RadioItem key={index} {...item} />
-        ))}
-      </RadioGroup.Root>
+      <div>
+        <RadioGroup.Root
+          aria-label={'View density'}
+          className={`${s.root} ${className}`}
+          ref={ref}
+          {...rest}
+        >
+          {options.map((item, index) => (
+            <RadioItem key={index} {...item} />
+          ))}
+        </RadioGroup.Root>
+      </div>
     )
   }
 )

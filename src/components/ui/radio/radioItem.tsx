@@ -6,12 +6,12 @@ import s from './radio.module.scss'
 
 import { Typography } from '../typography'
 
-type RadioOption = {
+export type RadioOption = {
   label: string
 } & ComponentPropsWithoutRef<typeof RadioGroup.Item>
 
 export const RadioItem = (props: RadioOption) => {
-  const { disabled, label, value, ...rest } = props
+  const { disabled, label, title, value, ...rest } = props
 
   return (
     <div className={s.itemWrap}>

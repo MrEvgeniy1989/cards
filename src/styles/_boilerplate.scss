@@ -12,6 +12,10 @@ html {
   box-sizing: border-box;
 }
 
+button {
+  all: unset;
+}
+
 input,
 button,
 select,
@@ -30,6 +34,7 @@ a:visited {
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 

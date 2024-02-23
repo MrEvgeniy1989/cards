@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from 'react'
+import { CSSProperties, ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
 
 import { ArrowDown } from '@/assets/icons/arrowDown'
 import { ArrowUp } from '@/assets/icons/arrowUp'
@@ -7,74 +7,83 @@ import * as SelectRadix from '@radix-ui/react-select'
 
 import s from './select.module.scss'
 
-type Props = {
+export type SelectProps = {
+  className?: string
   disabled?: boolean
-  items: string[]
   label?: string
+  options: { title: string; value: string }[]
   styleForContent?: CSSProperties
   styleForItem?: CSSProperties
   styleForTrigger?: CSSProperties
-}
+} & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-export const MySelect = ({
-  disabled,
-  items,
-  label,
-  styleForContent,
-  styleForItem,
-  styleForTrigger,
-}: Props) => {
-  const [open, setOpen] = useState(false)
+export const MySelect = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>(
+  (
+    {
+      className,
+      disabled,
+      label,
+      options,
+      styleForContent,
+      styleForItem,
+      styleForTrigger,
+      ...restProps
+    },
+    ref
+  ) => {
+    const [open, setOpen] = useState(false)
 
-  return (
-    <>
-      <SelectRadix.Root onOpenChange={() => setOpen(!open)}>
-        <div className={s.selectRoot}>
-          {label && (
-            <Typography
-              as={'label'}
-              className={disabled ? s.labelDisabled : s.label}
-              variant={'body2'}
+    return (
+      <>
+        <SelectRadix.Root onOpenChange={() => setOpen(!open)} {...restProps}>
+          <div className={s.selectRoot}>
+            {label && (
+              <Typography
+                as={'label'}
+                className={disabled ? s.labelDisabled : s.label}
+                variant={'body2'}
+              >
+                {label}
+              </Typography>
+            )}
+
+            <SelectRadix.Trigger
+              className={`${s.selectTrigger} ${className ?? ''}`}
+              disabled={disabled}
+              ref={ref}
+              style={styleForTrigger}
             >
-              {label}
-            </Typography>
-          )}
+              <SelectRadix.Value
+                className={s.selectValue}
+                defaultValue={options[0].value}
+                placeholder={options[0].title}
+              />
+              {open ? <ArrowUp className={s.selectIcon} /> : <ArrowDown className={s.selectIcon} />}
+            </SelectRadix.Trigger>
 
-          <SelectRadix.Trigger
-            className={s.SelectTrigger}
-            disabled={disabled}
-            style={styleForTrigger}
-          >
-            <SelectRadix.Value
-              className={s.SelectValue}
-              defaultValue={items[0]}
-              placeholder={items[0]}
-            />
-            {open ? <ArrowUp className={s.SelectIcon} /> : <ArrowDown className={s.SelectIcon} />}
-          </SelectRadix.Trigger>
-
-          <SelectRadix.Content
-            className={s.SelectContent}
-            position={'popper'}
-            style={styleForContent}
-          >
-            <SelectRadix.Viewport className={s.SelectViewport}>
-              {items.map(item => {
-                return (
-                  <SelectRadix.Item
-                    className={s.SelectItem}
-                    key={item}
-                    style={styleForItem}
-                    value={item}
-                  >
-                    <SelectRadix.ItemText>{item}</SelectRadix.ItemText>
-                  </SelectRadix.Item>
-                )
-              })}
-            </SelectRadix.Viewport>
-          </SelectRadix.Content>
-        </div>
-      </SelectRadix.Root>
-    </>
-  )
-}
+            <SelectRadix.Content
+              className={s.selectContent}
+              position={'popper'}
+              style={styleForContent}
+            >
+              <SelectRadix.Viewport className={s.SelectViewport}>
+                {options.map((option, index) => {
+                  return (
+                    <SelectRadix.Item
+                      className={s.selectItem}
+                      key={index}
+                      style={styleForItem}
+                      value={option.value}
+                    >
+                      <SelectRadix.ItemText>{option.title}</SelectRadix.ItemText>
+                    </SelectRadix.Item>
+                  )
+                })}
+              </SelectRadix.Viewport>
+            </SelectRadix.Content>
+          </div>
+        </SelectRadix.Root>
+      </>
+    )
+  }
+)

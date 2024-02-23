@@ -12,21 +12,20 @@
   color: var(--color-dark-300);
 }
 
-.SelectContent {
+.selectContent {
   box-sizing: border-box;
   background-color: var(--color-dark-900);
   border: 1px solid var(--color-dark-300);
   border-radius: 0.12rem;
 }
 
-.SelectItem {
+.selectItem {
   user-select: none;
 
   display: flex;
   align-items: center;
 
-  box-sizing: border-box;
-  width: 53px;
+  width: calc(var(--radix-select-trigger-width) - 2px);
   height: 26px;
   padding: 0 0.13rem 0 0.38rem;
 
@@ -47,27 +46,24 @@
   }
 }
 
-.SelectValue {
+.selectValue {
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-m);
   color: var(--color-light-100);
 }
 
-.SelectIcon {
+.selectIcon {
   fill: var(--color-light-100);
 }
 
-.SelectTrigger {
-  all: unset;
-
+.selectTrigger {
   display: inline-flex;
-  gap: 0.12rem;
+  gap: 2px;
   align-items: center;
   justify-content: flex-start;
 
-  box-sizing: border-box;
-  width: 55px;
+  width: var(--radix-select-trigger-width);
   min-height: 26px;
   padding: 0 0.13rem 0 0.38rem;
 
@@ -78,7 +74,7 @@
   &:active {
     border: 1px solid var(--color-dark-100);
 
-    .SelectContent {
+    .selectContent {
       border: 1px solid var(--color-dark-100);
     }
   }
@@ -96,7 +92,7 @@
     pointer-events: none;
     color: var(--color-dark-300);
 
-    .SelectIcon {
+    .selectIcon {
       fill: var(--color-dark-300);
     }
   }

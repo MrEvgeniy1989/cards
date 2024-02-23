@@ -1,0 +1,99 @@
+.root {
+  display: flex;
+  align-items: center;
+
+  .paginationContainer {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-right: 1.5rem;
+
+    .item {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 1.5rem;
+      height: 1.5rem;
+
+      border-radius: 2px;
+
+      transition:
+        background-color ease 0.2s,
+        color ease 0.2s;
+
+      &:focus-visible {
+        border-radius: 2px;
+        outline: 2px solid var(--color-info-900);
+      }
+
+      &:hover {
+        background-color: var(--color-dark-500);
+      }
+
+      &.activeItem {
+        background-color: var(--color-light-100);
+
+        span {
+          color: var(--color-dark-900);
+        }
+      }
+    }
+
+    .dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 1.5rem;
+      height: 1.5rem;
+
+      &:focus-visible {
+        border-radius: 2px;
+        outline: 2px solid var(--color-info-900);
+      }
+    }
+
+    .controller {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 1.5rem;
+      height: 1.5rem;
+
+      &:focus-visible {
+        border-radius: 2px;
+        outline: 2px solid var(--color-info-900);
+      }
+
+      &.disabledController {
+        cursor: default;
+        color: var(--color-dark-100);
+      }
+
+      &:first-child {
+        margin-right: 0.75rem;
+      }
+
+      &:last-child {
+        margin-left: 0.75rem;
+      }
+    }
+  }
+
+  .selectContainer {
+    display: flex;
+
+    .select {
+      margin-right: 0.625rem;
+      margin-left: 0.375rem;
+    }
+  }
+}

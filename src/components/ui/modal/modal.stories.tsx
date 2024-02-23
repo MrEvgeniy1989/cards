@@ -87,7 +87,7 @@ export const ModalWithForm: Story = {
         </Button>
         <Modal {...args} onOpenChange={setOpen} open={open}>
           <div style={{ padding: '24px' }}>
-            <MySelect items={items} label={'Select-box'} />
+            <MySelect label={'Select-box'} options={items} />
             <TextField label={'Input'} />
             <TextField label={'Input'} />
             <Checkbox

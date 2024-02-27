@@ -1,0 +1,35 @@
+.checkEmailWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 426px;
+  padding: 36px 36px 0;
+
+  @media screen and (width <= 600px) {
+    width: calc(100% - 40px);
+    min-width: 280px;
+    max-width: 426px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+.formHeader {
+  margin-bottom: 27px;
+}
+
+.checkEmailIcon {
+  margin-bottom: 19px;
+}
+
+.info {
+  margin-bottom: 65px;
+  color: var(--color-light-900);
+  text-align: center;
+  opacity: 0.5;
+}
+
+.backToSignInLink {
+  margin-bottom: 44px;
+}

@@ -7,7 +7,7 @@ import s from '@/common/components/ui/textField/textField.module.scss'
 
 import { Typography } from '../typography'
 
-type TextFieldProps = {
+export type TextFieldProps = {
   error?: string
   label?: string
 } & ComponentPropsWithoutRef<'input'>

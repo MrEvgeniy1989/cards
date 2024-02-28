@@ -1,15 +1,14 @@
 import { useForm } from 'react-hook-form'
 
 import { ControlledCheckbox } from '@/common/components/controlled/controlledCheckbox/ControlledCheckbox'
+import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
+import { Button } from '@/common/components/ui/button'
+import { Card } from '@/common/components/ui/card'
+import { Typography } from '@/common/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
-import s from '@/feature/auth/ui/signIn/signIn.module.scss'
-
-import { Button } from '../../../../common/components/ui/button'
-import { Card } from '../../../../common/components/ui/card'
-import { TextField } from '../../../../common/components/ui/textField'
-import { Typography } from '../../../../common/components/ui/typography'
+import s from './signIn.module.scss'
 
 const signInSchema = z.object({
   email: z.string().email(),
@@ -27,7 +26,6 @@ export const SignIn = ({ onSubmit }: Props) => {
     control,
     formState: { errors },
     handleSubmit,
-    register,
   } = useForm<SingInValues>({
     defaultValues: {
       email: '',
@@ -43,25 +41,21 @@ export const SignIn = ({ onSubmit }: Props) => {
         Sign In
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        {/*<DevTool control={control} />*/}
-        <TextField
+        <ControlledTextField
           className={s.inputEmail}
+          control={control}
           error={errors.email?.message}
           label={'Email'}
-          // control={control}
-          // name={'email'}
+          name={'email'}
           placeholder={'Email'}
-          {...register('email')}
         />
-        <TextField
+        <ControlledTextField
           className={s.inputPassword}
+          control={control}
           error={errors.password?.message}
-          label={'Password'}
-          // control={control}
-          // name={'password'}
+          name={'password'}
           placeholder={'Password'}
           type={'password'}
-          {...register('password')}
         />
         <ControlledCheckbox
           className={s.checkbox}

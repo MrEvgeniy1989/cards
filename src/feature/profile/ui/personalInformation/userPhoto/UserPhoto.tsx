@@ -4,7 +4,7 @@ import { EditIcon } from '@/assets/icons/editIcon'
 import userPhotoLarge from '@/assets/images/userPhotoLarge.png'
 import z, { ZodError } from 'zod'
 
-import s from '@/common/components/ui/profile/personalInformation/userPhoto/userPhoto.module.scss'
+import s from '@/feature/profile/ui/personalInformation/userPhoto/userPhoto.module.scss'
 
 export const userPhotoSchema = z
   .instanceof(File)

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
 import { Card } from '@/common/components/ui/card'
-import { EditUserName } from '@/common/components/ui/profile/personalInformation/editUserName/EditUserName'
-import { UserInfo } from '@/common/components/ui/profile/personalInformation/userInfo/UserInfo'
-import { UserPhoto } from '@/common/components/ui/profile/personalInformation/userPhoto/UserPhoto'
 import { Typography } from '@/common/components/ui/typography'
+import { EditUserName } from '@/feature/profile/ui/personalInformation/editUserName/EditUserName'
+import { UserInfo } from '@/feature/profile/ui/personalInformation/userInfo/UserInfo'
+import { UserPhoto } from '@/feature/profile/ui/personalInformation/userPhoto/UserPhoto'
 
-import s from '@/common/components/ui/profile/personalInformation/personalInformation.module.scss'
+import s from '@/feature/profile/ui/personalInformation/personalInformation.module.scss'
 
 type Props = {
   email: string

@@ -1,0 +1,82 @@
+.container {
+  user-select: none;
+  display: flex;
+  align-items: center;
+
+  &.left {
+    margin-left: -9px;
+  }
+}
+
+.label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.labelDisabled {
+  cursor: default;
+  display: flex;
+  align-items: center;
+  color: var(--color-dark-100);
+}
+
+.buttonWrapper {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  &[aria-disabled='true'] {
+    cursor: default;
+    background-color: transparent;
+  }
+
+  &:hover:not([aria-disabled='true']) {
+    background-color: var(--color-dark-500);
+  }
+
+  &:active:not([aria-disabled='true']) {
+    background-color: var(--color-dark-100);
+  }
+
+  &.left {
+    margin-left: -9px;
+  }
+}
+
+.root {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+
+  background-color: var(--color-dark-900);
+  border: 2px solid var(--color-light-900);
+  border-radius: 2px;
+
+  &:disabled {
+    cursor: initial;
+    border-color: var(--color-dark-100);
+  }
+
+  &[data-state='checked']:disabled {
+    color: var(--color-dark-100);
+    background-color: white;
+  }
+}
+
+.indicator {
+  width: 18px;
+  height: 18px;
+}

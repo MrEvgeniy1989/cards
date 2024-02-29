@@ -1,0 +1,35 @@
+.nameWrapper {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+
+  .nameEditBtn {
+    all: unset;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 4px;
+
+    transition: all ease-in 0.2s;
+
+    &:hover {
+      background-color: var(--color-dark-100);
+    }
+
+    &:focus-visible {
+      outline: var(--outline-focus);
+    }
+  }
+}
+
+.email {
+  margin-bottom: 14px;
+  color: var(--color-dark-100);
+}

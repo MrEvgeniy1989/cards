@@ -1,11 +1,10 @@
 import { RouteObject, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import { Layout } from '@/common/components/layout'
-import { BaseTable } from '@/common/components/ui/baseTable'
 import { PrivateRoutes } from '@/common/routes/PrivateRoutes'
-import { SignIn } from '@/feature/auth/ui/signIn'
-import { SignUpPage } from '@/pages/signUpPage'
 import { DecksPage } from '@/pages/decks/DecksPage'
+import { SignInPage } from '@/pages/signIn'
+import { SignUpPage } from '@/pages/signUpPage'
 
 const privateRoutes: RouteObject[] = [
   {
@@ -15,16 +14,12 @@ const privateRoutes: RouteObject[] = [
 ]
 const publicRoutes: RouteObject[] = [
   {
-    element: <SignIn onSubmit={() => {}} />,
+    element: <SignInPage />,
     path: '/login',
   },
   {
     element: <SignUpPage />,
     path: '/signup',
-  },
-  {
-    element: <BaseTable />,
-    path: '/table',
   },
 ]
 

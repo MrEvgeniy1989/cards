@@ -16,10 +16,8 @@ export const DecksHeader = ({ isDisabled }: Props) => {
       {/*<AddDeckModal*/}
       {/*  buttonTitle={'Add New Deck'}*/}
       {/*  trigger={*/}
-      <Button disabled={isDisabled}>
-        <Typography as={'span'} variant={'subtitle2'}>
-          Add New Deck
-        </Typography>
+      <Button className={s.button} disabled={isDisabled}>
+        Add New Deck
       </Button>
       {/*  }*/}
       {/*/>*/}

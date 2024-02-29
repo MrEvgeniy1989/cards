@@ -8,7 +8,9 @@ export const Layout = () => {
   return (
     <div className={s.layout}>
       <Header isLoggedIn={false} />
-      <Outlet />
+      <main className={s.main}>
+        <Outlet />
+      </main>
     </div>
   )
 }

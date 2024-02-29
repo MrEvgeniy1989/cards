@@ -1,7 +1,11 @@
 .table {
   border-collapse: collapse;
+
   width: 100%;
+
+  border-right: 1px solid var(--color-dark-500);
   border-bottom: 1px solid var(--color-dark-500);
+  border-left: 1px solid var(--color-dark-500);
   border-radius: var(--border-radius-s);
 }
 
@@ -18,11 +22,20 @@
   background-color: var(--color-dark-500);
 }
 
+.row {
+  border-bottom: 1px solid var(--color-dark-500);
+}
+
 .tableCell {
   padding: 6px 24px;
   font-size: var(--font-size-s);
   line-height: var(--line-height-m);
   text-align: left;
+}
+
+.cellWrapper {
+  display: flex;
+  align-items: center;
 }
 
 .empty {

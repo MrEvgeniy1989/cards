@@ -29,10 +29,12 @@ export function BaseTable() {
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          <Table.Row className={s.height60}>
-            <Table.Cell className={s.displayFlex + ' ' + s.height60}>
-              <img alt={'Deck image'} className={s.deckImg} src={deckImg} />
-              <label className={s.displayFlex}>Name</label>
+          <Table.Row>
+            <Table.Cell>
+              <div className={s.cellWrapper}>
+                <img alt={'Deck image'} className={s.deckImg} src={deckImg} />
+                <label>Name</label>
+              </div>
             </Table.Cell>
             <Table.Cell>Row 1 Cell 2</Table.Cell>
             <Table.Cell>Row 1 Cell 3</Table.Cell>
@@ -55,8 +57,8 @@ export function BaseTable() {
               </Button>
             </Table.Cell>
           </Table.Row>
-          <Table.Row className={s.height60}>
-            <Table.Cell>Row 2 Cell 1</Table.Cell>
+          <Table.Row>
+            <Table.Cell className={s.displayFlex + ' ' + s.height60}>Row 2 Cell 1</Table.Cell>
             <Table.Cell>Row 2 Cell 2</Table.Cell>
             <Table.Cell>Row 2 Cell 3</Table.Cell>
             <Table.Cell>

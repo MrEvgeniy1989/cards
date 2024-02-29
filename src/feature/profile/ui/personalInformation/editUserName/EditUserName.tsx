@@ -5,7 +5,7 @@ import { TextField } from '@/common/components/ui/textField'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
-import s from '@/common/components/ui/profile/personalInformation/editUserName/editUserName.module.scss'
+import s from '@/feature/profile/ui/personalInformation/editUserName/editUserName.module.scss'
 
 const editUserNameSchema = z.object({
   name: z.string().trim().min(1),

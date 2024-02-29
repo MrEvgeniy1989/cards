@@ -3,7 +3,7 @@ import { LogoutIcon } from '@/assets/icons/logoutIcon'
 import { Button } from '@/common/components/ui/button'
 import { Typography } from '@/common/components/ui/typography'
 
-import s from '@/common/components/ui/profile/personalInformation/userInfo/userInfo.module.scss'
+import s from '@/feature/profile/ui/personalInformation/userInfo/userInfo.module.scss'
 
 type Props = {
   email: string

@@ -3,10 +3,11 @@ import { RouteObject, RouterProvider, createBrowserRouter } from 'react-router-d
 import { BaseTable } from '@/common/components/ui/baseTable'
 import { PrivateRoutes } from '@/common/routes/PrivateRoutes'
 import { SignIn } from '@/feature/auth/ui/signIn'
+import { DecksTable } from '@/feature/decks/ui/decksTable/DecksTable'
 
 const privateRoutes: RouteObject[] = [
   {
-    element: <div>Hello</div>,
+    element: <DecksTable />,
     path: '/',
   },
 ]

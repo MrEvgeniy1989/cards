@@ -25,7 +25,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             <CheckboxRadix.Root
               {...restProps}
               checked={checked}
-              className={s.root + ' ' + restProps.className ?? ''}
+              className={s.root + ' ' + (restProps.className ?? '')}
               disabled={disabled}
               id={id}
               onCheckedChange={onCheckedChange}

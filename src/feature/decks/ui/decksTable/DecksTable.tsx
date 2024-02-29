@@ -34,7 +34,7 @@ export const DecksTable = ({}: Props) => {
         <Table.Body>
           {data?.items?.map(deck => {
             return (
-              <Table.Row key={deck.id}>
+              <Table.Row className={s.tableRow} key={deck.id}>
                 <Table.Cell className={s.cellName}>
                   {deck.cover && <img alt={'Deck image'} className={s.deckImg} src={deck.cover} />}
                   {deck.name}
@@ -42,7 +42,7 @@ export const DecksTable = ({}: Props) => {
                 <Table.Cell>{deck.cardsCount}</Table.Cell>
                 <Table.Cell>{new Date(deck.updated).toLocaleDateString('ru-RU')}</Table.Cell>
                 <Table.Cell>{deck.author.name}</Table.Cell>
-                <Table.Cell className={s.buttons}>
+                <Table.Cell className={s.buttonsCell}>
                   <Button as={'a'} className={s.link}>
                     <PlayCircle />
                   </Button>

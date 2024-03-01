@@ -1,14 +1,13 @@
 import { useForm } from 'react-hook-form'
 
+import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
+import { Button } from '@/common/components/ui/button'
+import { Card } from '@/common/components/ui/card'
+import { Typography } from '@/common/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
 import s from '@/feature/auth/ui/signUp/signUp.module.scss'
-
-import { Button } from '../../../../common/components/ui/button'
-import { Card } from '../../../../common/components/ui/card'
-import { TextField } from '../../../../common/components/ui/textField'
-import { Typography } from '../../../../common/components/ui/typography'
 
 const signUpSchema = z
   .object({
@@ -34,9 +33,9 @@ type Props = {
 }
 export const SignUp = ({ onSubmit }: Props) => {
   const {
+    control,
     formState: { errors },
     handleSubmit,
-    register,
   } = useForm<FormValues>({
     defaultValues: {
       confirmPassword: '',
@@ -52,28 +51,31 @@ export const SignUp = ({ onSubmit }: Props) => {
         Sign Up
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <TextField
+        <ControlledTextField
           className={s.inputEmail}
+          control={control}
           error={errors.email?.message}
           label={'Email'}
+          name={'email'}
           placeholder={'Email'}
-          {...register('email')}
         />
-        <TextField
+        <ControlledTextField
           className={s.inputPassword}
+          control={control}
           error={errors.password?.message}
           label={'Password'}
+          name={'password'}
           placeholder={'Password'}
           type={'password'}
-          {...register('password')}
         />
-        <TextField
+        <ControlledTextField
           className={s.inputConfirmPassword}
+          control={control}
           error={errors.confirmPassword?.message}
           label={'Confirm Password'}
+          name={'confirmPassword'}
           placeholder={'Confirm Password'}
           type={'password'}
-          {...register('confirmPassword')}
         />
         <Button className={s.formButton} fullWidth type={'submit'}>
           Sign Up

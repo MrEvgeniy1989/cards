@@ -1,14 +1,13 @@
 import { useForm } from 'react-hook-form'
 
+import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
+import { Button } from '@/common/components/ui/button'
+import { Card } from '@/common/components/ui/card'
+import { Typography } from '@/common/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
 import s from '@/feature/auth/ui/createNewPassword/createNewPassword.module.scss'
-
-import { Button } from '../../../../common/components/ui/button'
-import { Card } from '../../../../common/components/ui/card'
-import { TextField } from '../../../../common/components/ui/textField'
-import { Typography } from '../../../../common/components/ui/typography'
 
 const newPasswordSchema = z.object({
   password: z.string().min(3),
@@ -20,9 +19,9 @@ type Props = {
 }
 export const CreateNewPassword = ({ onSubmit }: Props) => {
   const {
+    control,
     formState: { errors },
     handleSubmit,
-    register,
   } = useForm<FormValues>({
     defaultValues: {
       password: '',
@@ -36,13 +35,14 @@ export const CreateNewPassword = ({ onSubmit }: Props) => {
         Create new password
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <TextField
+        <ControlledTextField
           className={s.inputPassword}
+          control={control}
           error={errors.password?.message}
           label={'Password'}
+          name={'password'}
           placeholder={'Password'}
           type={'password'}
-          {...register('password')}
         />
         <Typography className={s.infoText} variant={'body2'}>
           Create new password and we will send you further instructions to email

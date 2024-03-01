@@ -1,27 +1,8 @@
-import { RouteObject, RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import { Layout } from '@/common/components/layout'
 import { PrivateRoutes } from '@/common/routes/PrivateRoutes'
-import { DecksPage } from '@/pages/decks/DecksPage'
-import { SignInPage } from '@/pages/signIn'
-import { SignUpPage } from '@/pages/signUpPage'
-
-const privateRoutes: RouteObject[] = [
-  {
-    element: <DecksPage />,
-    path: '/decks',
-  },
-]
-const publicRoutes: RouteObject[] = [
-  {
-    element: <SignInPage />,
-    path: '/login',
-  },
-  {
-    element: <SignUpPage />,
-    path: '/signup',
-  },
-]
+import { privateRoutes, publicRoutes } from '@/common/routes/routerSettings'
 
 const router = createBrowserRouter([
   {

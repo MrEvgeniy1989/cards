@@ -2,13 +2,13 @@ import { Page } from '@/common/components/ui/page'
 import { FormValues, SignUp } from '@/feature/auth/ui/signUp'
 
 export const SignUpPage = () => {
-  const sugnUpHandler = (data: FormValues) => {
+  const signUpHandler = (data: FormValues) => {
     console.log(data)
   }
 
   return (
     <Page>
-      <SignUp onSubmit={sugnUpHandler} />
+      <SignUp onSubmit={signUpHandler} />
     </Page>
   )
 }

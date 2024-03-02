@@ -11,9 +11,10 @@
 }
 
 .input {
+  box-sizing: border-box;
   width: 100%;
   min-width: 150px;
-  max-height: 36px;
+  height: 36px;
   padding: 6px 12px;
 
   font-size: var(--font-size-m);

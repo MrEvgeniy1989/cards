@@ -1,6 +1,5 @@
 import { Page } from '@/common/components/ui/page'
 import { Pagination } from '@/common/components/ui/pagination'
-import { TabSwitcher } from '@/common/components/ui/tabSwitcher'
 import { DecksHeader } from '@/feature/decks/ui/decksHeader/DecksHeader'
 import { DecksPanel } from '@/feature/decks/ui/decksPanel/DecksPanel'
 import { DecksTable } from '@/feature/decks/ui/decksTable/DecksTable'
@@ -13,12 +12,6 @@ export const DecksPage = ({}: Props) => {
   return (
     <Page className={s.decksPage}>
       <DecksHeader isDisabled={false} />
-      <TabSwitcher
-        buttons={[
-          { buttonsName: 'Switcher', isButtonsEnable: true, values: 'true' },
-          { buttonsName: 'Switcher', isButtonsEnable: true, values: 'false' },
-        ]}
-      />
       <DecksPanel
         inputValue={''}
         maxSliderValue={100}

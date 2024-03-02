@@ -35,7 +35,7 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
 
     return (
       <div className={s.box + ' ' + rest.className}>
-        <Typography as={'label'} className={s.label} variant={'body1'}>
+        <Typography as={'label'} className={s.label} variant={'body2'}>
           {type === 'search' ? '' : label}
         </Typography>
         <div className={s.inputBox}>

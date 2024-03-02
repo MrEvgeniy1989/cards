@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TabSwitcher } from './'
+import { TabSwitcher } from './index'
 
 const meta = {
   argTypes: {

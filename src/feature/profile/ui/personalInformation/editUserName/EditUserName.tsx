@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 
+import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
 import { Button } from '@/common/components/ui/button'
-import { TextField } from '@/common/components/ui/textField'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
@@ -19,9 +19,9 @@ type Props = {
 }
 export const EditUserName = ({ name, onEditName, onSubmit }: Props) => {
   const {
+    control,
     formState: { errors },
     handleSubmit,
-    register,
   } = useForm<EditUserNameFormValues>({
     defaultValues: {
       name: '',
@@ -32,13 +32,14 @@ export const EditUserName = ({ name, onEditName, onSubmit }: Props) => {
   return (
     <>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <TextField
+        <ControlledTextField
           className={s.inputName}
+          control={control}
           defaultValue={name}
           error={errors.name?.message}
           label={'Nickname'}
+          name={'name'}
           placeholder={'Nickname'}
-          {...register('name')}
         />
         <Button fullWidth type={'submit'} variant={'primary'}>
           Save Changes

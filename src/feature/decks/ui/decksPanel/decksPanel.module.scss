@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  gap: 24px;
+  align-items: end;
+  justify-content: center;
+
+  width: 100%;
+  margin-bottom: 36px;
+}
+
+.input {
+  min-width: 30px;
+}
+
+.slider {
+  min-width: 251px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: var(--decksButtons);
+  padding: 6px 28px;
+
+  border-radius: 4px;
+}
+
+.trashIcon {
+  min-width: 16px;
+}

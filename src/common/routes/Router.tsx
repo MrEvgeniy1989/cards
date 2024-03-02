@@ -1,33 +1,21 @@
-import { RouteObject, RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import { BaseTable } from '@/common/components/ui/baseTable'
+import { Layout } from '@/common/components/layout'
 import { PrivateRoutes } from '@/common/routes/PrivateRoutes'
-import { SignIn } from '@/feature/auth/ui/signIn'
-import { DecksTable } from '@/feature/decks/ui/decksTable/DecksTable'
-
-const privateRoutes: RouteObject[] = [
-  {
-    element: <DecksTable />,
-    path: '/',
-  },
-]
-const publicRoutes: RouteObject[] = [
-  {
-    element: <SignIn onSubmit={() => {}} />,
-    path: '/login',
-  },
-  {
-    element: <BaseTable />,
-    path: '/table',
-  },
-]
+import { privateRoutes, publicRoutes } from '@/common/routes/routerSettings'
 
 const router = createBrowserRouter([
   {
-    children: privateRoutes,
-    element: <PrivateRoutes />,
+    children: [
+      {
+        children: privateRoutes,
+        element: <PrivateRoutes />,
+      },
+      ...publicRoutes,
+    ],
+    element: <Layout />,
+    path: '/',
   },
-  ...publicRoutes,
 ])
 
 export const Router = () => {

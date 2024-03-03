@@ -53,6 +53,7 @@ export const SignIn = ({ onSubmit }: Props) => {
           className={s.inputPassword}
           control={control}
           error={errors.password?.message}
+          label={'Password'}
           name={'password'}
           placeholder={'Password'}
           type={'password'}

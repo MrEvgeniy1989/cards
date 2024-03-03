@@ -5,7 +5,7 @@ import cx from 'clsx'
 
 import s from '@/common/components/ui/textField/textField.module.scss'
 
-import { Typography } from '../typography'
+import { Typography, TypographyVariants } from '../typography'
 
 export type TextFieldProps = {
   error?: string
@@ -35,7 +35,11 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
 
     return (
       <div className={s.box + ' ' + rest.className}>
-        <Typography as={'label'} className={s.label} variant={'body1'}>
+        <Typography
+          as={'label'}
+          className={s.label}
+          variant={label as TypographyVariants | undefined}
+        >
           {type === 'search' ? '' : label}
         </Typography>
         <div className={s.inputBox}>

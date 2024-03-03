@@ -1,6 +1,7 @@
 import { TrashIcon } from '@/assets/icons/trashIcon'
 import { Button } from '@/common/components/ui/button'
 import { Slider } from '@/common/components/ui/slider'
+import { TabSwitcher } from '@/common/components/ui/tabSwitcher'
 import { TextField } from '@/common/components/ui/textField'
 
 import s from '@/feature/decks/ui/decksPanel/decksPanel.module.scss'
@@ -44,6 +45,12 @@ export const DecksPanel = ({
         placeholder={'Input search'}
         type={'search'}
         value={inputValue}
+      />
+      <TabSwitcher
+        buttons={[
+          { buttonsName: 'Switcher', isButtonsEnable: true, values: 'true' },
+          { buttonsName: 'Switcher', isButtonsEnable: true, values: 'false' },
+        ]}
       />
       {/*<Tabs*/}
       {/*  className={classNames.tabs}*/}

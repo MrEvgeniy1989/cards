@@ -8,7 +8,7 @@ import { Typography } from '@/common/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
-import s from './signIn.module.scss'
+import s from '@/feature/auth/ui/signIn/signIn.module.scss'
 
 const signInSchema = z.object({
   email: z.string().email(),

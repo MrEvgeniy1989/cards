@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import { Layout } from '@/common/components/layout'
 import { PrivateRoutes } from '@/common/routes/PrivateRoutes'
@@ -14,6 +14,7 @@ const router = createBrowserRouter([
       ...publicRoutes,
     ],
     element: <Layout />,
+    errorElement: <Navigate to={'not-found'} />,
     path: '/',
   },
 ])

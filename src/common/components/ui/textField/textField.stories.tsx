@@ -1,9 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { ChangeEvent } from 'react'
+
 import { TextField } from '@/common/components/ui/textField/index'
+import { useArgs } from '@storybook/preview-api'
 
 const meta = {
   argTypes: {
+    onChange: {},
+    onClick: { action: 'clicked' },
     type: {
       control: { type: 'radio' },
       options: ['default', 'password', 'search', 'error'],
@@ -25,9 +30,10 @@ export const Default: Story = {
 }
 export const Password: Story = {
   args: {
-    label: 'Input',
+    label: 'Password',
     placeholder: 'Input',
     type: 'password',
+    value: 'password',
   },
 }
 export const Search: Story = {
@@ -35,6 +41,17 @@ export const Search: Story = {
     label: 'Search',
     placeholder: 'Input',
     type: 'search',
+  },
+  render: args => {
+    const [, setArgs] = useArgs()
+
+    const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
+      args.onChange?.(e)
+
+      setArgs({ value: e.currentTarget.value })
+    }
+
+    return <TextField type={'search'} {...args} onChange={onValueChange} />
   },
 }
 export const Error: Story = {

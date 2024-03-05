@@ -14,7 +14,7 @@ type Props = {
   sort: Sort | undefined
 }
 
-export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
+export const DecksTable = ({ decksData }: Props) => {
   return (
     <>
       {!!decksData?.items.length && (

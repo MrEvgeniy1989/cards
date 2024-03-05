@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
+import React, { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
 
 import { IconClose, IconEye, IconSearch } from '@/assets'
 import cx from 'clsx'
@@ -13,20 +13,25 @@ export type TextFieldProps = {
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
-  ({ children, error, label, type = 'text', ...rest }, ref) => {
-    const [value, setValue] = useState('')
+  ({ children, error, label, onChange, type = 'text', value, ...rest }, ref) => {
     const [show, setShow] = useState(false)
     const showPass = () => setShow(!show)
 
-    const showClearButton = type === 'search' && value.length > 0
+    const isShowClearButton =
+      type === 'search' && value !== undefined && value.toString().length > 0
     const showError = !!error && error.length > 0
     const classInput = cx(s[type], s.input, showError && s.error)
 
-    const clearButton = (
-      <button className={s.buttonIcon} onClick={() => setValue('')} type={'button'}>
+    const clearButton = onChange && (
+      <button
+        className={s.buttonIcon}
+        onClick={() => onChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
+        type={'button'}
+      >
         <IconClose />
       </button>
     )
+
     const eyeButton = type === 'password' && (
       <button className={s.buttonIcon} onMouseDown={showPass} onMouseUp={showPass} type={'button'}>
         <IconEye />
@@ -35,7 +40,7 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
 
     return (
       <div className={s.box + ' ' + rest.className}>
-        <Typography as={'label'} className={s.label} variant={'body2'}>
+        <Typography as={'label'} className={s.label} variant={'body1'}>
           {type === 'search' ? '' : label}
         </Typography>
         <div className={s.inputBox}>
@@ -43,12 +48,12 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
           <input
             {...rest}
             className={classInput}
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={onChange}
             ref={ref}
             type={(show && 'text') || type}
             value={value}
           />
-          {showClearButton && clearButton}
+          {isShowClearButton && clearButton}
           {eyeButton}
         </div>
         {showError && (

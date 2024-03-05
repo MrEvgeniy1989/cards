@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { TrashIcon } from '@/assets/icons/trashIcon'
 import { Button } from '@/common/components/ui/button'
 import { Slider } from '@/common/components/ui/slider'
@@ -24,32 +26,31 @@ type PanelProps = {
 
 export const DecksPanel = ({
   className,
-  inputValue,
   isDisabled,
   maxSliderValue,
   minSliderValue,
-  // onChangeInputValue,
   onChangeSliderValue,
   // onChangeTabValue,
   onClearFilter,
   sliderLabel,
   sliderValue, // tabLabel,// tabValue,
 }: PanelProps) => {
+  const [searchValue, setSearchValue] = useState<string>('')
+
   return (
     <div className={`${s.root} ${className}`}>
       <TextField
         className={s.input}
         disabled={isDisabled}
-        // leftIcon={<SearchIcon />}
-        // onChange={onChangeInputValue}
+        onChange={e => setSearchValue(e.target.value)}
         placeholder={'Input search'}
         type={'search'}
-        value={inputValue}
+        value={searchValue}
       />
       <TabSwitcher
         buttons={[
-          { buttonsName: 'Switcher', isButtonsEnable: true, values: 'true' },
-          { buttonsName: 'Switcher', isButtonsEnable: true, values: 'false' },
+          { isButtonsEnable: true, label: 'Switcher', values: 'true' },
+          { isButtonsEnable: true, label: 'Switcher', values: 'false' },
         ]}
       />
       {/*<Tabs*/}

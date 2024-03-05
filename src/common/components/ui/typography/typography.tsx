@@ -4,7 +4,7 @@ import { clsx } from 'clsx'
 
 import s from '@/common/components/ui/typography/typography.module.scss'
 
-type TypographyVariants =
+export type TypographyVariants =
   | 'body1'
   | 'body2'
   | 'caption'
@@ -12,6 +12,7 @@ type TypographyVariants =
   | 'h2'
   | 'h3'
   | 'h4'
+  | 'label'
   | 'link1'
   | 'link2'
   | 'overline'

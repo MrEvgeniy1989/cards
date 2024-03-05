@@ -8,11 +8,15 @@ import s from '@/common/components/ui/select/select.module.scss'
 
 import { Typography } from '../typography'
 
+export type OptionType = {
+  title: string
+  value: string
+}
 export type SelectProps = {
   className?: string
   disabled?: boolean
   label?: string
-  options: { title: string; value: string }[]
+  options: OptionType[]
   styleForContent?: CSSProperties
   styleForItem?: CSSProperties
   styleForTrigger?: CSSProperties

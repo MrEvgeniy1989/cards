@@ -1,4 +1,3 @@
-import { DeckResponse } from '@/feature/decks/deck.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const baseApi = createApi({
@@ -9,14 +8,7 @@ export const baseApi = createApi({
       headers.append('x-auth-skip', 'true')
     },
   }),
-  endpoints: builder => {
-    return {
-      getDecks: builder.query<DeckResponse, void>({
-        query: () => `v2/decks`,
-      }),
-    }
-  },
+  endpoints: () => ({}),
   reducerPath: 'baseApi',
+  tagTypes: ['Me', 'Decks', 'Cards'],
 })
-
-export const { useGetDecksQuery } = baseApi

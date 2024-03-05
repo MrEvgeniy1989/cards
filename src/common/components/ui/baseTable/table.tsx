@@ -1,4 +1,11 @@
-import { ComponentProps, FC } from 'react'
+import {
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  FC,
+  ReactNode,
+  forwardRef,
+} from 'react'
 
 import { clsx } from 'clsx'
 
@@ -54,21 +61,37 @@ export const Cell: FC<CellProps> = ({ className, ...rest }) => {
   return <td className={classNames.cell} {...rest} />
 }
 
-export const Empty: FC<ComponentProps<'div'> & { mb?: string; mt?: string }> = ({
-  className,
-  mb,
-  mt = '89px',
-}) => {
-  const classNames = {
-    empty: clsx(className, s.empty),
-  }
+type EmptyProps = {
+  children?: ReactNode
+  className?: string
+  text?: string
+} & ComponentPropsWithoutRef<'div'>
 
-  return (
-    <Typography as={'h2'} className={classNames.empty} style={{ marginBottom: mb, marginTop: mt }}>
-      Пока тут еще нет данных! :(
-    </Typography>
-  )
-}
+const Empty = forwardRef<ElementRef<'div'>, EmptyProps>(
+  (
+    {
+      children,
+      className,
+      text = 'This deck is empty. Click add new deck to fill this deck',
+      ...restProps
+    },
+    ref
+  ) => {
+    const classNames = {
+      emptyDescription: s.emptyDescription,
+      root: clsx(s.empty, className),
+    }
+
+    return (
+      <div className={classNames.root} ref={ref} {...restProps}>
+        <Typography className={classNames.emptyDescription} variant={'body1'}>
+          {text}
+        </Typography>
+        {children}
+      </div>
+    )
+  }
+)
 
 export const Table = {
   Body,

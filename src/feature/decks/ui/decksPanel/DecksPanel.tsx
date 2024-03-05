@@ -49,8 +49,8 @@ export const DecksPanel = ({
       />
       <TabSwitcher
         buttons={[
-          { buttonsName: 'Switcher', isButtonsEnable: true, values: 'true' },
-          { buttonsName: 'Switcher', isButtonsEnable: true, values: 'false' },
+          { isButtonsEnable: true, label: 'Switcher', values: 'true' },
+          { isButtonsEnable: true, label: 'Switcher', values: 'false' },
         ]}
       />
       {/*<Tabs*/}

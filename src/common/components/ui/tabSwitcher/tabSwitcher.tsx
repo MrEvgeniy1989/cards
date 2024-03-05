@@ -17,13 +17,13 @@ type TabSwitcherProps = {
   className?: string
 } & ComponentPropsWithoutRef<typeof Tabs.Root>
 
-export const TabSwitcher = ({ buttons, ...rest }: TabSwitcherProps) => (
+export const TabSwitcher = ({ buttons, className, ...rest }: TabSwitcherProps) => (
   <Tabs.Root {...rest} className={s.TabsRoot} defaultValue={buttons[0].values}>
     <Tabs.List aria-label={'Manage your tabs'} className={s.TabsList}>
       {buttons.map(btn => {
         return (
           <Tabs.Trigger
-            className={`${s.TabsTrigger} ${props.className ?? ''}`}
+            className={`${s.TabsTrigger} ${className ?? ''}`}
             disabled={!btn.isButtonsEnable}
             key={v1()}
             value={btn.values}

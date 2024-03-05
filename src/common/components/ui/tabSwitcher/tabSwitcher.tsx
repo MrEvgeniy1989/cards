@@ -7,33 +7,39 @@ import { v1 } from 'uuid'
 import s from './tabSwitcher.module.scss'
 
 type Button = {
+  buttonsName: string
   isButtonsEnable: boolean
-  label: string
   values: string
 }
 
 type TabSwitcherProps = {
   buttons: Button[]
   className?: string
+  label: string
 } & ComponentPropsWithoutRef<typeof Tabs.Root>
 
-export const TabSwitcher = ({ buttons, className, ...rest }: TabSwitcherProps) => (
-  <Tabs.Root {...rest} className={s.TabsRoot} defaultValue={buttons[0].values}>
-    <Tabs.List aria-label={'Manage your tabs'} className={s.TabsList}>
-      {buttons.map(btn => {
-        return (
-          <Tabs.Trigger
-            className={`${s.TabsTrigger} ${className ?? ''}`}
-            disabled={!btn.isButtonsEnable}
-            key={v1()}
-            value={btn.values}
-          >
-            <Typography as={'label'} className={s.label} variant={'body1'}>
-              {btn.label}
-            </Typography>
-          </Tabs.Trigger>
-        )
-      })}
-    </Tabs.List>
-  </Tabs.Root>
+export const TabSwitcher = ({ buttons, className, label, ...rest }: TabSwitcherProps) => (
+  <div className={s.TabsWrapping}>
+    <Typography as={'label'} variant={'body2'}>
+      {label}
+    </Typography>
+    <Tabs.Root {...rest} className={s.TabsRoot} defaultValue={buttons[0].values}>
+      <Tabs.List aria-label={'Manage your tabs'} className={s.TabsList}>
+        {buttons.map(btn => {
+          return (
+            <Tabs.Trigger
+              className={`${s.TabsTrigger} ${className ?? ''}`}
+              disabled={!btn.isButtonsEnable}
+              key={v1()}
+              value={btn.values}
+            >
+              <Typography as={'label'} variant={'body1'}>
+                {btn.buttonsName}
+              </Typography>
+            </Tabs.Trigger>
+          )
+        })}
+      </Tabs.List>
+    </Tabs.Root>
+  </div>
 )

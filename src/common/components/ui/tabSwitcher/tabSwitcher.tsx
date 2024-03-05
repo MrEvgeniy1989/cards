@@ -15,14 +15,16 @@ type Button = {
 type TabSwitcherProps = {
   buttons: Button[]
   className?: string
-  label: string
+  label?: string
 } & ComponentPropsWithoutRef<typeof Tabs.Root>
 
 export const TabSwitcher = ({ buttons, className, label, ...rest }: TabSwitcherProps) => (
   <div className={s.TabsWrapping}>
-    <Typography as={'label'} variant={'body2'}>
-      {label}
-    </Typography>
+    {label && (
+      <Typography as={'label'} variant={'body2'}>
+        {label}
+      </Typography>
+    )}
     <Tabs.Root {...rest} className={s.TabsRoot} defaultValue={buttons[0].values}>
       <Tabs.List aria-label={'Manage your tabs'} className={s.TabsList}>
         {buttons.map(btn => {

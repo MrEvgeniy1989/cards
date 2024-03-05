@@ -1,24 +1,17 @@
 import { EditIcon } from '@/assets/icons/edit'
 import { PlayCircle } from '@/assets/icons/playСircle'
 import { Trash } from '@/assets/icons/trash'
-import { useGetDecksQuery } from '@/common/api/baseApi'
 import { Table } from '@/common/components/ui/baseTable/table'
 import { Button } from '@/common/components/ui/button'
+import { getDecksResponse } from '@/feature/decks/api/decksApi.types'
 
 import s from '@/feature/decks/ui/decksTable/decksTable.module.scss'
 
-type Props = {}
+type Props = {
+  decksData: getDecksResponse
+}
 
-export const DecksTable = ({}: Props) => {
-  const { data, error, isLoading } = useGetDecksQuery()
-
-  if (isLoading) {
-    return <h1>Loading...</h1>
-  }
-  if (error) {
-    return <h2>Error: {JSON.stringify(error)} ...</h2>
-  }
-
+export const DecksTable = ({ decksData }: Props) => {
   return (
     <div className={s.decksTable}>
       <Table.Root>
@@ -32,7 +25,7 @@ export const DecksTable = ({}: Props) => {
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {data?.items?.map(deck => {
+          {decksData?.items?.map(deck => {
             return (
               <Table.Row className={s.tableRow} key={deck.id}>
                 <Table.Cell className={s.cellName}>

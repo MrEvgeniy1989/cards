@@ -59,10 +59,6 @@ input {
   background-color: var(--color-accent-500);
 }
 
-.TabsTrigger[data-state='active'] {
-  color: var(--color-light-100);
-}
-
 .TabsTrigger:focus {
   position: relative;
   background-color: var(--color-accent-500);
@@ -71,4 +67,10 @@ input {
 .TabsTrigger:disabled {
   color: var(--color-dark-300);
   background-color: var(--color-dark-700);
+}
+.TabsTrigger {
+  &[data-state='active'] {
+    color: var(--color-light-100);
+    background-color: var(--color-accent-500);
+  }
 }

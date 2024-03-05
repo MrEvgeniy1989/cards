@@ -7,13 +7,14 @@ import { v1 } from 'uuid'
 import s from './tabSwitcher.module.scss'
 
 type Button = {
-  buttonsName: string
   isButtonsEnable: boolean
+  label: string
   values: string
 }
 
 type TabSwitcherProps = {
   buttons: Button[]
+  className?: string
 } & ComponentPropsWithoutRef<typeof Tabs.Root>
 
 export const TabSwitcher = (props: TabSwitcherProps) => (
@@ -22,13 +23,13 @@ export const TabSwitcher = (props: TabSwitcherProps) => (
       {props.buttons.map(btn => {
         return (
           <Tabs.Trigger
-            className={s.TabsTrigger}
+            className={`${s.TabsTrigger} ${props.className ?? ''}`}
             disabled={!btn.isButtonsEnable}
             key={v1()}
             value={btn.values}
           >
             <Typography as={'label'} className={s.label} variant={'body1'}>
-              {btn.buttonsName}
+              {btn.label}
             </Typography>
           </Tabs.Trigger>
         )

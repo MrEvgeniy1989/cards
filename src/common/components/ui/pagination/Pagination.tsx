@@ -18,6 +18,7 @@ export type PaginationProps = {
 export const Pagination = ({
   currentPage,
   onPageChange,
+  onValueChange,
   pageSize,
   siblingCount = 1,
   totalCount,
@@ -81,7 +82,7 @@ export const Pagination = ({
         <Typography as={'span'} variant={'body2'}>
           Показать
         </Typography>
-        <MySelect className={s.select} {...restProps} />
+        <MySelect className={s.select} onValueChange={onValueChange} {...restProps} />
         <Typography as={'span'} variant={'body2'}>
           на странице
         </Typography>

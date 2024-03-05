@@ -49,9 +49,10 @@ export const DecksPanel = ({
       />
       <TabSwitcher
         buttons={[
-          { isButtonsEnable: true, label: 'Switcher', values: 'true' },
-          { isButtonsEnable: true, label: 'Switcher', values: 'false' },
+          { buttonsName: 'My Cards', isButtonsEnable: true, values: 'false' },
+          { buttonsName: 'All Cards', isButtonsEnable: true, values: 'true' },
         ]}
+        label={'Show decks cards'}
       />
       {/*<Tabs*/}
       {/*  className={classNames.tabs}*/}

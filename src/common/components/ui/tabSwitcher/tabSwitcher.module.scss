@@ -5,6 +5,12 @@ input {
   all: unset;
 }
 
+.TabsWrapping {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .TabsRoot {
   display: flex;
   flex-direction: column;
@@ -18,14 +24,12 @@ input {
 
 .TabsTrigger {
   user-select: none;
+  padding: 6px 24px;
 
-  display: flex;
-  flex: 1;
   align-items: center;
   justify-content: center;
 
-  height: 34px;
-  padding: 0 20px;
+  //height: 34px;
 
   font-family: inherit;
   font-size: 15px;

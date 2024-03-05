@@ -1,14 +1,13 @@
 import { useForm } from 'react-hook-form'
 
+import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
+import { Button } from '@/common/components/ui/button'
+import { Card } from '@/common/components/ui/card'
+import { Typography } from '@/common/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
 import s from '@/feature/auth/ui/forgotPassword/forgotPassword.module.scss'
-
-import { Button } from '../../../../common/components/ui/button'
-import { Card } from '../../../../common/components/ui/card'
-import { TextField } from '../../../../common/components/ui/textField'
-import { Typography } from '../../../../common/components/ui/typography'
 
 const forgotPasswordSchema = z.object({
   email: z.string().email(),
@@ -21,10 +20,9 @@ type Props = {
 
 export const ForgotPassword = ({ onSubmit }: Props) => {
   const {
-    // control,
+    control,
     formState: { errors },
     handleSubmit,
-    register,
   } = useForm<ForgotPasswordValues>({
     defaultValues: {
       email: '',
@@ -38,15 +36,13 @@ export const ForgotPassword = ({ onSubmit }: Props) => {
         Forgot your password?
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        {/*<DevTool control={control} />*/}
-        <TextField
+        <ControlledTextField
           className={s.inputEmail}
+          control={control}
           error={errors.email?.message}
           label={'Email'}
-          // control={control}
-          // name={'email'}
+          name={'email'}
           placeholder={'Email'}
-          {...register('email')}
         />
         <Typography className={s.info} variant={'body2'}>
           Enter your email address and we will send you further instructions

@@ -4,7 +4,7 @@
   align-items: center;
 
   width: 420px;
-  padding: 33px 36px 0;
+  padding: 33px 36px 25px;
 
   @media screen and (width <= 600px) {
     width: calc(100% - 40px);
@@ -53,7 +53,6 @@
 }
 
 .signInLink {
-  margin-bottom: 25px;
   padding: 4px 10px;
   color: var(--color-accent-500);
 

@@ -1,1 +1,1 @@
-export * from '@/common/components/ui/radio/radio'
+export * from './radio'

@@ -1,6 +1,5 @@
 .typography {
   margin: 0;
-  color: var(--color-light-100);
 }
 
 .h1 {
@@ -99,4 +98,8 @@
   color: var(--color-info-500);
   text-decoration: underline;
   text-decoration-skip-ink: none;
+}
+
+.label{
+  color: #0a6638;
 }

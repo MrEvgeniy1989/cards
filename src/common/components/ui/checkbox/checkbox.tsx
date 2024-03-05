@@ -10,14 +10,27 @@ import { Typography } from '../typography'
 
 export type CheckboxProps = {
   checked: boolean
+  className?: string
   id?: string
   label?: string
   onCheckedChange: (checked: boolean) => void
   position?: 'default' | 'left'
-} & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
+} & Omit<ComponentPropsWithoutRef<typeof CheckboxRadix.Root>, 'className'>
 
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxProps>(
-  ({ checked, disabled, id, label, onCheckedChange, position = 'default', ...restProps }, ref) => (
+  (
+    {
+      checked,
+      className,
+      disabled,
+      id,
+      label,
+      onCheckedChange,
+      position = 'default',
+      ...restProps
+    },
+    ref
+  ) => (
     <div className={`${s.container} ${s[position]}`}>
       <LabelRadix.Root asChild>
         <Typography as={'label'} className={disabled ? s.labelDisabled : s.label} variant={'body2'}>
@@ -25,7 +38,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             <CheckboxRadix.Root
               {...restProps}
               checked={checked}
-              className={s.root + ' ' + (restProps.className ?? '')}
+              className={s.root + ' ' + (className ?? '')}
               disabled={disabled}
               id={id}
               onCheckedChange={onCheckedChange}

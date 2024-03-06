@@ -51,24 +51,14 @@ export const DecksPanel = ({
       />
       <TabSwitcher
         buttons={[
-          { buttonsName: 'My Cards', isButtonsEnable: true, values: 'false' },
-          { buttonsName: 'All Cards', isButtonsEnable: true, values: 'true' },
+          { buttonsName: 'My Cards', isButtonsEnable: true, value: 'my' },
+          { buttonsName: 'All Cards', isButtonsEnable: true, value: 'all' },
         ]}
-        label={'Show decks cards'}
+        className={s.tabs}
+        label={tabLabel}
+        onValueChange={onChangeTabValue}
+        value={tabValue}
       />
-      {/*<Tabs*/}
-      {/*  className={classNames.tabs}*/}
-      {/*  label={tabLabel}*/}
-      {/*  onValueChange={onChangeTabValue}*/}
-      {/*  value={tabValue}*/}
-      {/*>*/}
-      {/*  <TabItem disabled={isDisabled} value={'my'}>*/}
-      {/*    My Decks*/}
-      {/*  </TabItem>*/}
-      {/*  <TabItem disabled={isDisabled} value={'all'}>*/}
-      {/*    All Decks*/}
-      {/*  </TabItem>*/}
-      {/*</Tabs>*/}
       <Slider
         className={s.slider}
         disabled={isDisabled}

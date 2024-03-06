@@ -9,7 +9,7 @@ import s from './tabSwitcher.module.scss'
 type Button = {
   buttonsName: string
   isButtonsEnable: boolean
-  values: string
+  value: string
 }
 
 type TabSwitcherProps = {
@@ -25,7 +25,7 @@ export const TabSwitcher = ({ buttons, className, label, ...rest }: TabSwitcherP
         {label}
       </Typography>
     )}
-    <Tabs.Root {...rest} className={s.TabsRoot} defaultValue={buttons[0].values}>
+    <Tabs.Root {...rest} className={s.TabsRoot} defaultValue={buttons[1].value}>
       <Tabs.List aria-label={'Manage your tabs'} className={s.TabsList}>
         {buttons.map(btn => {
           return (
@@ -33,7 +33,7 @@ export const TabSwitcher = ({ buttons, className, label, ...rest }: TabSwitcherP
               className={`${s.TabsTrigger} ${className ?? ''}`}
               disabled={!btn.isButtonsEnable}
               key={v1()}
-              value={btn.values}
+              value={btn.value}
             >
               <Typography as={'label'} variant={'body1'}>
                 {btn.buttonsName}

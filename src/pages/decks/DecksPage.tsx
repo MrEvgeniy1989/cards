@@ -71,7 +71,9 @@ export const DecksPage = ({}: Props) => {
       <Page className={s.decksPage}>
         <DecksHeader isDisabled={loadingStatus} />
         <DecksPanel
+          className={s.panelWrapper}
           inputValue={searchName}
+          isDisabled={loadingStatus}
           maxSliderValue={Number(minMaxData?.max)}
           minSliderValue={cardsCount.min}
           onChangeInputValue={onSearchCallback}

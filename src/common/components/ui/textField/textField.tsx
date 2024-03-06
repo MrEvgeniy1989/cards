@@ -1,4 +1,10 @@
-import React, { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
+import React, {
+  ChangeEvent,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+  useState,
+} from 'react'
 
 import { IconClose, IconEye, IconSearch } from '@/assets'
 import cx from 'clsx'
@@ -10,10 +16,11 @@ import { Typography } from '../typography'
 export type TextFieldProps = {
   error?: string
   label?: string
+  onChangeValue?: (value: string) => void
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
-  ({ children, error, label, onChange, type = 'text', value, ...rest }, ref) => {
+  ({ children, error, label, onChange, onChangeValue, type = 'text', value, ...rest }, ref) => {
     const [show, setShow] = useState(false)
     const showPass = () => setShow(!show)
 
@@ -38,6 +45,11 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
       </button>
     )
 
+    const onChangeValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e)
+      onChangeValue?.(e.currentTarget.value)
+    }
+
     return (
       <div className={s.box + ' ' + rest.className}>
         <Typography as={'label'} className={s.label} variant={'body1'}>
@@ -48,7 +60,7 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
           <input
             {...rest}
             className={classInput}
-            onChange={onChange}
+            onChange={onChangeValueHandler}
             ref={ref}
             type={(show && 'text') || type}
             value={value}

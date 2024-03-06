@@ -98,6 +98,7 @@ export const DecksPage = ({}: Props) => {
               options={pageOptions}
               pageSize={pageSize}
               totalCount={data?.pagination.totalItems ?? 1}
+              value={String(pageSize)}
             />
           </>
         )}

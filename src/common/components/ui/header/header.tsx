@@ -42,7 +42,7 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
         <img alt={'avatar'} src={logo} />
 
         {!isLoggedIn && (
-          <Button as={'a'} href={'/'} variant={'secondary'}>
+          <Button as={'a'} href={'/login'} variant={'primary'}>
             Sign In
           </Button>
         )}

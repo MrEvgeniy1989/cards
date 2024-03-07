@@ -1,8 +1,8 @@
 import { EditIcon } from '@/assets/icons/edit'
 import { PlayCircle } from '@/assets/icons/playСircle'
 import { Trash } from '@/assets/icons/trash'
-import { Table } from '@/common/components/ui/baseTable/table'
 import { Button } from '@/common/components/ui/button'
+import { Table } from '@/common/components/ui/table'
 import { Sort, getDecksResponse } from '@/feature/decks/api/decksApi.types'
 
 import s from '@/feature/decks/ui/decksTable/decksTable.module.scss'

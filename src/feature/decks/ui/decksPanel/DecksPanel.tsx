@@ -25,7 +25,7 @@ type PanelProps = {
 export const DecksPanel = ({
   className,
   inputValue,
-  isDisabled,
+  isDisabled = false,
   maxSliderValue,
   minSliderValue,
   onChangeInputValue,
@@ -37,8 +37,6 @@ export const DecksPanel = ({
   tabLabel,
   tabValue,
 }: PanelProps) => {
-  // const [searchValue, setSearchValue] = useState<string>('')
-
   return (
     <div className={`${s.root} ${className}`}>
       <TextField
@@ -51,8 +49,8 @@ export const DecksPanel = ({
       />
       <TabSwitcher
         buttons={[
-          { buttonsName: 'My Cards', isButtonsEnable: true, value: 'my' },
-          { buttonsName: 'All Cards', isButtonsEnable: true, value: 'all' },
+          { buttonsName: 'My Cards', disabled: isDisabled, value: 'my' },
+          { buttonsName: 'All Cards', disabled: isDisabled, value: 'all' },
         ]}
         className={s.tabs}
         label={tabLabel}

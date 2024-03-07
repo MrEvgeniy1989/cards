@@ -8,7 +8,7 @@ import s from './tabSwitcher.module.scss'
 
 type Button = {
   buttonsName: string
-  isButtonsEnable: boolean
+  disabled: boolean
   value: string
 }
 
@@ -31,7 +31,7 @@ export const TabSwitcher = ({ buttons, className, label, ...rest }: TabSwitcherP
           return (
             <Tabs.Trigger
               className={`${s.TabsTrigger} ${className ?? ''}`}
-              disabled={!btn.isButtonsEnable}
+              disabled={btn.disabled}
               key={v1()}
               value={btn.value}
             >

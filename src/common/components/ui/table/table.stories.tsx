@@ -1,3 +1,5 @@
+import type { Meta, StoryObj } from '@storybook/react'
+
 import { ArrowUp } from '@/assets/icons/arrowUp'
 import { EditIcon } from '@/assets/icons/edit'
 import { EmptyStar } from '@/assets/icons/emptyStar'
@@ -5,13 +7,21 @@ import { PlayCircle } from '@/assets/icons/playСircle'
 import { Star } from '@/assets/icons/star'
 import { Trash } from '@/assets/icons/trash'
 import deckImg from '@/assets/images/defaultImg.png'
-import { Table } from '@/common/components/ui/baseTable/table'
+import { Button } from '@/common/components/ui/button'
+import { Table } from '@/common/components/ui/table/table'
 
-import s from '@/common/components/ui/baseTable/baseTable.module.scss'
+import s from '@/common/components/ui/table/tableStories.module.scss'
 
-import { Button } from '../button'
+const meta: Meta<typeof Table.Root> = {
+  component: Table.Root,
+  tags: ['auto docs'],
+  title: 'Components/Table',
+} satisfies Meta<typeof Table.Root>
 
-export function BaseTable() {
+export default meta
+type Story = StoryObj<typeof meta>
+
+function BaseTable() {
   return (
     <div>
       <Table.Root>
@@ -84,4 +94,14 @@ export function BaseTable() {
       </Table.Root>
     </div>
   )
+}
+
+export const Default: Story = {
+  args: {},
+  render: () => <BaseTable />,
+}
+export const EmptyTable: Story = {
+  render: () => (
+    <Table.Empty text={'Your Decks list is empty. Click Add New Deck to fill this deck.'} />
+  ),
 }

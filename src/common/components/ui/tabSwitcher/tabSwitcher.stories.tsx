@@ -19,9 +19,9 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     buttons: [
-      { buttonsName: 'switcher', isButtonsEnable: true, value: 'tab1' },
-      { buttonsName: 'switcher', isButtonsEnable: true, value: 'tab2' },
-      { buttonsName: 'switcher', isButtonsEnable: true, value: 'tab3' },
+      { buttonsName: 'switcher', disabled: false, value: 'tab1' },
+      { buttonsName: 'switcher', disabled: false, value: 'tab2' },
+      { buttonsName: 'switcher', disabled: false, value: 'tab3' },
     ],
   },
 }
@@ -29,9 +29,9 @@ export const Default: Story = {
 export const Disabled: Story = {
   args: {
     buttons: [
-      { buttonsName: 'switcher', isButtonsEnable: false, value: 'tab1' },
-      { buttonsName: 'switcher', isButtonsEnable: false, value: 'tab2' },
-      { buttonsName: 'switcher', isButtonsEnable: false, value: 'tab3' },
+      { buttonsName: 'switcher', disabled: true, value: 'tab1' },
+      { buttonsName: 'switcher', disabled: true, value: 'tab2' },
+      { buttonsName: 'switcher', disabled: true, value: 'tab3' },
     ],
   },
 }

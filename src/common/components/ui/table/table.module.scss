@@ -10,9 +10,7 @@
 }
 
 .headCell {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 24px;
+  padding: 6px 24px;
 
   font-size: var(--font-size-s);
   font-weight: var(--font-weight-medium);
@@ -26,16 +24,11 @@
   border-bottom: 1px solid var(--color-dark-500);
 }
 
-.tableCell {
+.cell {
   padding: 6px 24px;
   font-size: var(--font-size-s);
   line-height: var(--line-height-m);
   text-align: left;
-}
-
-.cellWrapper {
-  display: flex;
-  align-items: center;
 }
 
 .empty {
@@ -47,34 +40,4 @@
   .emptyDescription {
     color: var(--color-dark-100);
   }
-}
-
-.deckImg {
-  padding-right: 10px;
-}
-
-.height60 {
-  height: 60px;
-}
-
-.displayFlex {
-  display: flex;
-  align-items: center;
-}
-
-.arrowUp {
-  margin-left: 4px;
-  fill: var(--color-light-100);
-}
-
-.headCards {
-  display: flex;
-  align-items: center;
-}
-
-.link {
-  margin-right: 10px;
-  padding: 0;
-  background: none;
-  box-shadow: 0 0 0 0 transparent;
 }

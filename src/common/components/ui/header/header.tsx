@@ -11,6 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown'
+import { Typography } from '@/common/components/ui/typography'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 
 import s from '@/common/components/ui/header/header.module.scss'
@@ -24,18 +25,6 @@ export type HeaderProps =
     })
 
 export const Header = ({ isLoggedIn }: HeaderProps) => {
-  const btnStyle: any = {
-    alignItems: 'center',
-    background: 'transparent',
-    border: 'none',
-    borderRadius: '100%',
-    display: 'flex',
-    height: '36px',
-    justifyContent: 'center',
-    unset: 'all',
-    width: '36px',
-  }
-
   return (
     <header className={s.root}>
       <div className={s.content}>
@@ -49,18 +38,25 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
         {isLoggedIn && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button style={btnStyle}>
-                <img src={userPhotoSmall} />
-              </button>
+              <div className={s.btnWrapper}>
+                <Typography as={'p'} className={s.userEmail} variant={'subtitle1'}>
+                  j&johnson@gmail.com
+                </Typography>
+                <button className={s.iconButton}>
+                  <img alt={'user small small'} src={userPhotoSmall} />
+                </button>
+              </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent className={s.arrowMenuContent}>
               <DropdownMenuLabel>
-                <img src={userPhotoSmall} />
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  Ivan
-                  <span style={{ color: '#808080', fontSize: '12px', fontWeight: '400' }}>
+                <img alt={'user small small'} src={userPhotoSmall} />
+                <div className={s.flexColumn}>
+                  <Typography as={'p'} variant={'subtitle2'}>
+                    Ivan
+                  </Typography>
+                  <Typography as={'p'} className={s.emailColor} variant={'caption'}>
                     j&johnson@gmail.com
-                  </span>
+                  </Typography>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />

@@ -23,3 +23,37 @@
   margin: 0 auto;
   padding: 0 136px;
 }
+
+
+.btnWrapper {
+  cursor: default;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.userEmail {
+   border-bottom: 1px dashed ;
+}
+
+.arrowMenuContent {
+   span {
+     div{
+       right: 80px;
+     }
+   }
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emailColor {
+  color: var(--color-dark-100);
+}
+.flexColumn{
+  display: flex;
+  flex-direction: column;
+}

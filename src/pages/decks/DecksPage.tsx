@@ -4,6 +4,7 @@ import { LinearProgressBar } from '@/common/components/ui/linearProgressBar'
 import { Page } from '@/common/components/ui/page'
 import { Pagination } from '@/common/components/ui/pagination'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
+import { useDebounce } from '@/common/hooks/useDebounce'
 import { formatSortedString } from '@/common/utils/formatSortedString/formatSortedString'
 import { useGetDecksQuery, useGetMinMaxCardsQuery } from '@/feature/decks/api/decksApi'
 import { useDecksOptions } from '@/feature/decks/hooks/useDecksOptions'
@@ -37,31 +38,34 @@ export const DecksPage = ({}: Props) => {
   } = useDecksOptions()
 
   const dispatch = useAppDispatch()
+  const debouncedSearchName = useDebounce(searchName)
+  const debouncedSliderRangeValue = useDebounce(sliderRangeValue)
+
   const sortedString = formatSortedString(sortOptions)
 
-  const { currentData, data, isFetching, isLoading } = useGetDecksQuery({
+  const { data, isFetching, isLoading } = useGetDecksQuery({
     authorId,
     currentPage,
     itemsPerPage: pageSize,
-    maxCardsCount: sliderRangeValue.max,
-    minCardsCount: sliderRangeValue.min,
-    name: searchName,
+    maxCardsCount: debouncedSliderRangeValue.max,
+    minCardsCount: debouncedSliderRangeValue.min,
+    name: debouncedSearchName,
     orderBy: sortedString,
   })
   const { data: minMaxData } = useGetMinMaxCardsQuery()
 
   useEffect(() => {
     if (
-      sliderRangeValue.max === undefined ||
-      sliderRangeValue.max === null ||
-      sliderRangeValue.max !== minMaxData?.max ||
+      debouncedSliderRangeValue.max === undefined ||
+      debouncedSliderRangeValue.max === null ||
+      debouncedSliderRangeValue.max !== minMaxData?.max ||
       !minMaxData?.max
     ) {
       onChangeSliderValueCallback([0, minMaxData?.max ?? 0])
       dispatch(setCardsCount({ cardsCount: { max: minMaxData?.max ?? 0, min: 0 } }))
     }
-    // eslint-disable-next-line
-  }, [dispatch, setCardsCount, sliderRangeValue, minMaxData?.max])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, minMaxData?.max])
 
   const loadingStatus = isLoading || isFetching
 
@@ -85,10 +89,10 @@ export const DecksPage = ({}: Props) => {
           tabLabel={'Show decks cards'}
           tabValue={tabValue}
         />
-        {currentData && currentData.items.length > 0 && (
+        {data && data.items.length > 0 && (
           <>
             <DecksTable
-              decksData={currentData}
+              decksData={data}
               isDisabled={loadingStatus}
               onSort={onChangeSortCallback}
               sort={sortOptions}

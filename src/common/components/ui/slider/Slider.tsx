@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, useEffect } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Typography } from '@/common/components/ui/typography'
 import * as SliderPrimitive from '@radix-ui/react-slider'
@@ -6,86 +6,31 @@ import { clsx } from 'clsx'
 
 import s from '@/common/components/ui/slider/slider.module.scss'
 
-// type Props = Omit<ComponentPropsWithoutRef<typeof SliderPrimitive.Root>, 'value'> & {
-//   label?: string
-//   value: (null | number)[]
-// }
-//
-// export const Slider = forwardRef<ElementRef<typeof SliderPrimitive.Root>, Props>(
-//   ({ className = '', label, max, onValueChange, value = [], ...props }, ref) => {
-//     useEffect(() => {
-//       if (value?.[1] === undefined || value?.[1] === null) {
-//         onValueChange?.([value?.[0] ?? 0, max ?? 0])
-//       }
-//     }, [max, value, onValueChange])
-//
-//     return (
-//       <div>
-//         {label && (
-//           <Typography as={'label'} variant={'body2'}>
-//             {label}
-//           </Typography>
-//         )}
-//         <div className={s.container}>
-//           <span className={s.valueDisplay}>{value?.[0]}</span>
-//           <SliderPrimitive.Root
-//             className={clsx(s.root, className)}
-//             max={max}
-//             onValueChange={onValueChange}
-//             ref={ref}
-//             {...props}
-//             value={[value?.[0] ?? 0, value?.[1] ?? max ?? 0]}
-//           >
-//             <SliderPrimitive.Track className={s.track}>
-//               <SliderPrimitive.Range className={s.range} />
-//             </SliderPrimitive.Track>
-//             <SliderPrimitive.Thumb className={s.thumb} />
-//             <SliderPrimitive.Thumb className={s.thumb} />
-//           </SliderPrimitive.Root>
-//           <span className={s.valueDisplay}>{value?.[1]}</span>
-//         </div>
-//       </div>
-//     )
-//   }
-// )
-//
-// Slider.displayName = SliderPrimitive.Root.displayName
-
-export type SliderProps = {
-  label?: string
-} & ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+export type SliderProps = { label?: string } & ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 
 export const Slider = forwardRef<ElementRef<typeof SliderPrimitive.Root>, SliderProps>(
-  ({ className, label, max, onValueChange, step = 1, value, ...restProps }, ref) => {
-    useEffect(() => {
-      if (value?.[1] === undefined || value?.[1] === null) {
-        onValueChange?.([value?.[0] ?? 0, max ?? 0])
-      }
-    }, [max, value, onValueChange])
-
+  ({ className, label, ...restProps }, ref) => {
     return (
-      <div>
+      <div className={clsx(s.sliderWrapping, className)}>
         {label && (
           <Typography as={'label'} variant={'body2'}>
             {label}
           </Typography>
         )}
         <div className={s.container}>
-          <span className={s.valueDisplay}>{value?.[0]}</span>
-          <SliderPrimitive.Root
-            className={clsx(s.root, className)}
-            onValueChange={onValueChange}
-            ref={ref}
-            value={[value?.[0] ?? 0, value?.[1] ?? max ?? 0]}
-            {...restProps}
-          >
+          <Typography as={'div'} className={s.valueDisplay} variant={'body1'}>
+            {restProps?.value?.[0]}
+          </Typography>
+          <SliderPrimitive.Root className={s.root} ref={ref} {...restProps}>
             <SliderPrimitive.Track className={s.track}>
               <SliderPrimitive.Range className={s.range} />
             </SliderPrimitive.Track>
             <SliderPrimitive.Thumb aria-label={'Value min'} className={s.thumb} />
             <SliderPrimitive.Thumb aria-label={'Value max'} className={s.thumb} />
           </SliderPrimitive.Root>
-          <span className={s.valueDisplay}>{value?.[1]}</span>
+          <Typography as={'div'} className={s.valueDisplay} variant={'body1'}>
+            {restProps?.value?.[1]}
+          </Typography>
         </div>
       </div>
     )

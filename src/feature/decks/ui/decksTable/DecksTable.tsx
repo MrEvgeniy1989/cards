@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { EditIcon } from '@/assets/icons/edit'
 import { PlayCircle } from '@/assets/icons/playСircle'
 import { Trash } from '@/assets/icons/trash'
@@ -42,13 +44,13 @@ export const DecksTable = ({ decksData }: Props) => {
                   <Table.Cell>{new Date(deck.updated).toLocaleDateString('ru-RU')}</Table.Cell>
                   <Table.Cell>{deck.author.name}</Table.Cell>
                   <Table.Cell className={s.buttonsCell}>
-                    <Button as={'a'} className={s.link}>
+                    <Button as={Link} className={s.link} to={`/decks/${deck.id}/learn`}>
                       <PlayCircle />
                     </Button>
-                    <Button as={'a'} className={s.link}>
+                    <Button as={Link} className={s.link} to={'/'}>
                       <EditIcon />
                     </Button>
-                    <Button as={'a'} className={s.link}>
+                    <Button as={Link} className={s.link} to={'/'}>
                       <Trash />
                     </Button>
                   </Table.Cell>

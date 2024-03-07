@@ -1,6 +1,5 @@
 .root {
   display: flex;
-  gap: 24px;
   align-items: end;
   justify-content: center;
 
@@ -10,10 +9,15 @@
 
 .input {
   min-width: 30px;
+  margin-right: 24px;
+}
+
+.tabs {
+  margin-right: 25px;
 }
 
 .slider {
-  min-width: 155px;
+  margin-right: 36px;
 }
 
 .button {

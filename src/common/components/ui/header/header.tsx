@@ -15,6 +15,7 @@ import { Typography } from '@/common/components/ui/typography'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 
 import s from '@/common/components/ui/header/header.module.scss'
+import {Link} from "react-router-dom";
 
 export type HeaderProps =
   | (Partial<typeof DropdownMenuPrimitive.Root> & {
@@ -31,7 +32,7 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
         <img alt={'avatar'} src={logo} />
 
         {!isLoggedIn && (
-          <Button as={'a'} href={'/login'} variant={'primary'}>
+          <Button as={Link} to={'/login'} variant={'primary'}>
             Sign In
           </Button>
         )}

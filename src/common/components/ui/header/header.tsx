@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { LogoutIcon } from '@/assets/icons/logoutIcon'
 import { PersonIcon } from '@/assets/icons/personIcon'
 import logo from '@/assets/images/logo.png'
@@ -15,7 +17,6 @@ import { Typography } from '@/common/components/ui/typography'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 
 import s from '@/common/components/ui/header/header.module.scss'
-import {Link} from "react-router-dom";
 
 export type HeaderProps =
   | (Partial<typeof DropdownMenuPrimitive.Root> & {

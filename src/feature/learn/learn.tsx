@@ -1,6 +1,6 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-import questionImg from '@/assets/images/reactImg.png'
 import { Button } from '@/common/components/ui/button'
 import { Card } from '@/common/components/ui/card'
 import { GoBack } from '@/common/components/ui/goBack'
@@ -8,17 +8,31 @@ import { Typography } from '@/common/components/ui/typography'
 
 import s from './learnForm.module.scss'
 
+import { useGetDeckInfoQuery, useGetLearnCardQuery, usePostRateCardMutation } from './api/learnApi'
 import { FormValues, LearnForm } from './learnForm'
 
 export const Learn = () => {
   const [showRate, setShowRate] = useState(false)
 
+  const [postRateCard] = usePostRateCardMutation()
+  const params = useParams()
+  const id = params.id as string
+
+  const { data: pack } = useGetDeckInfoQuery({ id })
+  const { data: card } = useGetLearnCardQuery({ id })
+
+  const handleRateCard = async (packId: string, cardId: string, grade: number): Promise<void> => {
+    await postRateCard({
+      cardId,
+      grade,
+      packId,
+    }).unwrap()
+  }
+
   const onSubmit = async (data: FormValues) => {
-    alert(JSON.stringify(data))
-    // await requestHandler(async () => {
-    //   await rateCard({ packId: id, cardId: card!.id, grade: +data.grade }).unwrap()
+    await handleRateCard(id, card!.id, +data.grade)
+
     setShowRate(false)
-    // })
   }
 
   return (
@@ -29,19 +43,21 @@ export const Learn = () => {
 
       <Card className={s.content}>
         <Typography as={'h1'} className={s.title} variant={'h1'}>
-          Learn {' pack?.name'}
+          {pack?.name}
         </Typography>
 
-        <Typography variant={'body1'}>Question:{' card?.question'}</Typography>
-        {true && <img alt={'Question Image'} className={s.image} src={questionImg} />}
+        <Typography variant={'body1'}>Question: ${card?.question}</Typography>
+        {card?.answerImg && (
+          <img alt={'Question Image'} className={s.image} src={card?.answerImg} />
+        )}
         <Typography className={s.count} variant={'body2'}>
-          Количество попыток ответов на вопрос:{' card?.shots'}
+          Количество попыток ответов на вопрос:{card?.shots}
         </Typography>
 
         {showRate ? (
           <div>
             <Typography className={s.answer} variant={'body1'}>
-              Answer: {'card?.answer'}
+              Answer: {card?.answer}
             </Typography>
 
             <Typography className={s.rate} variant={'subtitle1'}>

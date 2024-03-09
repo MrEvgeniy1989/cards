@@ -1,6 +1,7 @@
 import { Navigate, RouteObject } from 'react-router-dom'
 
 import { CreateNewPasswordPage } from '@/pages/createNewPasswordPage'
+import { DeckPage } from '@/pages/deckPage/DeckPage'
 import { DecksPage } from '@/pages/decks/DecksPage'
 import { ForgotPasswordPage } from '@/pages/forgonPassword'
 import { LearnPage } from '@/pages/learnPage'
@@ -13,6 +14,7 @@ export const privateRoutes: RouteObject[] = [
   { element: <Navigate to={'/decks'} />, path: '/' },
   { element: <DecksPage />, path: '/decks' },
   { element: <ProfilePage />, path: '/profile' },
+  { element: <DeckPage />, path: '/decks/:id/cards' },
   { element: <LearnPage />, path: '/decks/:id/learn' },
 ]
 export const publicRoutes: RouteObject[] = [

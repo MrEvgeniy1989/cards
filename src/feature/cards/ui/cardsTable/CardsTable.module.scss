@@ -1,0 +1,51 @@
+.cardsTable {
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.tableRow {
+  vertical-align: middle;
+}
+
+.flexWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cellQuestion,
+.cellAnswer {
+  width: 32rem;
+}
+
+.cardImg {
+  max-width: 118px;
+  max-height: 48px;
+}
+
+.cellUpdated {
+  width: 20rem;
+}
+
+.buttonsCell {
+  min-width: 100px;
+  text-align: center;
+}
+
+.link {
+  padding: 0;
+  vertical-align: middle;
+  background: none;
+  box-shadow: 0 0 0 0 transparent;
+
+  &:hover:enabled,
+  &:active:enabled {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  & + & {
+    margin-left: 10px;
+  }
+}

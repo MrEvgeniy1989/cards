@@ -25,6 +25,7 @@ const paginationOptions = [
 ] as PaginationOptions
 
 export const DeckPage = () => {
+  // const [searchParams, setSearchParams] = useSearchParams()
   const [question, setQuestion] = useState<string>('')
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [pageSize, setPageSize] = useState<string>('10')
@@ -32,7 +33,7 @@ export const DeckPage = () => {
   const { id = '' } = useParams<{ id: string }>()
   const queryParams = {
     id,
-    params: { currentPage, itemsPerPage: Number(pageSize), question: useDebounce(question, 300) },
+    params: { currentPage, itemsPerPage: Number(pageSize), question: useDebounce(question, 500) },
   }
 
   const { data: user } = useMeQuery()
@@ -42,6 +43,20 @@ export const DeckPage = () => {
   const isOwner = user?.id === deck?.userId
   const isNotEmptyCard = deck && deck.cardsCount > 0
   const loadingStatus = isLoading || isFetching
+
+  const onQuestionChange = (value: string) => {
+    setQuestion(value)
+    setCurrentPage(1)
+    // setSearchParams({ page: '1', pageSize, question: value })
+  }
+  const onPageChange = (page: number) => {
+    setCurrentPage(page)
+    // setSearchParams({ page: page + '', pageSize, question })
+  }
+  const onPageSizeChange = (pageSize: string) => {
+    setPageSize(pageSize)
+    // setSearchParams({ page: '1', pageSize, question })
+  }
 
   return (
     <>
@@ -55,7 +70,7 @@ export const DeckPage = () => {
             <TextField
               className={s.input}
               disabled={loadingStatus}
-              onChangeValue={setQuestion}
+              onChangeValue={onQuestionChange}
               placeholder={'Search by question'}
               type={'search'}
               value={question}
@@ -63,8 +78,8 @@ export const DeckPage = () => {
             <CardsTable cards={deckData?.items || []} isOwner={isOwner} />
             <Pagination
               currentPage={currentPage}
-              onPageChange={setCurrentPage}
-              onValueChange={setPageSize}
+              onPageChange={onPageChange}
+              onValueChange={onPageSizeChange}
               options={paginationOptions}
               pageSize={Number(pageSize)}
               totalCount={deckData?.pagination.totalItems ?? 1}

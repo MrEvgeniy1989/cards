@@ -22,3 +22,17 @@
     border-radius: 100%;
   }
 }
+
+.itemLink,
+.itemBtn {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.itemLink {
+  text-decoration: none;
+}
+
+.itemBtn {
+}

@@ -1,9 +1,9 @@
 import { EditIcon } from '@/assets/icons/edit'
-import { Trash } from '@/assets/icons/trash'
 import { Button } from '@/common/components/ui/button'
 import { Rating } from '@/common/components/ui/rating'
 import { Table } from '@/common/components/ui/table'
 import { Card } from '@/feature/cards/api/cardsApi.types'
+import { DeleteCard } from '@/feature/cards/ui/deleteCard/DeleteCard'
 
 import s from './CardsTable.module.scss'
 
@@ -53,12 +53,10 @@ export const CardsTable = ({ cards, isOwner }: Props) => {
                   </Table.Cell>
                   {isOwner && (
                     <Table.Cell className={s.buttonsCell}>
-                      <Button className={s.link}>
+                      <Button className={s.btn}>
                         <EditIcon />
                       </Button>
-                      <Button className={s.link}>
-                        <Trash />
-                      </Button>
+                      <DeleteCard cardId={card.id} className={s.btn} deckId={card.deckId} />
                     </Table.Cell>
                   )}
                 </Table.Row>

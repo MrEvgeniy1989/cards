@@ -3,11 +3,14 @@ import { useSearchParams } from 'react-router-dom'
 
 import { useMeQuery } from '@/feature/auth/api/authApi'
 import { Sort } from '@/feature/decks/api/decksApi.types'
-import { CardsCountType } from '@/feature/decks/model/decksSlice'
 
 type PageOptionType = {
   title: string
   value: string
+}
+export type CardsCountType = {
+  max: number | undefined
+  min: number
 }
 
 export const useDecksOptions = () => {

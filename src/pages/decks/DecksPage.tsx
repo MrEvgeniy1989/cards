@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { LinearProgressBar } from '@/common/components/ui/linearProgressBar'
 import { Page } from '@/common/components/ui/page'
 import { Pagination } from '@/common/components/ui/pagination'
+import { Table } from '@/common/components/ui/table'
 import { useDebounce } from '@/common/hooks/useDebounce'
 import { formatSortedString } from '@/common/utils/formatSortedString/formatSortedString'
 import { useGetDecksQuery, useGetMinMaxCardsQuery } from '@/feature/decks/api/decksApi'
@@ -81,7 +82,7 @@ export const DecksPage = () => {
           tabLabel={'Show decks cards'}
           tabValue={tabValue}
         />
-        {data && data.items.length > 0 && (
+        {data && data.items.length > 0 ? (
           <>
             <DecksTable
               decksData={data}
@@ -99,6 +100,8 @@ export const DecksPage = () => {
               value={String(pageSize)}
             />
           </>
+        ) : (
+          <Table.Empty text={'Your Decks list is empty. Click Add New Deck to fill this deck.'} />
         )}
       </Page>
     </>

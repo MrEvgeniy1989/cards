@@ -6,11 +6,7 @@ import { Pagination } from '@/common/components/ui/pagination'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import { useDebounce } from '@/common/hooks/useDebounce'
 import { formatSortedString } from '@/common/utils/formatSortedString/formatSortedString'
-import {
-  useCreateDeckMutation,
-  useGetDecksQuery,
-  useGetMinMaxCardsQuery,
-} from '@/feature/decks/api/decksApi'
+import { useGetDecksQuery, useGetMinMaxCardsQuery } from '@/feature/decks/api/decksApi'
 import { useDecksOptions } from '@/feature/decks/hooks/useDecksOptions'
 import { DecksHeader } from '@/feature/decks/ui/decksHeader/DecksHeader'
 import { DecksPanel } from '@/feature/decks/ui/decksPanel/DecksPanel'
@@ -46,7 +42,6 @@ export const DecksPage = ({}: Props) => {
   const debouncedSliderRangeValue = useDebounce(sliderRangeValue)
 
   const sortedString = formatSortedString(sortOptions)
-  const [createDeck, { isLoading: isDeckBeingCreated }] = useCreateDeckMutation()
   const { data, isFetching, isLoading } = useGetDecksQuery({
     authorId,
     currentPage,

@@ -30,20 +30,16 @@ export const CardsTable = ({ cards, isOwner }: Props) => {
               return (
                 <Table.Row className={s.tableRow} key={card.id}>
                   <Table.Cell className={s.cellQuestion}>
-                    <div className={s.flexWrapper}>
-                      {card.questionImg && (
-                        <img alt={'Card image'} className={s.cardImg} src={card.questionImg} />
-                      )}
-                      {card.question}
-                    </div>
+                    {card.questionImg && (
+                      <img alt={'Card image'} className={s.cardImg} src={card.questionImg} />
+                    )}
+                    {card.question}
                   </Table.Cell>
                   <Table.Cell className={s.cellAnswer}>
-                    <div className={s.flexWrapper}>
-                      {card.answerImg && (
-                        <img alt={'Card image'} className={s.cardImg} src={card.answerImg} />
-                      )}
-                      {card.answer}
-                    </div>
+                    {card.answerImg && (
+                      <img alt={'Card image'} className={s.cardImg} src={card.answerImg} />
+                    )}
+                    {card.answer}
                   </Table.Cell>
                   <Table.Cell className={s.cellUpdated}>
                     {new Date(card.updated).toLocaleDateString('ru-RU')}

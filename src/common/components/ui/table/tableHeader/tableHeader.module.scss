@@ -1,0 +1,22 @@
+.activeHeadCell {
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-dark-300);
+  }
+}
+
+.headCellButtons {
+  padding: 0;
+}
+
+.sortCell {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.sortIcon {
+  transform: scale(0.8);
+}

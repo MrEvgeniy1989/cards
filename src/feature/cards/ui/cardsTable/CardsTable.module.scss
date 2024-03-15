@@ -8,29 +8,26 @@
   vertical-align: middle;
 }
 
-.flexWrapper {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
 .cellQuestion,
 .cellAnswer {
-  width: 32rem;
+  overflow: hidden;
+  max-width: 300px;
 }
 
 .cardImg {
+  float: left;
   max-width: 118px;
   max-height: 48px;
+  margin-right: 10px;
 }
 
 .cellUpdated {
-  width: 20rem;
+  max-width: 200px;
 }
 
 .buttonsCell {
   min-width: 100px;
-  text-align: center;
+  text-align: right;
 }
 
 .btn {
@@ -39,13 +36,13 @@
   background: none;
   box-shadow: 0 0 0 0 transparent;
 
+  & + & {
+    margin-left: 10px;
+  }
+
   &:hover:enabled,
   &:active:enabled {
     background-color: transparent !important;
     box-shadow: none !important;
-  }
-
-  & + & {
-    margin-left: 10px;
   }
 }

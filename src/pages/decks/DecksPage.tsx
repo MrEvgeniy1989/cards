@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { LinearProgressBar } from '@/common/components/ui/linearProgressBar'
 import { Page } from '@/common/components/ui/page'
 import { Pagination } from '@/common/components/ui/pagination'
-import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import { useDebounce } from '@/common/hooks/useDebounce'
 import { formatSortedString } from '@/common/utils/formatSortedString/formatSortedString'
 import { useGetDecksQuery, useGetMinMaxCardsQuery } from '@/feature/decks/api/decksApi'
@@ -14,12 +13,9 @@ import { DecksTable } from '@/feature/decks/ui/decksTable/DecksTable'
 
 import s from '@/pages/decks/decksPage.module.scss'
 
-type Props = {}
-
-export const DecksPage = ({}: Props) => {
+export const DecksPage = () => {
   const {
     authorId,
-    cardsCount,
     currentPage,
     onChangeCurrentPageCallback,
     onChangePageSizeCallback,
@@ -31,13 +27,11 @@ export const DecksPage = ({}: Props) => {
     pageOptions,
     pageSize,
     searchName,
-    setCardsCount,
     sliderRangeValue,
     sortOptions,
     tabValue,
   } = useDecksOptions()
 
-  const dispatch = useAppDispatch()
   const debouncedSearchName = useDebounce(searchName)
   const debouncedSliderRangeValue = useDebounce(sliderRangeValue)
 
@@ -61,10 +55,9 @@ export const DecksPage = ({}: Props) => {
       !minMaxData?.max
     ) {
       onChangeSliderValueCallback([0, minMaxData?.max ?? 0])
-      dispatch(setCardsCount({ cardsCount: { max: minMaxData?.max ?? 0, min: 0 } }))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, minMaxData?.max])
+  }, [minMaxData?.max])
 
   const loadingStatus = isLoading || isFetching
 
@@ -78,7 +71,7 @@ export const DecksPage = ({}: Props) => {
           inputValue={searchName}
           isDisabled={loadingStatus}
           maxSliderValue={Number(minMaxData?.max)}
-          minSliderValue={cardsCount.min}
+          minSliderValue={Number(minMaxData?.min)}
           onChangeInputValue={onSearchCallback}
           onChangeSliderValue={onChangeSliderValueCallback}
           onChangeTabValue={onChangeTabValueCallback}

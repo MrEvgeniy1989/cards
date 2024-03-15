@@ -3,33 +3,56 @@
   margin-bottom: 24px;
 }
 
+.headCellButtons {
+  padding: 0;
+}
+
 .tableRow {
   vertical-align: middle;
   border-bottom: 1px solid var(--color-dark-500);
 }
 
-.cellName {
+.cellNameWithImage {
+  cursor: pointer;
   display: flex;
   gap: 10px;
   align-items: center;
+
+  & > p:hover {
+    color: var(--color-accent-500);
+  }
 }
 
 .deckImg {
   max-width: 118px;
   max-height: 48px;
+  object-fit: cover;
 }
 
-.buttonsCell {
-  text-align: end;
+.decksTable .buttonsCell {
+  width: 68px;
+  padding: 0 24px 0 0;
+  white-space: nowrap;
+
+  span:last-child,
+  button:last-child {
+    margin-right: 0;
+  }
 }
 
 .link {
+  margin-right: 10px;
   padding: 0;
+
   vertical-align: middle;
+
   background: none;
   box-shadow: 0 0 0 0 transparent;
+}
 
-  & + & {
-    margin-left: 10px;
-  }
+.disabledLink {
+  display: inline-flex;
+  margin-right: 10px;
+  vertical-align: middle;
+  opacity: 0.2;
 }

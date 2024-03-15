@@ -40,6 +40,11 @@ input {
   border: 1px solid var(--color-dark-300);
   border-left: 0;
 
+  &,
+  & * {
+    cursor: pointer;
+  }
+
   &[data-state='active'] {
     color: var(--color-light-100);
     background-color: var(--color-accent-500);
@@ -48,36 +53,36 @@ input {
       opacity: 0.5;
     }
   }
-}
 
-.TabsTrigger:first-child {
-  border-left: 1px solid var(--color-dark-300);
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
-}
+  &:first-child {
+    border-left: 1px solid var(--color-dark-300);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
 
-.TabsTrigger:last-child {
-  border-left: 0;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-}
+  &:last-child {
+    border-left: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
 
-.TabsTrigger:hover {
-  color: var(--color-light-900);
-  background-color: var(--color-dark-100);
-}
+  &:active {
+    color: var(--color-light-100);
+    background-color: var(--color-accent-500);
+  }
 
-.TabsTrigger:active {
-  color: var(--color-light-100);
-  background-color: var(--color-accent-500);
-}
+  &:focus {
+    position: relative;
+    background-color: var(--color-accent-500);
+  }
 
-.TabsTrigger:focus {
-  position: relative;
-  background-color: var(--color-accent-500);
-}
+  &:disabled {
+    color: var(--color-dark-300);
+    background-color: var(--color-dark-700);
+  }
 
-.TabsTrigger:disabled {
-  color: var(--color-dark-300);
-  background-color: var(--color-dark-700);
+  &:not([data-state='active']):hover {
+    color: var(--color-light-900);
+    background-color: var(--color-dark-100);
+  }
 }

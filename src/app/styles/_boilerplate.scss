@@ -15,7 +15,8 @@ button,
 select,
 textarea,
 optgroup,
-option {
+option,
+a {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -23,6 +24,9 @@ option {
   color: inherit;
 }
 
+a {
+  text-decoration: none;
+}
 a:visited {
   color: inherit;
 }

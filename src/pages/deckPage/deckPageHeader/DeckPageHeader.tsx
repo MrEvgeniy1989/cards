@@ -20,11 +20,11 @@ export const DeckPageHeader = ({ deck, isNotEmptyCard, isOwner }: Props) => {
           <Typography as={'h1'} variant={'h1'}>
             {deck?.name}
           </Typography>
-          {isOwner && !!deck?.cardsCount && <DeckPageDropdown deck={deck} />}
+          {isOwner && !!deck.cardsCount && <DeckPageDropdown deck={deck} />}
         </div>
-        {isOwner && !!deck?.cardsCount && <Button>Add new card</Button>}
+        {isOwner && !deck.cardsCount && <Button>Add new card</Button>}
         {!isOwner && isNotEmptyCard && (
-          <Button as={Link} to={`/decks/${deck?.id}/learn`}>
+          <Button as={Link} to={`/decks/${deck.id}/learn`}>
             <Typography as={'span'} variant={'subtitle2'}>
               Learn Deck
             </Typography>

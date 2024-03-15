@@ -88,8 +88,11 @@ export const DeckPage = () => {
           </>
         )}
 
-        {!isOwner && !isNotEmptyCard && !loadingStatus && (
-          <Table.Empty text={'The deck is empty, please go back to learn other decks.'} />
+        {!isNotEmptyCard && !loadingStatus && (
+          <Table.Empty
+            className={s.emptyText}
+            text={'The deck is empty, please go back to learn other decks.'}
+          />
         )}
       </Page>
     </>

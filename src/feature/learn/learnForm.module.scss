@@ -5,8 +5,8 @@
 }
 
 .content {
-  padding: 48px 36px;
   max-width: 420px;
+  padding: 48px 36px;
 }
 
 .title {
@@ -15,9 +15,8 @@
 }
 
 .count {
+  margin-bottom: 35px;
   color: var(--color-dark-100);
-
-  margin-bottom: 17px;
 }
 
 .answer {
@@ -30,10 +29,12 @@
 
 .image {
   align-self: center;
+
   max-width: 100%;
   max-height: 120px;
-  object-fit: cover;
   margin: 18px 0;
+
+  object-fit: cover;
 }
 
 .form {

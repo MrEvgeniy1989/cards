@@ -13,7 +13,7 @@ const Root = forwardRef<ElementRef<'table'>, ComponentPropsWithoutRef<'table'>>(
 )
 const Head = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRef<'thead'>>(
   ({ className, ...restProps }, ref) => {
-    return <thead className={clsx(className, s.table)} ref={ref} {...restProps} />
+    return <thead className={clsx(className, s.headCell)} ref={ref} {...restProps} />
   }
 )
 const Body = forwardRef<ElementRef<'tbody'>, ComponentPropsWithoutRef<'tbody'>>(

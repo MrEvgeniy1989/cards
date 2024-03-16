@@ -5,9 +5,11 @@ import { PlayCircle } from '@/assets/icons/playСircle'
 import { Trash } from '@/assets/icons/trash'
 import { Button } from '@/common/components/ui/button'
 import { Table } from '@/common/components/ui/table'
+import { TableHeader } from '@/common/components/ui/table/tableHeader/TableHeader'
 import { Typography } from '@/common/components/ui/typography'
 import { useMeQuery } from '@/feature/auth/api/authApi'
 import { Sort, getDecksResponse } from '@/feature/decks/api/decksApi.types'
+import { columnsData } from '@/feature/decks/ui/columnsData'
 
 import s from '@/feature/decks/ui/decksTable/decksTable.module.scss'
 
@@ -18,25 +20,17 @@ type Props = {
   sort: Sort | undefined
 }
 
-export const DecksTable = ({ decksData }: Props) => {
+export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
   const { data: user } = useMeQuery()
 
   return (
     <>
       <Table.Root className={s.decksTable}>
-        <Table.Head>
-          <Table.Row>
-            <Table.HeadCell>Name</Table.HeadCell>
-            <Table.HeadCell>Cards</Table.HeadCell>
-            <Table.HeadCell>Last Updated</Table.HeadCell>
-            <Table.HeadCell>Created by</Table.HeadCell>
-            <Table.HeadCell className={s.headCellButtons}></Table.HeadCell>
-          </Table.Row>
-        </Table.Head>
+        <TableHeader columns={columnsData} onSort={onSort} sort={sort} />
         <Table.Body>
           {decksData?.items?.map(deck => {
             return (
-              <Table.Row className={s.tableRow} key={deck.id}>
+              <Table.Row aria-disabled={isDisabled} className={s.tableRow} key={deck.id}>
                 <Table.Cell className={s.cellName}>
                   <Link to={`/decks/${deck.id}/cards`}>
                     <div className={s.cellNameWithImage}>
@@ -65,6 +59,7 @@ export const DecksTable = ({ decksData }: Props) => {
 
                 <Table.Cell className={s.buttonsCell}>
                   <Button
+                    aria-disabled={isDisabled}
                     as={Link}
                     className={s.link}
                     title={'Start learning'}
@@ -77,7 +72,13 @@ export const DecksTable = ({ decksData }: Props) => {
                       <EditIcon />
                     </span>
                   ) : (
-                    <Button as={Link} className={s.link} title={'Edit deck'} to={'/'}>
+                    <Button
+                      aria-disabled={isDisabled}
+                      as={Link}
+                      className={s.link}
+                      title={'Edit deck'}
+                      to={'/'}
+                    >
                       <EditIcon />
                     </Button>
                   )}
@@ -86,7 +87,13 @@ export const DecksTable = ({ decksData }: Props) => {
                       <Trash />
                     </span>
                   ) : (
-                    <Button as={Link} className={s.link} title={'Delete deck'} to={'/'}>
+                    <Button
+                      aria-disabled={isDisabled}
+                      as={Link}
+                      className={s.link}
+                      title={'Delete deck'}
+                      to={'/'}
+                    >
                       <Trash />
                     </Button>
                   )}

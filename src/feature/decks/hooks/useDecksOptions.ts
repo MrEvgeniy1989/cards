@@ -20,7 +20,7 @@ export const useDecksOptions = () => {
   const searchName = searchParams.get('searchName') || ''
   const tabValue = searchParams.get('tabValue') || 'all'
   const authorId = searchParams.get('authorId') || undefined
-  const sortOptions = (searchParams.get('sortOptions') as Sort | undefined) || undefined
+  const sortOptions = JSON.parse(searchParams.get('sortOptions') as string) ?? undefined
   const pageSize = Number(searchParams.get('pageSize')) || 10
   const pageOptions = [
     { title: '5', value: '5' },
@@ -65,11 +65,9 @@ export const useDecksOptions = () => {
   }
 
   const onChangeSortCallback = (orderBy: Sort) => {
-    if (orderBy) {
-      searchParams.set('sortOptions', JSON.stringify(orderBy))
-      searchParams.set('currentPage', '1')
-      setSearchParams(searchParams)
-    }
+    searchParams.set('sortOptions', JSON.stringify(orderBy))
+    searchParams.set('currentPage', '1')
+    setSearchParams(searchParams)
   }
 
   const onClearFilterCallback = () => {

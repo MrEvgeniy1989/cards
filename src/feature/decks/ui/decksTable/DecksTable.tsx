@@ -8,6 +8,7 @@ import { Table } from '@/common/components/ui/table'
 import { TableHeader } from '@/common/components/ui/table/tableHeader/TableHeader'
 import { Typography } from '@/common/components/ui/typography'
 import { useMeQuery } from '@/feature/auth/api/authApi'
+import { useDeleteDeckMutation } from '@/feature/decks/api/decksApi'
 import { Sort, getDecksResponse } from '@/feature/decks/api/decksApi.types'
 import { columnsData } from '@/feature/decks/ui/columnsData'
 
@@ -22,6 +23,7 @@ type Props = {
 
 export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
   const { data: user } = useMeQuery()
+  const [deleteDeck] = useDeleteDeckMutation()
 
   return (
     <>
@@ -29,6 +31,8 @@ export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
         <TableHeader columns={columnsData} onSort={onSort} sort={sort} />
         <Table.Body>
           {decksData?.items?.map(deck => {
+            const onDeleteDeck = () => deleteDeck({ id: deck.id })
+
             return (
               <Table.Row aria-disabled={isDisabled} className={s.tableRow} key={deck.id}>
                 <Table.Cell className={s.cellName}>
@@ -83,6 +87,7 @@ export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
                   <Button
                     className={s.iconButton}
                     disabled={isDisabled || user?.id !== deck.author.id}
+                    onClick={onDeleteDeck}
                     title={
                       user?.id !== deck.author.id
                         ? "You can't delete someone else's deck"

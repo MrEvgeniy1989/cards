@@ -19,9 +19,10 @@ export const decksApi = baseApi.injectEndpoints({
       }),
     }),
     deleteDeck: builder.mutation<Deck, { id: string }>({
+      invalidatesTags: ['Decks'],
       query: ({ id }) => ({
         method: 'DELETE',
-        url: `v1/decks/${id}}`,
+        url: `v1/decks/${id}`,
       }),
     }),
     getDeckById: builder.query<DeckWithAuthor, { id: string }>({

@@ -10,7 +10,7 @@ import {
 
 export const decksApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    createDeck: builder.mutation<DeckWithAuthor, void>({
+    createDeck: builder.mutation<DeckWithAuthor, FormData>({
       invalidatesTags: ['Decks'],
       query: body => ({
         body,

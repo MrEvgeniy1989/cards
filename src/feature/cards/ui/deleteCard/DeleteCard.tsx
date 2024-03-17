@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { Trash } from '@/assets/icons/trash'
 import { Button } from '@/common/components/ui/button'
@@ -21,12 +22,14 @@ export const DeleteCard = ({ cardId, className, deckId }: Props) => {
 
   const onDeleteCard = () => {
     deleteCard({ cardId, deckId })
+      .unwrap()
+      .then(() => toast.success('Card deleted!'))
+      .catch(error => toast.error(error.data.message))
     setOpen(false)
   }
 
   return (
     <>
-      {/*{isError && toast.error(error && error?.data && error.data.message)}*/}
       {isLoading && <LinearProgressBar />}
       <Button className={className} onClick={() => setOpen(true)}>
         <Trash />
@@ -39,10 +42,12 @@ export const DeleteCard = ({ cardId, className, deckId }: Props) => {
           </Typography>
           <div className={s.btnsWrapper}>
             <Button onClick={() => setOpen(false)} variant={'secondary'}>
-              <Typography variant={'subtitle2'}>Cancel</Typography>
+              <Typography as={'span'} variant={'subtitle2'}>
+                Cancel
+              </Typography>
             </Button>
-            <Button variant={'primary'}>
-              <Typography onClick={onDeleteCard} variant={'subtitle2'}>
+            <Button onClick={onDeleteCard} variant={'primary'}>
+              <Typography as={'span'} variant={'subtitle2'}>
                 Delete Card
               </Typography>
             </Button>

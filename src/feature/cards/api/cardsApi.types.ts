@@ -40,3 +40,8 @@ export type CardRateRequest = {
   deckId: string
   grade: number
 }
+
+export type Sort = {
+  direction: 'asc' | 'desc'
+  key: string
+} | null

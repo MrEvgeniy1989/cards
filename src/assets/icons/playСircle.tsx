@@ -1,7 +1,7 @@
 import { SVGProps, memo } from 'react'
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
-  <svg fill={'none'} height={16} width={16} xmlns={'http://www.w3.org/2000/svg'} {...props}>
-    <g clipPath={'url(#a)'} fill={'#fff'}>
+  <svg fill={'currentColor'} height={16} width={16} xmlns={'http://www.w3.org/2000/svg'} {...props}>
+    <g clipPath={'url(#a)'} fill={'currentColor'}>
       <path
         d={
           'M8 1.833a6.667 6.667 0 1 0 0 13.334A6.667 6.667 0 0 0 8 1.833Zm0 12A5.333 5.333 0 1 1 8 3.168a5.333 5.333 0 0 1 0 10.665Z'
@@ -15,7 +15,7 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     </g>
     <defs>
       <clipPath id={'a'}>
-        <path d={'M0 .5h16v16H0z'} fill={'#fff'} />
+        <path d={'M0 .5h16v16H0z'} fill={'currentColor'} />
       </clipPath>
     </defs>
   </svg>

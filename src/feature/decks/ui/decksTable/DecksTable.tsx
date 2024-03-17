@@ -61,42 +61,36 @@ export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
                   <Button
                     aria-disabled={isDisabled}
                     as={Link}
-                    className={s.link}
+                    className={s.startLerningLink}
                     title={'Start learning'}
                     to={`/decks/${deck.id}/learn`}
                   >
                     <PlayCircle />
                   </Button>
-                  {user?.id !== deck.author.id ? (
-                    <span className={s.disabledLink} title={"You can't edit someone else's deck"}>
-                      <EditIcon />
-                    </span>
-                  ) : (
-                    <Button
-                      aria-disabled={isDisabled}
-                      as={Link}
-                      className={s.link}
-                      title={'Edit deck'}
-                      to={'/'}
-                    >
-                      <EditIcon />
-                    </Button>
-                  )}
-                  {user?.id !== deck.author.id ? (
-                    <span className={s.disabledLink} title={"You can't edit someone else's deck"}>
-                      <Trash />
-                    </span>
-                  ) : (
-                    <Button
-                      aria-disabled={isDisabled}
-                      as={Link}
-                      className={s.link}
-                      title={'Delete deck'}
-                      to={'/'}
-                    >
-                      <Trash />
-                    </Button>
-                  )}
+
+                  <Button
+                    className={s.iconButton}
+                    disabled={isDisabled || user?.id !== deck.author.id}
+                    title={
+                      user?.id !== deck.author.id
+                        ? "You can't edit someone else's deck"
+                        : 'Edit deck'
+                    }
+                  >
+                    <EditIcon />
+                  </Button>
+
+                  <Button
+                    className={s.iconButton}
+                    disabled={isDisabled || user?.id !== deck.author.id}
+                    title={
+                      user?.id !== deck.author.id
+                        ? "You can't delete someone else's deck"
+                        : 'Delete deck'
+                    }
+                  >
+                    <Trash />
+                  </Button>
                 </Table.Cell>
               </Table.Row>
             )

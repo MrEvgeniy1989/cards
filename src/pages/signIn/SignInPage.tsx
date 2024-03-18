@@ -13,7 +13,7 @@ export const SignInPage = () => {
     login(data)
       .unwrap()
       .then(() => {
-        navigate('/')
+        navigate('/decks')
       })
   }
 

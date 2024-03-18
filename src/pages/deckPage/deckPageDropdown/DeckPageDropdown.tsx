@@ -28,13 +28,18 @@ export const DeckPageDropdown = ({ deck }: Props) => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem asChild>
-          <Link className={s.itemLink} to={`/decks/${deck?.id}/learn`}>
-            <PlayIcon />
-            Learn
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
+        {deck.cardsCount > 0 && (
+          <>
+            <DropdownMenuItem asChild>
+              <Link className={s.itemLink} to={`/decks/${deck?.id}/learn`}>
+                <PlayIcon />
+                Learn
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+          </>
+        )}
+
         <DropdownMenuItem>
           <button className={s.itemBtn}>
             <EditIcon />

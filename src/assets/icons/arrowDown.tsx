@@ -1,7 +1,13 @@
 import { SVGProps, memo } from 'react'
 
 export const ArrowDown = memo((props: SVGProps<SVGSVGElement>) => (
-  <svg fill={props.fill} height={16} width={16} xmlns={'http://www.w3.org/2000/svg'} {...props}>
+  <svg
+    fill={props.fill ?? 'white'}
+    height={props.height ?? 16}
+    width={props.width ?? 16}
+    xmlns={'http://www.w3.org/2000/svg'}
+    {...props}
+  >
     <g clipPath={'url(#a)'}>
       <path
         d={

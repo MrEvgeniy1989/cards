@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 export const useDebounce = <T>(value: T, customDelay?: number) => {
   const calculateDelay = (value: T) => {
-    return value === '' ? 0 : 1500
+    return value === '' ? 0 : 1000
   }
 
   const delay = customDelay !== undefined ? customDelay : calculateDelay(value)

@@ -2,7 +2,9 @@ import { EditIcon } from '@/assets/icons/edit'
 import { Button } from '@/common/components/ui/button'
 import { Rating } from '@/common/components/ui/rating'
 import { Table } from '@/common/components/ui/table'
-import { Card } from '@/feature/cards/api/cardsApi.types'
+import { TableHeader } from '@/common/components/ui/table/tableHeader/TableHeader'
+import { Card, Sort } from '@/feature/cards/api/cardsApi.types'
+import { columnsData } from '@/feature/cards/ui/columnsData'
 import { DeleteCard } from '@/feature/cards/ui/deleteCard/DeleteCard'
 
 import s from './CardsTable.module.scss'
@@ -10,21 +12,15 @@ import s from './CardsTable.module.scss'
 type Props = {
   cards: Card[]
   isOwner: boolean
+  onSort: (sort: Sort) => void
+  sort: Sort
 }
-export const CardsTable = ({ cards, isOwner }: Props) => {
+export const CardsTable = ({ cards, isOwner, onSort, sort }: Props) => {
   return (
     <>
       {!!cards?.length && (
         <Table.Root className={s.cardsTable}>
-          <Table.Head>
-            <Table.Row>
-              <Table.HeadCell>Question</Table.HeadCell>
-              <Table.HeadCell>Answer</Table.HeadCell>
-              <Table.HeadCell>Last Updated</Table.HeadCell>
-              <Table.HeadCell>Grade</Table.HeadCell>
-              {isOwner && <Table.HeadCell></Table.HeadCell>}
-            </Table.Row>
-          </Table.Head>
+          <TableHeader columns={columnsData} onSort={onSort} sort={sort} />
           <Table.Body>
             {cards?.map(card => {
               return (

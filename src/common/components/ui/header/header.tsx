@@ -1,9 +1,10 @@
+import { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'react-router-dom'
 
+import IconNoUserIcon from '@/assets/icons/iconNoUserIcon'
 import { LogoutIcon } from '@/assets/icons/logoutIcon'
 import { PersonIcon } from '@/assets/icons/personIcon'
 import logo from '@/assets/images/logo.png'
-import userPhotoSmall from '@/assets/images/userPhotoSmall.png'
 import { Button } from '@/common/components/ui/button'
 import {
   DropdownMenu,
@@ -14,19 +15,23 @@ import {
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown'
 import { Typography } from '@/common/components/ui/typography'
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 
 import s from '@/common/components/ui/header/header.module.scss'
+export type UserDropdownProps = {
+  email: string
+  onLogout: ComponentPropsWithoutRef<typeof DropdownMenuItem>['onSelect']
+  userName: string
+}
 
 export type HeaderProps =
-  | (Partial<typeof DropdownMenuPrimitive.Root> & {
+  | (Partial<UserDropdownProps> & {
       isLoggedIn: false
     })
-  | (Partial<typeof DropdownMenuPrimitive.Root> & {
+  | (UserDropdownProps & {
       isLoggedIn: true
     })
 
-export const Header = ({ isLoggedIn }: HeaderProps) => {
+export const Header = ({ email, isLoggedIn, onLogout, userName }: HeaderProps) => {
   return (
     <header className={s.root}>
       <div className={s.content}>
@@ -42,22 +47,22 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
             <DropdownMenuTrigger asChild>
               <div className={s.btnWrapper}>
                 <Typography as={'p'} className={s.userEmail} variant={'subtitle1'}>
-                  j&johnson@gmail.com
+                  {userName}
                 </Typography>
                 <button className={s.iconButton}>
-                  <img alt={'user small small'} src={userPhotoSmall} />
+                  <IconNoUserIcon />
                 </button>
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className={s.arrowMenuContent}>
               <DropdownMenuLabel>
-                <img alt={'user small small'} src={userPhotoSmall} />
+                <IconNoUserIcon />
                 <div className={s.flexColumn}>
                   <Typography as={'p'} variant={'subtitle2'}>
-                    Ivan
+                    {userName}
                   </Typography>
                   <Typography as={'p'} className={s.emailColor} variant={'caption'}>
-                    j&johnson@gmail.com
+                    {email}
                   </Typography>
                 </div>
               </DropdownMenuLabel>
@@ -67,7 +72,7 @@ export const Header = ({ isLoggedIn }: HeaderProps) => {
                 My profile
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onSelect={onLogout}>
                 <LogoutIcon />
                 Sign out
               </DropdownMenuItem>

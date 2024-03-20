@@ -20,6 +20,7 @@ import s from '@/common/components/ui/header/header.module.scss'
 export type UserDropdownProps = {
   email: string
   onLogout: ComponentPropsWithoutRef<typeof DropdownMenuItem>['onSelect']
+  toProfile: () => void
   userName: string
 }
 
@@ -31,7 +32,7 @@ export type HeaderProps =
       isLoggedIn: true
     })
 
-export const Header = ({ email, isLoggedIn, onLogout, userName }: HeaderProps) => {
+export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: HeaderProps) => {
   return (
     <header className={s.root}>
       <div className={s.content}>
@@ -67,7 +68,7 @@ export const Header = ({ email, isLoggedIn, onLogout, userName }: HeaderProps) =
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onSelect={toProfile}>
                 <PersonIcon />
                 My profile
               </DropdownMenuItem>

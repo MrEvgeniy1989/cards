@@ -18,6 +18,9 @@ export const Layout = () => {
     await logout()
     navigate('/login')
   }
+  const toProfilePage = () => {
+    navigate('/profile')
+  }
 
   return (
     <div className={s.layout}>
@@ -25,6 +28,7 @@ export const Layout = () => {
         email={data?.email ?? ''}
         isLoggedIn={isAuthenticated}
         onLogout={logoutAndNavigate}
+        toProfile={toProfilePage}
         userName={data?.name ?? ''}
       />
       <main className={s.main}>

@@ -10,6 +10,7 @@ import s from './learnForm.module.scss'
 
 import { useGetDeckInfoQuery, useGetLearnCardQuery, usePostRateCardMutation } from './api/learnApi'
 import { FormValues, LearnForm } from './learnForm'
+import { LearnImage } from './learnImage/learnIamage'
 
 export const Learn = () => {
   const [showRate, setShowRate] = useState(false)
@@ -47,9 +48,7 @@ export const Learn = () => {
         </Typography>
 
         <Typography variant={'body1'}>Question: ${card?.question}</Typography>
-        {card?.answerImg && (
-          <img alt={'Question Image'} className={s.image} src={card?.answerImg} />
-        )}
+        {card?.questionImg && <LearnImage imageUrl={card?.questionImg} />}
         <Typography className={s.count} variant={'body2'}>
           Количество попыток ответов на вопрос:{card?.shots}
         </Typography>
@@ -59,7 +58,7 @@ export const Learn = () => {
             <Typography className={s.answer} variant={'body1'}>
               Answer: {card?.answer}
             </Typography>
-
+            {card?.answerImg && <LearnImage imageUrl={card?.answerImg} />}
             <Typography className={s.rate} variant={'subtitle1'}>
               Rate yourself:
             </Typography>

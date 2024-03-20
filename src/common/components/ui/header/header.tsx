@@ -36,7 +36,9 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
   return (
     <header className={s.root}>
       <div className={s.content}>
-        <img alt={'avatar'} src={logo} />
+        <Button as={Link} to={'/'} variant={'empty'}>
+          <img alt={'avatar'} src={logo} />
+        </Button>
 
         {!isLoggedIn && (
           <Button as={Link} to={'/login'} variant={'primary'}>
@@ -55,7 +57,7 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
                 </button>
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className={s.arrowMenuContent}>
+            <DropdownMenuContent>
               <DropdownMenuLabel>
                 <IconNoUserIcon />
                 <div className={s.flexColumn}>

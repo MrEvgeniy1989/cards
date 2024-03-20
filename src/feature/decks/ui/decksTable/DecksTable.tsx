@@ -62,15 +62,21 @@ export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
                 <Table.Cell>{deck.author.name}</Table.Cell>
 
                 <Table.Cell className={s.buttonsCell}>
-                  <Button
-                    aria-disabled={isDisabled}
-                    as={Link}
-                    className={s.startLerningLink}
-                    title={'Start learning'}
-                    to={`/decks/${deck.id}/learn`}
-                  >
-                    <PlayCircle />
-                  </Button>
+                  {deck.cardsCount < 1 ? (
+                    <span className={s.disabledLink} title={'This deck is empty.'}>
+                      <PlayCircle />
+                    </span>
+                  ) : (
+                    <Button
+                      aria-disabled={isDisabled}
+                      as={Link}
+                      className={s.startLerningLink}
+                      title={'Start learning'}
+                      to={`/decks/${deck.id}/learn`}
+                    >
+                      <PlayCircle />
+                    </Button>
+                  )}
 
                   <Button
                     className={s.iconButton}

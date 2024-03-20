@@ -55,7 +55,7 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
                 </button>
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className={s.arrowMenuContent}>
+            <DropdownMenuContent>
               <DropdownMenuLabel>
                 <IconNoUserIcon />
                 <div className={s.flexColumn}>

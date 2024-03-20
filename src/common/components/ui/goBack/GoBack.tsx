@@ -24,7 +24,7 @@ export const GoBack = forwardRef<ElementRef<typeof Link>, Props>(({ className, t
   return (
     <Link className={clsx(s.root, className)} onClick={backHandler} ref={ref} to={to ? to : '..'}>
       <BackIcon />
-      <Typography className={s.text} variant={'body2'}>
+      <Typography className={s.text} variant={'body1'}>
         {text}
       </Typography>
     </Link>

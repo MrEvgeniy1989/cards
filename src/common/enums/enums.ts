@@ -1,5 +1,7 @@
 export enum Route {
   Decks = '/decks',
+  SignIn = '/login',
+  SignUp = '/sign-up',
 }
 
 export enum ButtonVariant {

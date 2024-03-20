@@ -5,6 +5,7 @@ import { ControlledTextField } from '@/common/components/controlled/controlledTe
 import { Button } from '@/common/components/ui/button'
 import { Card } from '@/common/components/ui/card'
 import { Typography } from '@/common/components/ui/typography'
+import { Route } from '@/common/enums'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
@@ -77,7 +78,7 @@ export const SignIn = ({ onSubmit }: Props) => {
       <Typography className={s.infoText} variant={'body2'}>
         {`Don't have an account?`}
       </Typography>
-      <Typography as={'a'} className={s.signInLink} href={'/'} variant={'h4'}>
+      <Typography as={'a'} className={s.signInLink} href={Route.SignUp} variant={'h4'}>
         Sign Up
       </Typography>
     </Card>

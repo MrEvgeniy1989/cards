@@ -29,9 +29,10 @@ const signUpSchema = z
 
 export type FormValues = z.infer<typeof signUpSchema>
 type Props = {
+  emailExist?: string
   onSubmit: (data: FormValues) => void
 }
-export const SignUp = ({ onSubmit }: Props) => {
+export const SignUp = ({ emailExist, onSubmit }: Props) => {
   const {
     control,
     formState: { errors },
@@ -54,7 +55,7 @@ export const SignUp = ({ onSubmit }: Props) => {
         <ControlledTextField
           className={s.inputEmail}
           control={control}
-          error={errors.email?.message}
+          error={errors.email?.message || emailExist}
           label={'Email'}
           name={'email'}
           placeholder={'Email'}

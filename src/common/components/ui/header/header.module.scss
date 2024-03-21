@@ -23,21 +23,20 @@
   margin: 0 auto;
 }
 
-.btnWrapper {
-  cursor: default;
+.dropdownWrapper {
   display: flex;
-  gap: 14px;
+  column-gap: 15px;
   align-items: center;
 }
 
 .userEmail {
+  display: flex;
   border-bottom: 1px dashed;
 }
 
 .iconButton {
+  cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .emailColor {

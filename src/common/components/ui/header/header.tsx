@@ -46,41 +46,41 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
           </Button>
         )}
         {isLoggedIn && (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <div className={s.btnWrapper}>
-                <Typography as={'p'} className={s.userEmail} variant={'subtitle1'}>
-                  {userName}
-                </Typography>
+          <div className={s.dropdownWrapper}>
+            <Typography as={'span'} className={s.userEmail} variant={'subtitle1'}>
+              {userName}
+            </Typography>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
                 <button className={s.iconButton}>
                   <IconNoUserIcon />
                 </button>
-              </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel>
-                <IconNoUserIcon />
-                <div className={s.flexColumn}>
-                  <Typography as={'p'} variant={'subtitle2'}>
-                    {userName}
-                  </Typography>
-                  <Typography as={'p'} className={s.emailColor} variant={'caption'}>
-                    {email}
-                  </Typography>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onSelect={toProfile}>
-                <PersonIcon />
-                My profile
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onSelect={onLogout}>
-                <LogoutIcon />
-                Sign out
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>
+                  <IconNoUserIcon />
+                  <div className={s.flexColumn}>
+                    <Typography as={'p'} variant={'subtitle2'}>
+                      {userName}
+                    </Typography>
+                    <Typography as={'p'} className={s.emailColor} variant={'caption'}>
+                      {email}
+                    </Typography>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onSelect={toProfile}>
+                  <PersonIcon />
+                  My profile
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onSelect={onLogout}>
+                  <LogoutIcon />
+                  Sign out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         )}
       </div>
     </header>

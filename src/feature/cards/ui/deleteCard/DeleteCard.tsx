@@ -37,8 +37,7 @@ export const DeleteCard = ({ cardId, className, deckId }: Props) => {
       <Modal onOpenChange={setOpen} open={open} title={'Delete Card'}>
         <div className={s.modalBody}>
           <Typography className={s.text} variant={'body1'}>
-            Do you really want to remove Card Name? <br />
-            All cards will be deleted.
+            Do you really want to remove this card?
           </Typography>
           <div className={s.btnsWrapper}>
             <Button onClick={() => setOpen(false)} variant={'secondary'}>

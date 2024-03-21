@@ -24,28 +24,28 @@
   padding: 0 136px;
 }
 
-
-.btnWrapper {
-  cursor: default;
+.dropdownWrapper {
   display: flex;
-  gap: 14px;
+  column-gap: 15px;
   align-items: center;
 }
 
 .userEmail {
-   border-bottom: 1px dashed ;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px dashed;
 }
 
 .iconButton {
+  cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .emailColor {
   color: var(--color-dark-100);
 }
-.flexColumn{
+
+.flexColumn {
   display: flex;
   flex-direction: column;
 }

@@ -78,6 +78,7 @@ export const useDecksOptions = () => {
     searchParams.delete('tabValue')
     searchParams.delete('authorId')
     searchParams.delete('sortOptions')
+    searchParams.delete('pageSize')
     searchParams.set('currentPage', '1')
     setSearchParams(searchParams)
   }

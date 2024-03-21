@@ -2,10 +2,9 @@ import { Link } from 'react-router-dom'
 
 import { EditIcon } from '@/assets/icons/edit'
 import { PlayCircle } from '@/assets/icons/playСircle'
-import { Trash } from '@/assets/icons/trash'
 import { Button } from '@/common/components/ui/button'
-import { useDeleteDeckMutation } from '@/feature/decks/api/decksApi'
 import { DeckWithAuthor } from '@/feature/decks/api/decksApi.types'
+import { DeleteDeckButton } from '@/feature/decks/ui/decksTable/decksTableButtons/deleteDeckButton/DeleteDeckButton'
 
 import s from '@/feature/decks/ui/decksTable/decksTable.module.scss'
 
@@ -16,9 +15,6 @@ type Props = {
 }
 
 export const DecksTableButtons = ({ deck, isDisabled, isMyDeck }: Props) => {
-  const [deleteDeck] = useDeleteDeckMutation()
-  const onDeleteDeck = () => deleteDeck({ id: deck.id })
-
   return (
     <>
       {deck.cardsCount < 1 ? (
@@ -45,14 +41,12 @@ export const DecksTableButtons = ({ deck, isDisabled, isMyDeck }: Props) => {
         <EditIcon />
       </Button>
 
-      <Button
+      <DeleteDeckButton
         className={s.iconButton}
-        disabled={isDisabled || !isMyDeck}
-        onClick={onDeleteDeck}
-        title={isMyDeck ? 'Delete deck' : "You can't delete someone else's deck"}
-      >
-        <Trash />
-      </Button>
+        deckId={deck.id}
+        isDisabled={isDisabled}
+        isMyDeck={isMyDeck}
+      />
     </>
   )
 }

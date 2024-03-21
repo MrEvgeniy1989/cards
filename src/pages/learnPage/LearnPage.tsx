@@ -1,5 +1,5 @@
 import { Page } from '@/common/components/ui/page'
-import { Learn } from '@/feature/learn/learn'
+import { Learn } from '@/feature/learn/Learn'
 
 export const LearnPage = () => {
   return (

@@ -5,11 +5,11 @@ import { Button } from '@/common/components/ui/button'
 import { Card } from '@/common/components/ui/card'
 import { GoBack } from '@/common/components/ui/goBack'
 import { Typography } from '@/common/components/ui/typography'
+import { FormValues, LearnForm } from '@/feature/learn/LearnForm'
 
 import s from './learnForm.module.scss'
 
 import { useGetDeckInfoQuery, useGetLearnCardQuery, usePostRateCardMutation } from './api/learnApi'
-import { FormValues, LearnForm } from './learnForm'
 import { LearnImage } from './learnImage/learnIamage'
 
 export const Learn = () => {

@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Card } from '@/common/components/ui/card'
-
-import { FormValues, LearnForm } from './learnForm'
+import { FormValues, LearnForm } from '@/feature/learn/LearnForm'
 
 const meta = {
   component: LearnForm,

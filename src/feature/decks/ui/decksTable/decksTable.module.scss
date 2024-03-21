@@ -20,7 +20,7 @@
   align-items: center;
 
   & > p:hover {
-    color: var(--color-accent-500);
+    color: var(--color-accent-300);
   }
 }
 
@@ -36,7 +36,7 @@
   white-space: nowrap;
 }
 
-.link {
+.startLerningLink {
   margin-right: 10px;
   padding: 0;
 
@@ -47,11 +47,53 @@
 
   &[aria-disabled='true'] {
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.2;
   }
 
   &:last-child {
     margin-right: 0;
+  }
+
+  &:active {
+    color: var(--color-accent-300);
+    background-color: transparent;
+  }
+
+  &:hover {
+    color: var(--color-accent-300);
+    background-color: transparent;
+    transition: color 0.2s ease;
+  }
+}
+
+.iconButton {
+  margin-right: 10px;
+  padding: 0;
+
+  vertical-align: middle;
+
+  background: none;
+  box-shadow: 0 0 0 0 transparent;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:disabled {
+    color: var(--color-light-100);
+    opacity: 0.2;
+    background-color: transparent;
+  }
+
+  &:active:enabled {
+    color: var(--color-accent-300);
+    background-color: transparent;
+  }
+
+  &:hover:enabled {
+    color: var(--color-accent-300);
+    background-color: transparent;
+    transition: color 0.2s ease;
   }
 }
 

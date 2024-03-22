@@ -1,11 +1,14 @@
 import { ChangeEvent, useRef } from 'react'
 import { Control } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import { IconImage } from '@/assets/icons/iconImage'
 import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
 import { Button } from '@/common/components/ui/button'
 import { Typography } from '@/common/components/ui/typography'
+import { uploadImageSchema } from '@/feature/cards/ui/addCard/cardForm/cardFormField/uploadImageSchema'
 import { CardFormValues } from '@/feature/cards/ui/addCard/cardForm/useCardForm'
+import { ZodError } from 'zod'
 
 import s from './CardFormField.module.scss'
 
@@ -33,8 +36,19 @@ export const CardFormField = ({
   const onImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
 
-    if (file) {
-      onLoadImage(file)
+    try {
+      uploadImageSchema.parse(file)
+      if (file) {
+        onLoadImage(file)
+      }
+    } catch (e) {
+      const err = e as Error | ZodError
+
+      if (err instanceof ZodError) {
+        toast.error(err.errors[0].message)
+      } else {
+        toast.error(err.message)
+      }
     }
   }
 

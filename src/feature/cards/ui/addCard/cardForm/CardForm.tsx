@@ -8,6 +8,7 @@ import { SerializedError } from '@reduxjs/toolkit'
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 
 import s from './CardForm.module.scss'
+
 export type CardValues = {
   answer: string
   answerImg: null | string

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { Button } from '@/common/components/ui/button'
 import { Typography } from '@/common/components/ui/typography'
+import { AddCard } from '@/feature/cards/ui/addCard/AddCard'
 import { DeckWithAuthor } from '@/feature/decks/api/decksApi.types'
 import { DeckPageDropdown } from '@/pages/deckPage/deckPageDropdown/DeckPageDropdown'
 
@@ -22,7 +23,7 @@ export const DeckPageHeader = ({ deck, isNotEmptyCard, isOwner }: Props) => {
           </Typography>
           {isOwner && <DeckPageDropdown deck={deck} />}
         </div>
-        {isOwner && <Button>Add new card</Button>}
+        {isOwner && <AddCard />}
         {!isOwner && isNotEmptyCard && (
           <Button as={Link} to={`/decks/${deck.id}/learn`}>
             <Typography as={'span'} variant={'subtitle2'}>

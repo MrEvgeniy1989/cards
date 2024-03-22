@@ -1,8 +1,16 @@
 import { baseApi } from '@/common/api/baseApi'
-import { CardsParams, CardsResponseType } from '@/feature/cards/api/cardsApi.types'
+import { Card, CardsParams, CardsResponseType } from '@/feature/cards/api/cardsApi.types'
 
 export const cardsApi = baseApi.injectEndpoints({
   endpoints: builder => ({
+    createCard: builder.mutation<Card, { body: FormData; deckId: string }>({
+      invalidatesTags: ['Cards'],
+      query: ({ body, deckId }) => ({
+        body,
+        method: 'POST',
+        url: `/v1/decks/${deckId}/cards`,
+      }),
+    }),
     deleteCard: builder.mutation<void, { cardId: string; deckId: string }>({
       invalidatesTags: ['Cards'],
       query: ({ cardId }) => ({
@@ -21,4 +29,4 @@ export const cardsApi = baseApi.injectEndpoints({
   }),
 })
 
-export const { useDeleteCardMutation, useGetCardsQuery } = cardsApi
+export const { useCreateCardMutation, useDeleteCardMutation, useGetCardsQuery } = cardsApi

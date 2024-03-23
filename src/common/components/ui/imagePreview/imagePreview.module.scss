@@ -6,7 +6,7 @@
 
 .content {
   position: fixed;
-  z-index: var(--z-index-modal-content);
+  z-index: 9999;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -19,9 +19,9 @@
 }
 
 .imageContent {
-  max-width: 550px;
-  max-height: 550px;
-  border-radius: 5%;
+  max-width: 1500px;
+  max-height: 1500px;
+  border-radius: 2%;
 }
 
 @keyframes content-show {

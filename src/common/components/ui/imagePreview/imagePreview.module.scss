@@ -19,8 +19,9 @@
 }
 
 .imageContent {
-  max-width: 1500px;
-  max-height: 1500px;
+  min-width: 800px;
+  max-width: 1000px;
+  background: #171717;
   border-radius: 2%;
 }
 

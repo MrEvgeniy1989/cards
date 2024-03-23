@@ -47,7 +47,9 @@ export const Learn = () => {
           {pack?.name}
         </Typography>
 
-        <Typography variant={'body1'}>Question: ${card?.question}</Typography>
+        <Typography className={s.question} variant={'body1'}>
+          Question: {card?.question}
+        </Typography>
         {card?.questionImg && <LearnImage imageUrl={card?.questionImg} />}
         <Typography className={s.count} variant={'body2'}>
           Количество попыток ответов на вопрос:{card?.shots}

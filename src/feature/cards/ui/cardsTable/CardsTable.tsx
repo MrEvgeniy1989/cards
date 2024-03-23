@@ -1,11 +1,10 @@
-import { EditIcon } from '@/assets/icons/edit'
-import { Button } from '@/common/components/ui/button'
 import { Rating } from '@/common/components/ui/rating'
 import { Table } from '@/common/components/ui/table'
 import { TableHeader } from '@/common/components/ui/table/tableHeader/TableHeader'
 import { Card, Sort } from '@/feature/cards/api/cardsApi.types'
 import { columnsData } from '@/feature/cards/ui/columnsData'
 import { DeleteCard } from '@/feature/cards/ui/deleteCard/DeleteCard'
+import { EditCard } from '@/feature/cards/ui/editCard/EditCard'
 
 import s from './CardsTable.module.scss'
 
@@ -45,9 +44,7 @@ export const CardsTable = ({ cards, isOwner, onSort, sort }: Props) => {
                   </Table.Cell>
                   {isOwner && (
                     <Table.Cell className={s.buttonsCell}>
-                      <Button className={s.btn}>
-                        <EditIcon />
-                      </Button>
+                      <EditCard card={card} className={s.btn} />
                       <DeleteCard cardId={card.id} className={s.btn} deckId={card.deckId} />
                     </Table.Cell>
                   )}

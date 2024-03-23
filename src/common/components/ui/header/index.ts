@@ -1,1 +1,1 @@
-export * from '@/common/components/ui/header/header'
+export * from '@/common/components/ui/header/Header'

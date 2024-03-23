@@ -37,7 +37,7 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
     <header className={s.root}>
       <div className={s.content}>
         <Button as={Link} to={'/'} variant={'empty'}>
-          <img alt={'avatar'} src={logo} />
+          <img alt={'logo'} className={s.logo} src={logo} />
         </Button>
 
         {!isLoggedIn && (

@@ -40,7 +40,7 @@ export type MinMaxCardsResponse = {
 }
 export type UpdateDeckParamsType = {
   body: FormData
-  id: string
+  deckId: string
 }
 export type Sort = {
   direction: 'asc' | 'desc'

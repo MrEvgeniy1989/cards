@@ -47,10 +47,11 @@ export const decksApi = baseApi.injectEndpoints({
       }),
     }),
     updateDeck: builder.mutation<DeckWithAuthor, UpdateDeckParamsType>({
-      query: ({ body, id }) => ({
+      invalidatesTags: ['Decks'],
+      query: ({ body, deckId }) => ({
         body,
         method: 'PATCH',
-        url: `v1/decks/${id}}`,
+        url: `v1/decks/${deckId}`,
       }),
     }),
   }),

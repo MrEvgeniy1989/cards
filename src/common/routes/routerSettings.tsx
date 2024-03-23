@@ -2,7 +2,7 @@ import { Navigate, RouteObject } from 'react-router-dom'
 
 import { CreateNewPasswordPage } from '@/pages/createNewPasswordPage'
 import { DeckPage } from '@/pages/deckPage/DeckPage'
-import { DecksPage } from '@/pages/decks/DecksPage'
+import { DecksPage } from '@/pages/decksPage/DecksPage'
 import { ForgotPasswordPage } from '@/pages/forgonPassword'
 import { LearnPage } from '@/pages/learnPage'
 import { NotFoundPage } from '@/pages/notFoundPage'

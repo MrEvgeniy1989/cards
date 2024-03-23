@@ -2,7 +2,7 @@ import { ChangeEvent, useRef } from 'react'
 import { Control } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { IconImage } from '@/assets/icons/iconImage'
+import { UploadButtonIcon } from '@/assets/icons/uploadButtonIcon'
 import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
 import { Button } from '@/common/components/ui/button'
 import { Typography } from '@/common/components/ui/typography'
@@ -72,7 +72,7 @@ export const CardFormField = ({
         type={'button'}
         variant={'secondary'}
       >
-        <IconImage />
+        <UploadButtonIcon />
         <Typography as={'span'} variant={'subtitle2'}>
           {buttonUploadText}
         </Typography>

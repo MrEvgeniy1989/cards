@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { IconImage } from '@/assets/icons/iconImage'
+import { UploadButtonIcon } from '@/assets/icons/uploadButtonIcon'
 import reactImg from '@/assets/images/reactImg.png'
 import { Button } from '@/common/components/ui/button'
 import { Checkbox } from '@/common/components/ui/checkbox'
@@ -143,7 +143,7 @@ export const ModalWithQuestionAndAnswer: Story = {
                 <img alt={'react'} src={reactImg} style={{ width: '100%' }} />
               </div>
               <Button fullWidth variant={'secondary'}>
-                <IconImage />
+                <UploadButtonIcon />
                 Change cover
               </Button>
             </div>
@@ -154,7 +154,7 @@ export const ModalWithQuestionAndAnswer: Story = {
                 <img alt={'react'} src={reactImg} style={{ width: '100%' }} />
               </div>
               <Button fullWidth variant={'secondary'}>
-                <IconImage />
+                <UploadButtonIcon />
                 Change cover
               </Button>
               <TextField label={'Input'} />

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 
 import { EditIcon } from '@/assets/icons/editIcon'
 import { PlayIcon } from '@/assets/icons/playIcon'
-import { TrashIcon } from '@/assets/icons/trashIcon'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown'
 import { DeckWithAuthor } from '@/feature/decks/api/decksApi.types'
+import { DeleteDeck } from '@/pages/deckPage/deckPageDropdown/deleteDeck/DeleteDeck'
 
 import s from './DeckPageDropdown.module.scss'
 
@@ -40,18 +40,15 @@ export const DeckPageDropdown = ({ deck }: Props) => {
           </>
         )}
 
-        <DropdownMenuItem>
+        <DropdownMenuItem asChild>
           <button className={s.itemBtn}>
             <EditIcon />
             Edit
           </button>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <button className={s.itemBtn}>
-            <TrashIcon />
-            Delete
-          </button>
+        <DropdownMenuItem asChild>
+          <DeleteDeck className={s.itemBtn} deckId={deck.id} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -13,14 +13,16 @@ import s from '@/feature/decks/ui/decksTable/decksTableButtons/deleteDeckButton/
 type Props = {
   className?: string
   deckId: string
+  setInProgress: (inProgress: boolean) => void
 }
 
-export const DeleteDeck = ({ className, deckId }: Props) => {
+export const DeleteDeck = ({ className, deckId, setInProgress }: Props) => {
   const [open, setOpen] = useState(false)
   const [deleteDeck, { isLoading }] = useDeleteDeckMutation()
   const navigate = useNavigate()
 
   const onDeleteDeck = () => {
+    setInProgress(true)
     deleteDeck({ id: deckId })
       .unwrap()
       .then(() => {
@@ -29,6 +31,7 @@ export const DeleteDeck = ({ className, deckId }: Props) => {
         navigate(-1)
       })
       .catch(error => toast.error(error.data.message))
+      .finally(() => setInProgress(false))
   }
 
   return (

@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import { EditIcon } from '@/assets/icons/edit'
 import { PlayIcon } from '@/assets/icons/playIcon'
+import { TrashIcon } from '@/assets/icons/trashIcon'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown'
-import { LinearProgressBar } from '@/common/components/ui/linearProgressBar'
 import { DeckWithAuthor } from '@/feature/decks/api/decksApi.types'
 import { DeleteDeck } from '@/pages/deckPage/deckPageDropdown/deleteDeck/DeleteDeck'
 import { EditDeck } from '@/pages/deckPage/deckPageDropdown/editDeck/EditDeck'
@@ -20,11 +21,13 @@ type Props = {
   deck: DeckWithAuthor
 }
 export const DeckPageDropdown = ({ deck }: Props) => {
-  const [inProgress, setInProgress] = useState(false)
+  const [deleteDeckOpen, setDeleteDeckOpen] = useState(false)
+  const [editDeckOpen, setEditDeckOpen] = useState(false)
 
   return (
     <>
-      {inProgress && <LinearProgressBar />}
+      <EditDeck deck={deck} open={editDeckOpen} setOpen={setEditDeckOpen} />
+      <DeleteDeck deckId={deck.id} open={deleteDeckOpen} setOpen={setDeleteDeckOpen} />
       <DropdownMenu>
         <DropdownMenuTrigger>
           <button className={s.triggerBtn}>
@@ -46,12 +49,18 @@ export const DeckPageDropdown = ({ deck }: Props) => {
             </>
           )}
 
-          <DropdownMenuItem asChild>
-            <EditDeck className={s.itemBtn} deck={deck} setInProgress={setInProgress} />
+          <DropdownMenuItem>
+            <button className={s.itemBtn} onClick={() => setEditDeckOpen(true)}>
+              <EditIcon />
+              Edit
+            </button>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <DeleteDeck className={s.itemBtn} deckId={deck.id} setInProgress={setInProgress} />
+          <DropdownMenuItem>
+            <button className={s.itemBtn} onClick={() => setDeleteDeckOpen(true)}>
+              <TrashIcon />
+              Delete
+            </button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

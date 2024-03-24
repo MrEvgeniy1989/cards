@@ -1,9 +1,8 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { TrashIcon } from '@/assets/icons/trashIcon'
 import { Button } from '@/common/components/ui/button'
+import { LinearProgressBar } from '@/common/components/ui/linearProgressBar'
 import { Modal } from '@/common/components/ui/modal'
 import { Typography } from '@/common/components/ui/typography'
 import { useDeleteDeckMutation } from '@/feature/decks/api/decksApi'
@@ -13,34 +12,28 @@ import s from '@/feature/decks/ui/decksTable/decksTableButtons/deleteDeckButton/
 type Props = {
   className?: string
   deckId: string
-  setInProgress: (inProgress: boolean) => void
+  open: boolean
+  setOpen: (open: boolean) => void
 }
 
-export const DeleteDeck = ({ className, deckId, setInProgress }: Props) => {
-  const [open, setOpen] = useState(false)
+export const DeleteDeck = ({ deckId, open, setOpen }: Props) => {
   const [deleteDeck, { isLoading }] = useDeleteDeckMutation()
   const navigate = useNavigate()
 
   const onDeleteDeck = () => {
-    setInProgress(true)
     deleteDeck({ id: deckId })
       .unwrap()
       .then(() => {
         toast.success('The deck has been deleted!')
         setOpen(false)
-        navigate(-1)
+        navigate('/decks?tabValue=my&authorId=26f8392c-af03-445d-9723-57914b88fe56')
       })
       .catch(error => toast.error(error.data.message))
-      .finally(() => setInProgress(false))
   }
 
   return (
     <>
-      <button className={className} onClick={() => setOpen(true)}>
-        <TrashIcon />
-        Delete
-      </button>
-
+      {isLoading && <LinearProgressBar />}
       <Modal onOpenChange={setOpen} open={open} title={'Delete Deck'}>
         <div className={s.modalBody}>
           <Typography className={s.textModal} variant={'body1'}>

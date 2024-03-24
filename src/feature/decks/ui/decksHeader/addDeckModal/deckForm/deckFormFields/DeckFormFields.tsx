@@ -5,23 +5,24 @@ import { toast } from 'react-toastify'
 import { UploadButtonIcon } from '@/assets/icons/uploadButtonIcon'
 import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
 import { Button } from '@/common/components/ui/button'
-import { Typography } from '@/common/components/ui/typography'
 import { uploadImageSchema } from '@/feature/cards/ui/addCard/cardForm/cardFormField/uploadImageSchema'
-import { CardFormValues } from '@/feature/cards/ui/addCard/cardForm/useCardForm'
+import { DeckFormValues } from '@/feature/decks/ui/decksHeader/addDeckModal/deckForm/DeckForm'
+import { AddDeckImage } from '@/feature/decks/ui/decksHeader/addDeckModal/deckForm/deckFormFields/addDeckImage/AddDeckImage'
 import { ZodError } from 'zod'
 
-import s from './CardFormField.module.scss'
+import s from '@/feature/decks/ui/decksHeader/addDeckModal/deckForm/deckFormFields/deckFormFields.module.scss'
 
 type Props = {
   className?: string
-  control: Control<CardFormValues>
+  control: Control<DeckFormValues>
   error?: string
   imageUrl: null | string | undefined
   label: string
-  name: 'answer' | 'question'
+  name: 'isPrivate' | 'name'
   onLoadImage: (data: File) => void
 }
-export const CardFormField = ({
+
+export const DeckFormFields = ({
   className,
   control,
   error,
@@ -31,7 +32,7 @@ export const CardFormField = ({
   onLoadImage,
 }: Props) => {
   const fileRef = useRef<HTMLInputElement>(null)
-  const buttonUploadText = imageUrl ? 'Change Image' : ' Add Image'
+  const buttonUploadText = imageUrl ? 'Change Cover' : ' Add Cover'
 
   const onImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -55,27 +56,24 @@ export const CardFormField = ({
   return (
     <div className={className}>
       <ControlledTextField
-        className={s.field}
+        className={s.textField}
         control={control}
         error={error}
         label={label}
         name={name}
       />
-      {imageUrl && (
-        <div className={s.imageWrapper}>
-          <img alt={'Card image'} src={imageUrl} />
-        </div>
-      )}
+
+      {imageUrl && <AddDeckImage imageUrl={imageUrl} />}
+
       <Button
+        className={s.buttonUploadImage}
         fullWidth
         onClick={() => fileRef.current?.click()}
         type={'button'}
         variant={'secondary'}
       >
         <UploadButtonIcon />
-        <Typography as={'span'} variant={'subtitle2'}>
-          {buttonUploadText}
-        </Typography>
+        {buttonUploadText}
       </Button>
       <input className={s.fileInput} onChange={onImageChange} ref={fileRef} type={'file'} />
     </div>

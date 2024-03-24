@@ -12,7 +12,7 @@ import { DecksHeader } from '@/feature/decks/ui/decksHeader/DecksHeader'
 import { DecksPanel } from '@/feature/decks/ui/decksPanel/DecksPanel'
 import { DecksTable } from '@/feature/decks/ui/decksTable/DecksTable'
 
-import s from '@/pages/decks/decksPage.module.scss'
+import s from '@/pages/decksPage/decksPage.module.scss'
 
 export const DecksPage = () => {
   const {

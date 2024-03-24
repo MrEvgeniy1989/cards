@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 
-import { EditIcon } from '@/assets/icons/edit'
 import { PlayCircle } from '@/assets/icons/playСircle'
 import { Button } from '@/common/components/ui/button'
 import { DeckWithAuthor } from '@/feature/decks/api/decksApi.types'
 import { DeleteDeckButton } from '@/feature/decks/ui/decksTable/decksTableButtons/deleteDeckButton/DeleteDeckButton'
+import { EditDeckButton } from '@/feature/decks/ui/decksTable/decksTableButtons/editDeckButton/EditDeckButton'
 
 import s from '@/feature/decks/ui/decksTable/decksTable.module.scss'
 
@@ -33,13 +33,20 @@ export const DecksTableButtons = ({ deck, isDisabled, isMyDeck }: Props) => {
         </Button>
       )}
 
-      <Button
+      <EditDeckButton
         className={s.iconButton}
-        disabled={isDisabled || !isMyDeck}
-        title={isMyDeck ? 'Edit deck' : "You can't edit someone else's deck"}
-      >
-        <EditIcon />
-      </Button>
+        deck={deck}
+        isDisabled={isDisabled}
+        isMyDeck={isMyDeck}
+      />
+
+      {/*<Button*/}
+      {/*  className={s.iconButton}*/}
+      {/*  disabled={isDisabled || !isMyDeck}*/}
+      {/*  title={isMyDeck ? 'Edit deck' : "You can't edit someone else's deck"}*/}
+      {/*>*/}
+      {/*  <EditIcon />*/}
+      {/*</Button>*/}
 
       <DeleteDeckButton
         className={s.iconButton}

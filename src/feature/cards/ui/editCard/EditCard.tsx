@@ -40,7 +40,7 @@ export const EditCard = ({ card, className }: Props) => {
       <Button className={className} onClick={openModal}>
         <EditIcon />
       </Button>
-      <Modal onOpenChange={setIsOpen} open={isOpen} title={'Add New Card'}>
+      <Modal onOpenChange={setIsOpen} open={isOpen} title={'Edit Card'}>
         <CardForm
           buttonTitle={'Save Changes'}
           cardValues={cardValues}

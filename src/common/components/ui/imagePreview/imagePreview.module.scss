@@ -20,11 +20,13 @@
 
 .imageContent {
   min-width: 800px;
-  max-width: 1000px;
-  max-height: 1000px;
+  max-width: 1260px;
+  max-height: 1260px;
 
   background: #171717;
   border-radius: 2%;
+
+  image-rendering: pixelated;
 }
 
 @keyframes content-show {

@@ -1,9 +1,11 @@
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
 import { Button } from '@/common/components/ui/button'
 import { Card } from '@/common/components/ui/card'
 import { Typography } from '@/common/components/ui/typography'
+import { Route } from '@/common/enums'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
 
@@ -55,7 +57,7 @@ export const ForgotPassword = ({ onSubmit }: Props) => {
       <Typography className={s.infoText} variant={'body2'}>
         {`Did you remember your password?`}
       </Typography>
-      <Typography as={'a'} className={s.forgotPasswordLink} href={'/'} variant={'h4'}>
+      <Typography as={Link} className={s.forgotPasswordLink} to={Route.SignIn} variant={'h4'}>
         Try logging in
       </Typography>
     </Card>

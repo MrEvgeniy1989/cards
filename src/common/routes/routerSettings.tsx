@@ -1,9 +1,10 @@
 import { Navigate, RouteObject } from 'react-router-dom'
 
+import { CheckEmailPage } from '@/pages/checkEmailPage'
 import { CreateNewPasswordPage } from '@/pages/createNewPasswordPage'
 import { DeckPage } from '@/pages/deckPage/DeckPage'
 import { DecksPage } from '@/pages/decksPage/DecksPage'
-import { ForgotPasswordPage } from '@/pages/forgonPassword'
+import { ForgotPasswordPage } from '@/pages/forgotPassword'
 import { LearnPage } from '@/pages/learnPage'
 import { NotFoundPage } from '@/pages/notFoundPage'
 import { ProfilePage } from '@/pages/profilePage'
@@ -22,5 +23,6 @@ export const publicRoutes: RouteObject[] = [
   { element: <SignUpPage />, path: '/sign-up' },
   { element: <CreateNewPasswordPage />, path: '/create-new-password/:token' },
   { element: <ForgotPasswordPage />, path: '/forgot-password' },
+  { element: <CheckEmailPage />, path: '/check-email/:email' },
   { element: <NotFoundPage />, path: '/not-found' },
 ]

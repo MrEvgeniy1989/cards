@@ -13,8 +13,8 @@ const editUserNameSchema = z.object({
 
 export type EditUserNameFormValues = z.infer<typeof editUserNameSchema>
 type Props = {
-  name: string
-  onEditName: (editMode: boolean) => void
+  name?: string
+  onEditName: () => void
   onSubmit: (data: EditUserNameFormValues) => void
 }
 export const EditUserName = ({ name, onEditName, onSubmit }: Props) => {
@@ -24,7 +24,7 @@ export const EditUserName = ({ name, onEditName, onSubmit }: Props) => {
     handleSubmit,
   } = useForm<EditUserNameFormValues>({
     defaultValues: {
-      name: '',
+      name: name,
     },
     resolver: zodResolver(editUserNameSchema),
   })
@@ -45,7 +45,7 @@ export const EditUserName = ({ name, onEditName, onSubmit }: Props) => {
           Save Changes
         </Button>
       </form>
-      <Button fullWidth onClick={() => onEditName(false)} variant={'secondary'}>
+      <Button fullWidth onClick={onEditName} variant={'secondary'}>
         Cancel
       </Button>
     </>

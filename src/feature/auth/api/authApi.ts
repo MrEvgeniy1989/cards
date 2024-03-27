@@ -35,7 +35,7 @@ export const authApi = baseApi.injectEndpoints({
       query: body => ({
         body: {
           email: body.email,
-          html: `<h1>Hi, ##name##</h1><p>Click <a href="${linkForRecoverPassword}">here</a> to recover your password</p>`,
+          html: `<h1>Hi, ##name##</h1><p>Click <a href=${linkForRecoverPassword}>here</a> to recover your password</p>`,
           subject: 'Recovery Password',
         },
         method: 'POST',

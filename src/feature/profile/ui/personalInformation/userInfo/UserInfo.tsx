@@ -7,7 +7,7 @@ import s from '@/feature/profile/ui/personalInformation/userInfo/userInfo.module
 
 type Props = {
   email: string
-  name: string
+  name?: string
   onEditName: (editMode: boolean) => void
 }
 export const UserInfo = ({ email, name, onEditName }: Props) => {

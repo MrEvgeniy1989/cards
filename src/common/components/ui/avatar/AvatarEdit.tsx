@@ -1,10 +1,9 @@
 import { ChangeEvent } from 'react'
 
-import { EditIcon } from '@/assets/icons/editIcon'
-import userPhotoLarge from '@/assets/images/userPhotoLarge.png'
-import { Avatar } from '@/common/components/ui/avatar'
+import { EditOutline } from '@/assets/icons/edit-outline/EditOutline'
+import { Avatar } from '@/common/components/ui/avatar/index'
 
-import s from '@/feature/profile/ui/personalInformation/userPhoto/userPhoto.module.scss'
+import s from './avatarEdit.module.scss'
 
 type AvatarEditType = {
   avatar?: null | string
@@ -12,14 +11,15 @@ type AvatarEditType = {
   name?: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
-export const UserPhoto = ({ avatar, modeOn, name, onChange }: AvatarEditType) => {
+
+export const AvatarEdit = ({ avatar, modeOn, name, onChange }: AvatarEditType) => {
   return (
     <div className={s.avatarGroup}>
-      <Avatar className={s.customAvatar} name={name} src={avatar ?? userPhotoLarge} />
+      {typeof avatar === 'string' && <Avatar className={s.customAvatar} name={name} src={avatar} />}
       {!modeOn && (
         <label htmlFor={'avatarId'}>
           <span className={s.iconImage}>
-            <EditIcon width={16} />
+            <EditOutline width={16} />
           </span>
 
           <input className={s.avatarEditor} id={'avatarId'} onChange={onChange} type={'file'} />

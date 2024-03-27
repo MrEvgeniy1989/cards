@@ -2,9 +2,9 @@ import { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import IconNoUserIcon from '@/assets/icons/iconNoUserIcon'
+import { Logo } from '@/assets/icons/logo'
 import { LogoutIcon } from '@/assets/icons/logoutIcon'
 import { PersonIcon } from '@/assets/icons/personIcon'
-import logo from '@/assets/images/logo.png'
 import { Button } from '@/common/components/ui/button'
 import {
   DropdownMenu,
@@ -17,6 +17,7 @@ import {
 import { Typography } from '@/common/components/ui/typography'
 
 import s from '@/common/components/ui/header/header.module.scss'
+
 export type UserDropdownProps = {
   email: string
   onLogout: ComponentPropsWithoutRef<typeof DropdownMenuItem>['onSelect']
@@ -37,7 +38,7 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
     <header className={s.root}>
       <div className={s.content}>
         <Button as={Link} to={'/'} variant={'empty'}>
-          <img alt={'logo'} className={s.logo} src={logo} />
+          <Logo className={s.logo} />
         </Button>
 
         {!isLoggedIn && (

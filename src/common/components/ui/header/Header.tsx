@@ -2,9 +2,9 @@ import { ComponentPropsWithoutRef, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import IconNoUserIcon from '@/assets/icons/iconNoUserIcon'
+import { Logo } from '@/assets/icons/logo'
 import { LogoutIcon } from '@/assets/icons/logoutIcon'
 import { PersonIcon } from '@/assets/icons/personIcon'
-import logo from '@/assets/images/logo.png'
 import { Button } from '@/common/components/ui/button'
 import {
   DropdownMenu,
@@ -18,6 +18,7 @@ import { Typography } from '@/common/components/ui/typography'
 import { ThemeContext } from '@/feature/theme/themeContext'
 
 import s from '@/common/components/ui/header/header.module.scss'
+
 export type UserDropdownProps = {
   email: string
   onLogout: ComponentPropsWithoutRef<typeof DropdownMenuItem>['onSelect']
@@ -37,17 +38,17 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
   const { theme } = useContext(ThemeContext)!
 
   return (
-    <div
-      style={{
-        backgroundColor: theme === 'light' ? 'white' : 'black',
-        color: theme === 'light' ? 'black' : 'white',
-      }}
-    >
+      <div
+          style={{
+              backgroundColor: theme === 'light' ? 'white' : 'black',
+              color: theme === 'light' ? 'black' : 'white',
+          }}
+      >
       <header className={s.root}>
         <div className={s.content}>
-          <Button as={Link} to={'/'} variant={'empty'}>
-            <img alt={'logo'} className={s.logo} src={logo} />
-          </Button>
+            <Button as={Link} to={'/'} variant={'empty'}>
+                <Logo className={s.logo} />
+            </Button>
 
           {!isLoggedIn && (
             <Button as={Link} to={'/login'} variant={'primary'}>

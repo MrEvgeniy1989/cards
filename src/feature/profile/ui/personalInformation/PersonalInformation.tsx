@@ -1,10 +1,11 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 
 import { Card } from '@/common/components/ui/card'
 import { Typography } from '@/common/components/ui/typography'
 import { EditUserName } from '@/feature/profile/ui/personalInformation/editUserName/EditUserName'
 import { UserInfo } from '@/feature/profile/ui/personalInformation/userInfo/UserInfo'
 import { UserPhoto } from '@/feature/profile/ui/personalInformation/userPhoto/UserPhoto'
+import { ThemeContext } from '@/feature/theme/themeContext'
 import { z } from 'zod'
 
 import s from '@/feature/profile/ui/personalInformation/personalInformation.module.scss'
@@ -46,10 +47,17 @@ export const PersonalInformation = ({ avatar, email, name, onSubmit }: Props) =>
       onSubmit(formData)
     }
   }
+  const { theme } = useContext(ThemeContext)!
 
   return (
     <div className={s.signUpForm}>
-      <Card className={s.wrapper}>
+      <Card
+        className={s.wrapper}
+        style={{
+          backgroundColor: theme === 'light' ? 'white' : 'black',
+          color: theme === 'light' ? 'black' : 'white',
+        }}
+      >
         <Typography as={'h1'} className={s.title} variant={'h1'}>
           Personal Information
         </Typography>

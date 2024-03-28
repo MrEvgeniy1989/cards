@@ -1,5 +1,6 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, useContext } from 'react'
 
+import { ThemeContext } from '@/feature/theme/themeContext'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { clsx } from 'clsx'
 
@@ -13,6 +14,8 @@ const DropdownMenuContent = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Content>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
 >(({ align = 'end', children, className, sideOffset = 8, ...props }, ref) => {
+  const { theme } = useContext(ThemeContext)!
+
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
@@ -20,6 +23,10 @@ const DropdownMenuContent = forwardRef<
         className={clsx(s.content, className)}
         ref={ref}
         sideOffset={sideOffset}
+        style={{
+          backgroundColor: theme === 'light' ? 'white' : 'black',
+          color: theme === 'light' ? 'black' : 'white',
+        }}
         {...props}
       >
         <DropdownMenuPrimitive.Arrow asChild>

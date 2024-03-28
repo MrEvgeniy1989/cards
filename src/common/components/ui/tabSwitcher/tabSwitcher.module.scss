@@ -34,9 +34,7 @@ input {
   font-family: inherit;
   font-size: 15px;
   line-height: 1;
-  color: var(--color-light-100);
 
-  background-color: var(--color-dark-900);
   border: 1px solid var(--color-dark-300);
   border-left: 0;
 
@@ -46,7 +44,6 @@ input {
   }
 
   &[data-state='active'] {
-    color: var(--color-light-100);
     background-color: var(--color-accent-500);
 
     &:disabled {

@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
 
 import { ControlledCheckbox } from '@/common/components/controlled/controlledCheckbox/ControlledCheckbox'
 import { Button } from '@/common/components/ui/button'
 import { DeckFormFields } from '@/feature/decks/ui/decksHeader/addDeckModal/deckForm/deckFormFields/DeckFormFields'
+import { ThemeContext } from '@/feature/theme/themeContext'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SerializedError } from '@reduxjs/toolkit'
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
@@ -35,6 +36,7 @@ const addDeckSchema = z.object({
 export const DeckForm = ({ buttonTitle, closeModal, disabled, onSubmit, values }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const [cover, setCover] = useState<File | null>(null)
+  const { theme } = useContext(ThemeContext)!
 
   const {
     control,
@@ -65,35 +67,42 @@ export const DeckForm = ({ buttonTitle, closeModal, disabled, onSubmit, values }
   const onLoadCover = (data: File) => setCover(data)
 
   return (
-    <form className={s.form} onSubmit={handleSubmit(onSubmitHandler)}>
-      <div className={s.container}>
-        <DeckFormFields
-          className={s.formField}
-          control={control}
-          error={nameDeckError}
-          imageUrl={imageUrl}
-          label={'Name Deck'}
-          name={'name'}
-          onLoadImage={onLoadCover}
-        />
+    <div
+      style={{
+        backgroundColor: theme === 'light' ? 'white' : 'black',
+        color: theme === 'light' ? 'black' : 'white',
+      }}
+    >
+      <form className={s.form} onSubmit={handleSubmit(onSubmitHandler)}>
+        <div className={s.container}>
+          <DeckFormFields
+            className={s.formField}
+            control={control}
+            error={nameDeckError}
+            imageUrl={imageUrl}
+            label={'Name Deck'}
+            name={'name'}
+            onLoadImage={onLoadCover}
+          />
 
-        <ControlledCheckbox
-          className={s.checkbox}
-          control={control}
-          label={'Private pack'}
-          name={'isPrivate'}
-          position={'left'}
-        />
+          <ControlledCheckbox
+            className={s.checkbox}
+            control={control}
+            label={'Private pack'}
+            name={'isPrivate'}
+            position={'left'}
+          />
 
-        <div className={s.buttonsContainer}>
-          <Button onClick={closeModal} type={'button'} variant={'secondary'}>
-            Cancel
-          </Button>
-          <Button disabled={disabled} type={'submit'}>
-            {buttonTitle}
-          </Button>
+          <div className={s.buttonsContainer}>
+            <Button onClick={closeModal} type={'button'} variant={'secondary'}>
+              Cancel
+            </Button>
+            <Button disabled={disabled} type={'submit'}>
+              {buttonTitle}
+            </Button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   )
 }

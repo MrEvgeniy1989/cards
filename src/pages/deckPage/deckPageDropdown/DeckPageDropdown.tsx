@@ -29,12 +29,10 @@ export const DeckPageDropdown = ({ deck }: Props) => {
       <EditDeck deck={deck} open={editDeckOpen} setOpen={setEditDeckOpen} />
       <DeleteDeck deckId={deck.id} open={deleteDeckOpen} setOpen={setDeleteDeckOpen} />
       <DropdownMenu>
-        <DropdownMenuTrigger>
-          <button className={s.triggerBtn}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+        <DropdownMenuTrigger className={s.triggerBtn}>
+          <span></span>
+          <span></span>
+          <span></span>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           {deck.cardsCount > 0 && (

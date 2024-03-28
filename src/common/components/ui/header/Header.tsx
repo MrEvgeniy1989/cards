@@ -38,17 +38,17 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
   const { theme } = useContext(ThemeContext)!
 
   return (
-      <div
-          style={{
-              backgroundColor: theme === 'light' ? 'white' : 'black',
-              color: theme === 'light' ? 'black' : 'white',
-          }}
-      >
+    <div
+      style={{
+        backgroundColor: theme === 'light' ? 'white' : 'black',
+        color: theme === 'light' ? 'black' : 'white',
+      }}
+    >
       <header className={s.root}>
         <div className={s.content}>
-            <Button as={Link} to={'/'} variant={'empty'}>
-                <Logo className={s.logo} />
-            </Button>
+          <Button as={Link} to={'/'} variant={'empty'}>
+            <Logo className={s.logo} />
+          </Button>
 
           {!isLoggedIn && (
             <Button as={Link} to={'/login'} variant={'primary'}>

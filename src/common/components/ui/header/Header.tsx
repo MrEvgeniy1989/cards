@@ -1,9 +1,9 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import IconNoUserIcon from '@/assets/icons/iconNoUserIcon'
 import { Logo } from '@/assets/icons/logo'
 import { LogoutIcon } from '@/assets/icons/logoutIcon'
+import { NoUserIcon } from '@/assets/icons/noUserIcon'
 import { PersonIcon } from '@/assets/icons/personIcon'
 import { Button } from '@/common/components/ui/button'
 import {
@@ -34,11 +34,29 @@ export type HeaderProps =
     })
 
 export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: HeaderProps) => {
+  const [theme, setTheme] = useState('dark')
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
+  }
+
+  useEffect(() => {
+    const currentTheme = theme === 'light' ? 'light-theme' : 'dark-theme'
+    const previousTheme = theme === 'light' ? 'dark-theme' : 'light-theme'
+
+    document.body.classList.remove(previousTheme)
+    document.body.classList.add(currentTheme)
+  }, [theme])
+
   return (
     <header className={s.root}>
       <div className={s.content}>
         <Button as={Link} to={'/'} variant={'empty'}>
-          <Logo className={s.logo} />
+          <Logo />
+        </Button>
+
+        <Button onClick={toggleTheme} style={{ all: 'unset', cursor: 'pointer' }}>
+          {theme === 'dark' ? 'Dark' : 'Light'}
         </Button>
 
         {!isLoggedIn && (
@@ -54,12 +72,12 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className={s.iconButton}>
-                  <IconNoUserIcon />
+                  <NoUserIcon />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>
-                  <IconNoUserIcon />
+                  <NoUserIcon />
                   <div className={s.flexColumn}>
                     <Typography as={'p'} variant={'subtitle2'}>
                       {userName}

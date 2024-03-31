@@ -25,15 +25,19 @@ export const ThemeProvider = ({ children }: Props) => {
   }
 
   useEffect(() => {
-    const currentTheme = theme === 'light' ? s.lightTheme : s.darkTheme
+    const currentTheme = theme === 'light' ? 'light-theme' : 'dark-theme'
 
-    document.body.classList.remove(s.lightTheme, s.darkTheme)
+    document.body.classList.remove('light-theme', 'dark-theme')
     document.body.classList.add(currentTheme)
   }, [theme])
 
   return (
     <div className={s.themeProvider}>
-      <Button className={s.themeButton} onClick={toggleTheme}>
+      <Button
+        className={s.themeButton}
+        onClick={toggleTheme}
+        title={theme === 'dark' ? 'Switch to light theme.' : 'Switch to dark theme.'}
+      >
         {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
       </Button>
       {children}

@@ -34,10 +34,15 @@ export type HeaderProps =
     })
 
 export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: HeaderProps) => {
-  const [theme, setTheme] = useState('dark')
+  const savedTheme = localStorage.getItem('theme')
+  const [theme, setTheme] = useState(savedTheme || 'dark')
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
+    // setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
   }
 
   useEffect(() => {

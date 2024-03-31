@@ -1,0 +1,24 @@
+.themeProvider {
+  position: relative;
+}
+
+.themeButton {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 15%;
+  right: 0;
+
+  display: inline-flex;
+
+  box-sizing: border-box;
+  padding: 4px;
+
+  background-color: var(--color-accent-500);
+  border: 1px solid var(--color-light-100);
+  border-right: 0;
+  border-radius: 8px 0 0 8px;
+  box-shadow: 0 0 10px 0 rgb(140 97 255 / 100%);
+}

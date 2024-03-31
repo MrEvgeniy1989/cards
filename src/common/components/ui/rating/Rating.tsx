@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
-import { EmptyStar } from '@/assets/icons/emptyStar'
-import { Star } from '@/assets/icons/star'
+import { EmptyStarIcon } from '@/assets/icons/emptyStarIcon'
+import { StarIcon } from '@/assets/icons/starIcon'
 import { clsx } from 'clsx'
 
 import s from './Rating.module.scss'
@@ -19,7 +19,7 @@ export const Rating = memo((props: RatingProps) => {
   return (
     <div className={clsx(s.root, className)}>
       {stars.map((starNumber, index) =>
-        rating >= starNumber ? <Star key={index} /> : <EmptyStar key={index} />
+        rating >= starNumber ? <StarIcon key={index} /> : <EmptyStarIcon key={index} />
       )}
     </div>
   )

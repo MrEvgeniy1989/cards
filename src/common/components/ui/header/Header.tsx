@@ -1,9 +1,9 @@
 import { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import IconNoUserIcon from '@/assets/icons/iconNoUserIcon'
 import { Logo } from '@/assets/icons/logo'
 import { LogoutIcon } from '@/assets/icons/logoutIcon'
+import { NoUserIcon } from '@/assets/icons/noUserIcon'
 import { PersonIcon } from '@/assets/icons/personIcon'
 import { Button } from '@/common/components/ui/button'
 import {
@@ -38,7 +38,7 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
     <header className={s.root}>
       <div className={s.content}>
         <Button as={Link} to={'/'} variant={'empty'}>
-          <Logo className={s.logo} />
+          <Logo />
         </Button>
 
         {!isLoggedIn && (
@@ -54,12 +54,12 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className={s.iconButton}>
-                  <IconNoUserIcon />
+                  <NoUserIcon />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>
-                  <IconNoUserIcon />
+                  <NoUserIcon />
                   <div className={s.flexColumn}>
                     <Typography as={'p'} variant={'subtitle2'}>
                       {userName}

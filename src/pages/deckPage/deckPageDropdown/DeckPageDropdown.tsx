@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { EditIcon } from '@/assets/icons/edit'
+import { EditIcon } from '@/assets/icons/editIcon'
 import { PlayIcon } from '@/assets/icons/playIcon'
 import { TrashIcon } from '@/assets/icons/trashIcon'
 import {
@@ -29,12 +29,10 @@ export const DeckPageDropdown = ({ deck }: Props) => {
       <EditDeck deck={deck} open={editDeckOpen} setOpen={setEditDeckOpen} />
       <DeleteDeck deckId={deck.id} open={deleteDeckOpen} setOpen={setDeleteDeckOpen} />
       <DropdownMenu>
-        <DropdownMenuTrigger>
-          <button className={s.triggerBtn}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+        <DropdownMenuTrigger className={s.triggerBtn}>
+          <span></span>
+          <span></span>
+          <span></span>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           {deck.cardsCount > 0 && (

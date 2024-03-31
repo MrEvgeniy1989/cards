@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-import { EditIcon } from '@/assets/icons/edit'
+import { EditIcon } from '@/assets/icons/editIcon'
 import { Button } from '@/common/components/ui/button'
 import { LinearProgressBar } from '@/common/components/ui/linearProgressBar'
 import { Modal } from '@/common/components/ui/modal'

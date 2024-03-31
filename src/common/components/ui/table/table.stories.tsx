@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { ArrowUp } from '@/assets/icons/arrowUp'
-import { EditIcon } from '@/assets/icons/edit'
-import { EmptyStar } from '@/assets/icons/emptyStar'
-import { PlayCircle } from '@/assets/icons/playСircle'
-import { Star } from '@/assets/icons/star'
-import { Trash } from '@/assets/icons/trash'
+import { ArrowUpIcon } from '@/assets/icons/arrowUpIcon'
+import { EditIcon } from '@/assets/icons/editIcon'
+import { EmptyStarIcon } from '@/assets/icons/emptyStarIcon'
+import { PlayIcon } from '@/assets/icons/playIcon'
+import { StarIcon } from '@/assets/icons/starIcon'
+import { TrashIcon } from '@/assets/icons/trashIcon'
 import deckImg from '@/assets/images/defaultImg.png'
 import { Button } from '@/common/components/ui/button'
 import { Table } from '@/common/components/ui/table/table'
@@ -31,7 +31,7 @@ function BaseTable() {
 
             <Table.HeadCell className={s.headCards}>
               Cards
-              <ArrowUp className={s.arrowUp} />
+              <ArrowUpIcon className={s.arrowUp} />
             </Table.HeadCell>
             <Table.HeadCell>Last Updated</Table.HeadCell>
             <Table.HeadCell>Created by</Table.HeadCell>
@@ -49,21 +49,21 @@ function BaseTable() {
             <Table.Cell>Row 1 Cell 2</Table.Cell>
             <Table.Cell>Row 1 Cell 3</Table.Cell>
             <Table.Cell key={4}>
-              <Star />
-              <Star />
-              <Star />
-              <Star />
-              <EmptyStar />
+              <StarIcon />
+              <StarIcon />
+              <StarIcon />
+              <StarIcon />
+              <EmptyStarIcon />
             </Table.Cell>
             <Table.Cell key={5}>
               <Button as={'a'} className={s.link}>
-                <PlayCircle />
+                <PlayIcon />
               </Button>{' '}
               <Button as={'a'} className={s.link}>
                 <EditIcon />
               </Button>{' '}
               <Button as={'a'} className={s.link}>
-                <Trash />
+                <TrashIcon />
               </Button>
             </Table.Cell>
           </Table.Row>
@@ -72,21 +72,21 @@ function BaseTable() {
             <Table.Cell>Row 2 Cell 2</Table.Cell>
             <Table.Cell>Row 2 Cell 3</Table.Cell>
             <Table.Cell>
-              <Star />
-              <Star />
-              <Star />
-              <Star />
-              <EmptyStar />
+              <StarIcon />
+              <StarIcon />
+              <StarIcon />
+              <StarIcon />
+              <EmptyStarIcon />
             </Table.Cell>
             <Table.Cell key={5}>
               <Button as={'a'} className={s.link}>
-                <PlayCircle />
+                <PlayIcon />
               </Button>{' '}
               <Button as={'a'} className={s.link}>
                 <EditIcon />
               </Button>{' '}
               <Button as={'a'} className={s.link}>
-                <Trash />
+                <TrashIcon />
               </Button>
             </Table.Cell>
           </Table.Row>

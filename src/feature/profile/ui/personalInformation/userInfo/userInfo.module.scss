@@ -21,10 +21,11 @@
 
     &:hover {
       background-color: var(--color-dark-100);
+      transition: background-color 0.2s ease;
     }
 
     &:focus-visible {
-      outline: var(--outline-focus);
+      outline: 2px solid var(--color-info-700);
     }
   }
 }

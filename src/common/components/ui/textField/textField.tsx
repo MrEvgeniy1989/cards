@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react'
 
-import { IconClose, IconEye, IconSearch } from '@/assets'
+import { CloseIcon, EyeIcon, IconSearch } from '@/assets'
 import cx from 'clsx'
 
 import s from '@/common/components/ui/textField/textField.module.scss'
@@ -35,13 +35,13 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
         onClick={() => onChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>)}
         type={'button'}
       >
-        <IconClose />
+        <CloseIcon />
       </button>
     )
 
     const eyeButton = type === 'password' && (
       <button className={s.buttonIcon} onMouseDown={showPass} onMouseUp={showPass} type={'button'}>
-        <IconEye />
+        <EyeIcon />
       </button>
     )
 

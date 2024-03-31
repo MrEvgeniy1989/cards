@@ -57,13 +57,13 @@
   border-radius: 4px;
   box-shadow: 0 0 5px var(--color-dark-300);
 
-  transition: 0.2s;
-
   &:hover {
-    box-shadow: 0 0 5px var(--color-info-300);
+    box-shadow: 0 0 5px var(--color-accent-300);
+    transition: box-shadow 0.2s ease;
 
     path {
-      fill: var(--color-info-300);
+      fill: var(--color-accent-300);
+      transition: fill 0.2s ease;
     }
   }
 }

@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { ArrowDown } from '@/assets/icons/arrowDown'
-import { ArrowUp } from '@/assets/icons/arrowUp'
+import { ArrowDownIcon } from '@/assets/icons/arrowDownIcon'
+import { ArrowUpIcon } from '@/assets/icons/arrowUpIcon'
 import { Table } from '@/common/components/ui/table'
 import { Typography } from '@/common/components/ui/typography'
 import { Sort } from '@/feature/decks/api/decksApi.types'
@@ -54,8 +54,8 @@ export const TableHeader = forwardRef<ElementRef<typeof Table.Head>, Props>(
                   {title}
                   {sort?.key === key && (
                     <>
-                      {sort.direction === 'asc' && <ArrowUp className={s.sortIcon} />}
-                      {sort.direction !== 'asc' && <ArrowDown className={s.sortIcon} />}
+                      {sort.direction === 'asc' && <ArrowUpIcon className={s.sortIcon} />}
+                      {sort.direction !== 'asc' && <ArrowDownIcon className={s.sortIcon} />}
                     </>
                   )}
                 </Typography>

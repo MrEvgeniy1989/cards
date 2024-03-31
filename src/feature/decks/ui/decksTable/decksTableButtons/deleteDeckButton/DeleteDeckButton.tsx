@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-import { Trash } from '@/assets/icons/trash'
+import { TrashIcon } from '@/assets/icons/trashIcon'
 import { Button } from '@/common/components/ui/button'
 import { Modal } from '@/common/components/ui/modal'
 import { Typography } from '@/common/components/ui/typography'
@@ -36,7 +36,7 @@ export const DeleteDeckButton = ({ className, deckId, isDisabled, isMyDeck }: Pr
         onClick={() => setOpen(true)}
         title={isMyDeck ? 'Delete deck' : "You can't delete someone else's deck"}
       >
-        <Trash />
+        <TrashIcon />
       </Button>
 
       <Modal onOpenChange={setOpen} open={open} title={'Delete Deck'}>

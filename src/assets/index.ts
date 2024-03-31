@@ -1,3 +1,3 @@
-export { default as IconClose } from './icons/iconClose'
-export { default as IconEye } from './icons/iconEye'
-export { default as IconSearch } from './icons/iconSearch'
+export { CloseIcon } from './icons/closeIcon'
+export { EyeIcon } from './icons/eyeIcon'
+export { IconSearch } from './icons/iconSearch'

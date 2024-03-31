@@ -34,7 +34,7 @@ export const LearnDropdown: Story = {
     const btnStyle: any = {
       alignItems: 'center',
       background: 'transparent',
-      border: '1px solid white',
+      border: '1px solid var(--color-light-100)',
       borderRadius: '100%',
       display: 'flex',
       flexDirection: 'column',
@@ -44,7 +44,7 @@ export const LearnDropdown: Story = {
       width: '24px',
     }
     const spanStyle = {
-      backgroundColor: '#fff',
+      backgroundColor: 'var(--color-light-100)',
       borderRadius: '100%',
       display: 'block',
       height: '2px',
@@ -100,12 +100,12 @@ export const HeaderDropdown: Story = {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button style={btnStyle}>
-            <img src={userPhotoSmall} />
+            <img alt={'user photo'} src={userPhotoSmall} />
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>
-            <img src={userPhotoSmall} />
+            <img alt={'user photo'} src={userPhotoSmall} />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               Ivan
               <span style={{ color: '#808080', fontSize: '12px', fontWeight: '400' }}>

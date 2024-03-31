@@ -42,7 +42,12 @@
 
   &:hover:enabled,
   &:active:enabled {
-    background-color: transparent !important;
-    box-shadow: none !important;
+    background-color: transparent;
+    box-shadow: none;
+
+    & path {
+      fill: var(--color-accent-300);
+      transition: fill 0.2s ease;
+    }
   }
 }

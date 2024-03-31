@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { EditIcon } from '@/assets/icons/edit'
+import { EditIcon } from '@/assets/icons/editIcon'
 import { PlayIcon } from '@/assets/icons/playIcon'
 import { TrashIcon } from '@/assets/icons/trashIcon'
 import {

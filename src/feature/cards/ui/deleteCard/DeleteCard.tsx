@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-import { Trash } from '@/assets/icons/trash'
+import { TrashIcon } from '@/assets/icons/trashIcon'
 import { Button } from '@/common/components/ui/button'
 import { LinearProgressBar } from '@/common/components/ui/linearProgressBar'
 import { Modal } from '@/common/components/ui/modal'
@@ -32,7 +32,7 @@ export const DeleteCard = ({ cardId, className, deckId }: Props) => {
     <>
       {isLoading && <LinearProgressBar />}
       <Button className={className} onClick={() => setOpen(true)}>
-        <Trash />
+        <TrashIcon />
       </Button>
       <Modal onOpenChange={setOpen} open={open} title={'Delete Card'}>
         <div className={s.modalBody}>

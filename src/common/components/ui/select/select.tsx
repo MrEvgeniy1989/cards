@@ -1,7 +1,7 @@
 import { CSSProperties, ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
 
-import { ArrowDown } from '@/assets/icons/arrowDown'
-import { ArrowUp } from '@/assets/icons/arrowUp'
+import { ArrowDownIcon } from '@/assets/icons/arrowDownIcon'
+import { ArrowUpIcon } from '@/assets/icons/arrowUpIcon'
 import * as SelectRadix from '@radix-ui/react-select'
 
 import s from '@/common/components/ui/select/select.module.scss'
@@ -63,7 +63,11 @@ export const MySelect = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectPr
                 defaultValue={options[0].value}
                 placeholder={options[0].title}
               />
-              {open ? <ArrowUp className={s.selectIcon} /> : <ArrowDown className={s.selectIcon} />}
+              {open ? (
+                <ArrowUpIcon className={s.selectIcon} />
+              ) : (
+                <ArrowDownIcon className={s.selectIcon} />
+              )}
             </SelectRadix.Trigger>
 
             <SelectRadix.Content

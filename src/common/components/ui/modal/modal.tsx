@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
-import { IconClose } from '@/assets'
+import { CloseIcon } from '@/assets'
 import * as Dialog from '@radix-ui/react-dialog'
 
 import s from '@/common/components/ui/modal/modal.module.scss'
@@ -24,7 +24,7 @@ export const Modal = ({ children, title, ...props }: ModalProps) => {
                 </Typography>
               </Dialog.Title>
               <Dialog.Close className={s.closeButton}>
-                <IconClose />
+                <CloseIcon />
               </Dialog.Close>
             </div>
             {children}

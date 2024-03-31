@@ -76,7 +76,10 @@
 
       &.disabledController {
         cursor: default;
-        color: var(--color-dark-100);
+
+        .arrowIcon path {
+          fill: var(--color-dark-100);
+        }
       }
 
       &:first-child {

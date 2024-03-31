@@ -46,7 +46,7 @@ export const Pagination = ({
           onClick={setPrevPage}
           tabIndex={0}
         >
-          <LeftArrowIcon />
+          <LeftArrowIcon className={s.arrowIcon} />
         </button>
         {paginationItems.map((num, index) => {
           if (num === '...') {
@@ -75,7 +75,7 @@ export const Pagination = ({
           onClick={setNextPage}
           tabIndex={0}
         >
-          <RightArrowIcon />
+          <RightArrowIcon className={s.arrowIcon} />
         </button>
       </div>
       <div className={s.selectContainer}>

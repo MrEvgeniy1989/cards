@@ -1,5 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react'
 
+import { MoonIcon } from '@/assets/icons/MoonIcon'
+import { SunIcon } from '@/assets/icons/sunIcon'
 import { Button } from '@/common/components/ui/button'
 
 import s from '@/common/components/ui/themeProvider/themeProvider.module.scss'
@@ -32,7 +34,7 @@ export const ThemeProvider = ({ children }: Props) => {
   return (
     <div className={s.themeProvider}>
       <Button className={s.themeButton} onClick={toggleTheme}>
-        {theme === 'dark' ? 'Dark' : 'Light'}
+        {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
       </Button>
       {children}
     </div>

@@ -32,4 +32,21 @@
 
 .backToSignInLink {
   margin-bottom: 44px;
+
+  &[aria-disabled='true'] {
+    color: var(--color-light-900);
+    background-color: var(--color-accent-900);
+  }
+
+  &:not([aria-disabled='true']):active {
+    background-color: var(--color-accent-700);
+  }
+
+  &:not([aria-disabled='true']):hover {
+    background-color: var(--color-accent-300);
+  }
+
+  &:not([aria-disabled='true']):focus {
+    box-shadow: 0 4px 18px 0 rgb(140 97 255 / 35%);
+  }
 }

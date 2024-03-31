@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, useEffect, useState } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Logo } from '@/assets/icons/logo'
@@ -34,34 +34,11 @@ export type HeaderProps =
     })
 
 export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: HeaderProps) => {
-  const savedTheme = localStorage.getItem('theme')
-  const [theme, setTheme] = useState(savedTheme || 'dark')
-
-  const toggleTheme = () => {
-    // setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-
-    setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
-  }
-
-  useEffect(() => {
-    const currentTheme = theme === 'light' ? 'light-theme' : 'dark-theme'
-    const previousTheme = theme === 'light' ? 'dark-theme' : 'light-theme'
-
-    document.body.classList.remove(previousTheme)
-    document.body.classList.add(currentTheme)
-  }, [theme])
-
   return (
     <header className={s.root}>
       <div className={s.content}>
         <Button as={Link} to={'/'} variant={'empty'}>
           <Logo />
-        </Button>
-
-        <Button onClick={toggleTheme} style={{ all: 'unset', cursor: 'pointer' }}>
-          {theme === 'dark' ? 'Dark' : 'Light'}
         </Button>
 
         {!isLoggedIn && (

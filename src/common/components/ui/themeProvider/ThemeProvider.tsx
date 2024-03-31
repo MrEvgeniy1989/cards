@@ -35,7 +35,9 @@ export const ThemeProvider = ({ children }: Props) => {
     <div className={s.themeProvider}>
       <Button
         className={s.themeButton}
+        id={'themeButton'}
         onClick={toggleTheme}
+        // style={{ boxShadow: '0 0 10px 0 rgb(140 97 255 / 100%)' }}
         title={theme === 'dark' ? 'Switch to light theme.' : 'Switch to dark theme.'}
       >
         {theme === 'dark' ? <MoonIcon /> : <SunIcon />}

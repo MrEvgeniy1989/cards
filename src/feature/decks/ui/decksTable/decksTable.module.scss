@@ -37,13 +37,14 @@
 }
 
 .startLerningLink {
+  all: unset;
+
+  display: inline-flex;
+
+  box-sizing: border-box;
   margin-right: 10px;
-  padding: 0;
 
   vertical-align: middle;
-
-  background: none;
-  box-shadow: 0 0 0 0 transparent;
 
   &[aria-disabled='true'] {
     pointer-events: none;
@@ -55,45 +56,63 @@
   }
 
   &:active {
-    color: var(--color-accent-300);
     background-color: transparent;
+
+    .playIcon path {
+      fill: var(--color-accent-300);
+    }
   }
 
   &:hover {
-    color: var(--color-accent-300);
+    cursor: pointer;
     background-color: transparent;
-    transition: color 0.2s ease;
+
+    .playIcon path {
+      fill: var(--color-accent-300);
+      transition: fill 0.2s ease;
+    }
   }
 }
 
 .iconButton {
+  all: unset;
+
+  display: inline-flex;
+
+  box-sizing: border-box;
   margin-right: 10px;
-  padding: 0;
 
   vertical-align: middle;
-
-  background: none;
-  box-shadow: 0 0 0 0 transparent;
 
   &:last-child {
     margin-right: 0;
   }
 
   &:disabled {
-    color: var(--color-light-100);
     opacity: 0.2;
     background-color: transparent;
+
+    .iconButton path {
+      fill: var(--color-light-100);
+    }
   }
 
   &:active:enabled {
-    color: var(--color-accent-300);
     background-color: transparent;
+
+    & path {
+      fill: var(--color-accent-300);
+    }
   }
 
   &:hover:enabled {
-    color: var(--color-accent-300);
+    cursor: pointer;
     background-color: transparent;
-    transition: color 0.2s ease;
+
+    & path {
+      fill: var(--color-accent-300);
+      transition: color 0.2s ease;
+    }
   }
 }
 

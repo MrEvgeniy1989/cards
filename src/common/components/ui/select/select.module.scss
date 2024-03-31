@@ -53,10 +53,6 @@
   color: var(--color-light-100);
 }
 
-.selectIcon {
-  fill: var(--color-light-100);
-}
-
 .selectTrigger {
   display: inline-flex;
   gap: 2px;
@@ -92,7 +88,7 @@
     pointer-events: none;
     color: var(--color-dark-300);
 
-    .selectIcon {
+    .selectIcon path {
       fill: var(--color-dark-300);
     }
   }

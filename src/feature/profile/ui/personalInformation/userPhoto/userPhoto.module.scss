@@ -39,12 +39,10 @@
   position: relative;
 }
 
-.iconImage {
+.icon {
   cursor: pointer;
 
   position: absolute;
-  right: 0;
-  bottom: 0;
 
   display: flex;
   align-items: center;
@@ -53,13 +51,17 @@
   width: 24px;
   height: 24px;
 
-  background-color: var(--color-dark-300);
+  opacity: 0.6;
+  background-color: var(--color-dark-500);
   border-radius: 4px;
   box-shadow: 0 0 5px var(--color-dark-300);
 
   &:hover {
+    opacity: 1;
     box-shadow: 0 0 5px var(--color-accent-300);
-    transition: box-shadow 0.2s ease;
+    transition:
+      box-shadow,
+      opacity 0.2s ease;
 
     path {
       fill: var(--color-accent-300);
@@ -68,10 +70,19 @@
   }
 }
 
+.trashIcon {
+  bottom: 0;
+  left: 0;
+}
+
+.editIcon {
+  right: 0;
+  bottom: 0;
+}
+
 .customAvatar {
   width: 96px;
   height: 96px;
-  border-radius: 50%;
 }
 
 .editName {

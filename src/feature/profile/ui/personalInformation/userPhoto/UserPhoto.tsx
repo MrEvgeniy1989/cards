@@ -1,8 +1,10 @@
 import { ChangeEvent } from 'react'
 
 import { EditIcon } from '@/assets/icons/editIcon'
-import userPhotoLarge from '@/assets/images/userPhotoLarge.png'
+import { NoUserIcon } from '@/assets/icons/noUserIcon'
+import { TrashIcon } from '@/assets/icons/trashIcon'
 import { Avatar } from '@/common/components/ui/avatar'
+import { clsx } from 'clsx'
 
 import s from '@/feature/profile/ui/personalInformation/userPhoto/userPhoto.module.scss'
 
@@ -15,10 +17,23 @@ type AvatarEditType = {
 export const UserPhoto = ({ avatar, modeOn, name, onChange }: AvatarEditType) => {
   return (
     <div className={s.avatarGroup}>
-      <Avatar className={s.customAvatar} name={name} src={avatar ?? userPhotoLarge} />
+      {avatar ? (
+        <Avatar className={s.customAvatar} name={name} src={avatar} />
+      ) : (
+        <NoUserIcon className={s.customAvatar} />
+      )}
       {!modeOn && (
         <label htmlFor={'avatarId'}>
-          <span className={s.iconImage}>
+          <span className={clsx(s.icon, s.trashIcon)}>
+            <TrashIcon width={16} />
+          </span>
+
+          <input className={s.avatarEditor} id={'avatarId'} onChange={onChange} type={'file'} />
+        </label>
+      )}
+      {!modeOn && (
+        <label htmlFor={'avatarId'}>
+          <span className={clsx(s.icon, s.editIcon)}>
             <EditIcon width={16} />
           </span>
 

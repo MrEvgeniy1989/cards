@@ -58,20 +58,12 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className={s.iconButton}>
-                  {data?.avatar ? (
-                    <Avatar className={s.customAvatar} name={data.name} src={data.avatar} />
-                  ) : (
-                    <NoUserIcon />
-                  )}
+                  {data?.avatar ? <Avatar name={data.name} src={data.avatar} /> : <NoUserIcon />}
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>
-                  {data?.avatar ? (
-                    <Avatar className={s.customAvatar} name={data.name} src={data.avatar} />
-                  ) : (
-                    <NoUserIcon />
-                  )}
+                  {data?.avatar ? <Avatar name={data.name} src={data.avatar} /> : <NoUserIcon />}
                   <div className={s.flexColumn}>
                     <Typography as={'p'} variant={'subtitle2'}>
                       {userName}

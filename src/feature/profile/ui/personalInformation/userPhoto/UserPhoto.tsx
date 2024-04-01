@@ -10,11 +10,12 @@ import s from '@/feature/profile/ui/personalInformation/userPhoto/userPhoto.modu
 
 type AvatarEditType = {
   avatar?: null | string
+  deleteAvatar: () => void
   modeOn: boolean
   name?: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
-export const UserPhoto = ({ avatar, modeOn, name, onChange }: AvatarEditType) => {
+export const UserPhoto = ({ avatar, deleteAvatar, modeOn, name, onChange }: AvatarEditType) => {
   return (
     <div className={s.avatarGroup}>
       {avatar ? (
@@ -22,13 +23,11 @@ export const UserPhoto = ({ avatar, modeOn, name, onChange }: AvatarEditType) =>
       ) : (
         <NoUserIcon className={s.customAvatar} />
       )}
-      {!modeOn && (
-        <label htmlFor={'avatarId'}>
+      {avatar && (
+        <label onClick={deleteAvatar}>
           <span className={clsx(s.icon, s.trashIcon)}>
             <TrashIcon width={16} />
           </span>
-
-          <input className={s.avatarEditor} id={'avatarId'} onChange={onChange} type={'file'} />
         </label>
       )}
       {!modeOn && (

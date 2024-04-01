@@ -36,7 +36,7 @@ export const PersonalInformation = ({}: Props) => {
     setModeOn(false)
   }
 
-  const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const updatePhoto = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const formData = new FormData()
 
@@ -44,6 +44,13 @@ export const PersonalInformation = ({}: Props) => {
 
       setEditProfile(formData)
     }
+  }
+  const deleteAvatar = () => {
+    const formData = new FormData()
+
+    formData.append('avatar', '')
+
+    setEditProfile(formData)
   }
 
   return (
@@ -54,9 +61,10 @@ export const PersonalInformation = ({}: Props) => {
         </Typography>
         <UserPhoto
           avatar={me?.avatar}
+          deleteAvatar={deleteAvatar}
           modeOn={modeOn}
           name={me?.name}
-          onChange={handleFileInputChange}
+          onChange={updatePhoto}
         />
 
         {!modeOn ? (

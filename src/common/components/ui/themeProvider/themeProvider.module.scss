@@ -15,10 +15,16 @@
     box-sizing: border-box;
     padding: 4px;
 
-    background-color: var(--color-accent-500);
+    background-color: rgb(140 97 255 / 60%);
     border: 1px solid var(--color-light-100);
     border-right: 0;
     border-radius: 8px 0 0 8px;
-    box-shadow: 0 0 10px 0 rgb(140 97 255 / 100%);
+    box-shadow: 0 0 10px 0 rgb(140 97 255 / 60%);
+
+    &:hover {
+      background-color: rgb(162 128 255 / 100%);
+      box-shadow: 0 0 10px 0 rgb(140 97 255 / 100%);
+      transition: all 0.2s ease;
+    }
   }
 }

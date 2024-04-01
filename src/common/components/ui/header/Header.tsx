@@ -5,6 +5,7 @@ import { Logo } from '@/assets/icons/logo'
 import { LogoutIcon } from '@/assets/icons/logoutIcon'
 import { NoUserIcon } from '@/assets/icons/noUserIcon'
 import { PersonIcon } from '@/assets/icons/personIcon'
+import { Avatar } from '@/common/components/ui/avatar'
 import { Button } from '@/common/components/ui/button'
 import {
   DropdownMenu,
@@ -15,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from '@/common/components/ui/dropdown'
 import { Typography } from '@/common/components/ui/typography'
+import { useMeQuery } from '@/feature/auth/api/authApi'
 
 import s from '@/common/components/ui/header/header.module.scss'
 
@@ -34,6 +36,8 @@ export type HeaderProps =
     })
 
 export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: HeaderProps) => {
+  const { data } = useMeQuery()
+
   return (
     <header className={s.root}>
       <div className={s.content}>
@@ -54,12 +58,12 @@ export const Header = ({ email, isLoggedIn, onLogout, toProfile, userName }: Hea
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className={s.iconButton}>
-                  <NoUserIcon />
+                  {data?.avatar ? <Avatar name={data.name} src={data.avatar} /> : <NoUserIcon />}
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>
-                  <NoUserIcon />
+                  {data?.avatar ? <Avatar name={data.name} src={data.avatar} /> : <NoUserIcon />}
                   <div className={s.flexColumn}>
                     <Typography as={'p'} variant={'subtitle2'}>
                       {userName}

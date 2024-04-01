@@ -82,7 +82,7 @@ input {
   }
 
   &:not([data-state='active']):hover {
-    color: var(--color-light-900);
+    color: var(--color-light-300);
     background-color: var(--color-dark-100);
   }
 }

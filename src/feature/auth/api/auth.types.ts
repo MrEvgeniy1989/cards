@@ -37,3 +37,8 @@ export type ResetPasswordParams = {
   password: string
   token: string
 }
+
+export type updateProfileParams = {
+  avatar?: '' | File | null
+  name?: string
+}

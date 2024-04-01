@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useRef } from 'react'
 
 import { EditIcon } from '@/assets/icons/editIcon'
 import { NoUserIcon } from '@/assets/icons/noUserIcon'
@@ -16,6 +16,15 @@ type AvatarEditType = {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 export const UserPhoto = ({ avatar, deleteAvatar, modeOn, name, onChange }: AvatarEditType) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    onChange(event)
+    if (inputRef.current) {
+      inputRef.current.value = ''
+    }
+  }
+
   return (
     <div className={s.avatarGroup}>
       {avatar ? (
@@ -36,7 +45,13 @@ export const UserPhoto = ({ avatar, deleteAvatar, modeOn, name, onChange }: Avat
             <EditIcon width={16} />
           </span>
 
-          <input className={s.avatarEditor} id={'avatarId'} onChange={onChange} type={'file'} />
+          <input
+            className={s.avatarEditor}
+            id={'avatarId'}
+            onChange={onChangeHandler}
+            ref={inputRef}
+            type={'file'}
+          />
         </label>
       )}
     </div>

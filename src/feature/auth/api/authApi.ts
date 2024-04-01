@@ -6,6 +6,7 @@ import {
   ResetPasswordParams,
   SignUpParams,
   User,
+  updateProfileParams,
 } from '@/feature/auth/api/auth.types'
 
 const linkForRecoverPassword = `${import.meta.env.VITE_DEPLOY_URL}/create-new-password/##token##`
@@ -57,7 +58,7 @@ export const authApi = baseApi.injectEndpoints({
         url: 'v1/auth/sign-up',
       }),
     }),
-    updateProfile: builder.mutation<User, any>({
+    updateProfile: builder.mutation<User, FormData | updateProfileParams>({
       invalidatesTags: ['Me'],
       query: body => ({
         body,

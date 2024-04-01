@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { Card } from '@/common/components/ui/card'
 import { Typography } from '@/common/components/ui/typography'
@@ -26,7 +27,7 @@ export type UpdateDataProfileType =
 
 type Props = {}
 export const PersonalInformation = ({}: Props) => {
-  const { data: me } = useMeQuery()
+  const { currentData: me } = useMeQuery()
   const [setEditProfile] = useUpdateProfileMutation()
 
   const [modeOn, setModeOn] = useState(false)
@@ -36,21 +37,26 @@ export const PersonalInformation = ({}: Props) => {
     setModeOn(false)
   }
 
-  const updatePhoto = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      const formData = new FormData()
+  const updatePhoto = async (event: ChangeEvent<HTMLInputElement>) => {
+    try {
+      if (event.target.files) {
+        const formData = new FormData()
 
-      formData.append('avatar', event.target.files[0])
+        formData.append('avatar', event.target.files[0])
 
-      setEditProfile(formData)
+        await setEditProfile(formData).then(() => toast.success('Photo changed successfully.'))
+      }
+    } catch (error) {
+      toast.error('Error when changing the photo:' + JSON.stringify(error))
     }
   }
-  const deleteAvatar = () => {
-    const formData = new FormData()
-
-    formData.append('avatar', '')
-
-    setEditProfile(formData)
+  const deleteAvatar = async () => {
+    try {
+      await setEditProfile({ avatar: '' })
+      toast.success('Photo deleted successfully.')
+    } catch (error) {
+      toast.error('Error when deleting a photo:' + JSON.stringify(error))
+    }
   }
 
   return (

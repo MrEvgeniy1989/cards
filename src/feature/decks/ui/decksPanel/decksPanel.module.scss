@@ -12,15 +12,49 @@
   margin-right: 24px;
 }
 
-.tabs {
+.tabsWrapping {
   margin-right: 25px;
+}
+
+@media (width <= 800px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 5px;
+  }
+
+  .input {
+    margin-right: 0;
+    margin-bottom: 24px;
+  }
+
+  .tabsWrapping {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 24px;
+  }
+
+  .tabsTrigger {
+    flex: 1;
+    text-align: center;
+    padding: 0;
+  }
+  .slider {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  .buttonClearFilter {
+    width: 100%;
+  }
 }
 
 .slider {
   margin-right: 36px;
 }
 
-.button {
+.buttonClearFilter {
   display: flex;
   align-items: center;
   justify-content: center;

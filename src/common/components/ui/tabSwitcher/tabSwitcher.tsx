@@ -16,10 +16,17 @@ type Button = {
 type TabSwitcherProps = {
   buttons: Button[]
   className?: string
+  classNameTrigger?: string
   label?: string
 } & ComponentPropsWithoutRef<typeof Tabs.Root>
 
-export const TabSwitcher = ({ buttons, className, label, ...rest }: TabSwitcherProps) => (
+export const TabSwitcher = ({
+  buttons,
+  className,
+  classNameTrigger,
+  label,
+  ...rest
+}: TabSwitcherProps) => (
   <div className={clsx(s.TabsWrapping, className)}>
     {label && (
       <Typography as={'label'} variant={'body2'}>
@@ -27,11 +34,11 @@ export const TabSwitcher = ({ buttons, className, label, ...rest }: TabSwitcherP
       </Typography>
     )}
     <Tabs.Root {...rest} className={s.TabsRoot} defaultValue={buttons[1].value}>
-      <Tabs.List aria-label={'Manage your tabs'} className={s.TabsList}>
+      <Tabs.List aria-label={'Manage your tabs'} className={`${s.TabsList}`}>
         {buttons.map(btn => {
           return (
             <Tabs.Trigger
-              className={s.TabsTrigger}
+              className={`${s.TabsTrigger} ${classNameTrigger}`}
               disabled={btn.disabled}
               key={v1()}
               value={btn.value}

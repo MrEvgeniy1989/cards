@@ -52,7 +52,8 @@ export const DecksPanel = ({
           { buttonsName: 'My Cards', disabled: isDisabled, value: 'my' },
           { buttonsName: 'All Cards', disabled: isDisabled, value: 'all' },
         ]}
-        className={s.tabs}
+        className={s.tabsWrapping}
+        classNameTrigger={s.tabsTrigger}
         label={tabLabel}
         onValueChange={onChangeTabValue}
         value={tabValue}
@@ -67,7 +68,7 @@ export const DecksPanel = ({
         value={sliderValue}
       />
       <Button
-        className={s.button}
+        className={s.buttonClearFilter}
         disabled={isDisabled}
         onClick={onClearFilter}
         variant={'secondary'}

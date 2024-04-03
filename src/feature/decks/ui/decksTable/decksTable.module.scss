@@ -24,6 +24,10 @@
   }
 }
 
+.cellForMobile {
+  display: none;
+}
+
 .deckImg {
   max-width: 118px;
   max-height: 48px;
@@ -124,5 +128,69 @@
 
   &:last-child {
     margin-right: 0;
+  }
+}
+
+@media (width <= 650px) {
+  .decksTable {
+    margin-bottom: 10px;
+  }
+  .tableRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border: 1px solid var(--color-dark-500);
+    border-bottom: none;
+  }
+
+  .cellName {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .cellForMobile {
+    display: flex;
+  }
+
+  .decksTable .buttonsCell {
+    width: 100%;
+  }
+
+  .disabledLink {
+    flex-grow: 1;
+    justify-content: center;
+    margin-right: 0;
+    padding: 6px 0;
+    border-right: 1px solid var(--color-dark-500);
+    opacity: 1;
+  }
+
+  .iconButton {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    opacity: 1;
+  }
+
+  .iconButton {
+    &:last-child {
+      opacity: 1;
+      border-left: 1px solid var(--color-dark-500);
+    }
+  }
+
+  .startLerningLink {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    padding: 10px 0;
+    border-right: 1px solid var(--color-dark-500);
+  }
+  .decksTable .buttonsCell {
+    padding-right: 0;
   }
 }

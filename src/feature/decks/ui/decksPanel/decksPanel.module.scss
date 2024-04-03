@@ -16,13 +16,13 @@
   margin-right: 25px;
 }
 
-@media (width <= 800px) {
+@media (width <= 900px) {
   .root {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
-    padding: 5px;
+    padding: 0 5px;
   }
 
   .input {

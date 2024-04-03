@@ -10,3 +10,9 @@
 .button {
   width: var(--decksButtons);
 }
+
+@media (width <= 560px) {
+  .root {
+    margin-bottom: 24px;
+  }
+}

@@ -29,6 +29,7 @@ export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
             return (
               <Table.Row aria-disabled={isDisabled} className={s.tableRow} key={deck.id}>
                 <Table.Cell className={s.cellName}>
+                  <label className={s.cellForMobile}>Name</label>
                   <Link to={`/decks/${deck.id}/cards`}>
                     <div className={s.cellNameWithImage}>
                       {deck.cover && (
@@ -39,9 +40,13 @@ export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
                   </Link>
                 </Table.Cell>
 
-                <Table.Cell>{deck.cardsCount}</Table.Cell>
+                <Table.Cell>
+                  <label className={s.cellForMobile}>Cards</label>
+                  {deck.cardsCount}
+                </Table.Cell>
 
                 <Table.Cell>
+                  <label className={s.cellForMobile}>Last Updated</label>
                   {new Date(deck.updated).toLocaleString('ru-RU', {
                     day: '2-digit',
                     hour: '2-digit',
@@ -52,7 +57,10 @@ export const DecksTable = ({ decksData, isDisabled, onSort, sort }: Props) => {
                   })}
                 </Table.Cell>
 
-                <Table.Cell>{deck.author.name}</Table.Cell>
+                <Table.Cell>
+                  <label className={s.cellForMobile}>Created by</label>
+                  {deck.author.name}
+                </Table.Cell>
 
                 <Table.Cell className={s.buttonsCell}>
                   <DecksTableButtons

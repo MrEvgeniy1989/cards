@@ -4,7 +4,7 @@ export const MoonIcon = memo((props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       {...props}
-      height={'2em'}
+      height={'1.5em'}
       viewBox={'0 0 256 256'}
       width={'2em'}
       xmlns={'http://www.w3.org/2000/svg'}

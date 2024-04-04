@@ -31,7 +31,7 @@
     @media (width <= 600px) {
       top: calc(var(--header-height) + 2px);
       width: 14px;
-      padding: 2px;
+      padding: 0 2px;
     }
   }
 }

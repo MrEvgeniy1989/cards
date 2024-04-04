@@ -40,7 +40,7 @@ export const ThemeProvider = ({ children }: Props) => {
         // style={{ boxShadow: '0 0 10px 0 rgb(140 97 255 / 100%)' }}
         title={theme === 'dark' ? 'Switch to light theme.' : 'Switch to dark theme.'}
       >
-        {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
+        {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
       </Button>
       {children}
     </div>

@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react'
 
-import { MoonIcon } from '@/assets/icons/MoonIcon'
+import { MoonIcon } from '@/assets/icons/moonIcon'
 import { SunIcon } from '@/assets/icons/sunIcon'
 import { Button } from '@/common/components/ui/button'
 

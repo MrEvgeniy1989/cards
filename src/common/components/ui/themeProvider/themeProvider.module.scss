@@ -6,25 +6,32 @@
 
     cursor: pointer;
 
-    position: absolute;
-    top: 15%;
+    position: fixed;
+    z-index: 1;
+    top: calc(var(--header-height) + 2em);
     right: 0;
 
     display: inline-flex;
 
     box-sizing: border-box;
-    padding: 4px;
+    padding: 5px 3px;
 
-    background-color: rgb(140 97 255 / 60%);
+    background-color: rgb(162 128 255 / 80%);
     border: 1px solid var(--color-light-100);
     border-right: 0;
     border-radius: 8px 0 0 8px;
-    box-shadow: 0 0 10px 0 rgb(140 97 255 / 60%);
+    box-shadow: 0 0 10px 0 rgb(162 128 255 / 80%);
 
     &:hover {
-      background-color: rgb(162 128 255 / 100%);
+      background-color: rgb(140 97 255 / 100%);
       box-shadow: 0 0 10px 0 rgb(140 97 255 / 100%);
       transition: all 0.2s ease;
+    }
+
+    @media (width <= 600px) {
+      top: calc(var(--header-height) + 2px);
+      width: 14px;
+      padding: 0 2px;
     }
   }
 }

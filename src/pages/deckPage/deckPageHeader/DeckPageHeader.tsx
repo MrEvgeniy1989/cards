@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/common/components/ui/button'
+import { Image } from '@/common/components/ui/image/Image'
 import { Typography } from '@/common/components/ui/typography'
 import { AddCard } from '@/feature/cards/ui/addCard/AddCard'
 import { DeckWithAuthor } from '@/feature/decks/api/decksApi.types'
@@ -35,7 +36,7 @@ export const DeckPageHeader = ({ deck, isNotEmptyCard, isOwner }: Props) => {
 
       {deck.cover && (
         <div className={s.deckImg}>
-          <img alt={'Deck image'} src={deck.cover} />
+          <Image alt={'Deck image'} imageUrl={deck.cover} />
         </div>
       )}
     </div>

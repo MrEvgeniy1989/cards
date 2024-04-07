@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { UploadButtonIcon } from '@/assets/icons/uploadButtonIcon'
 import { ControlledTextField } from '@/common/components/controlled/controlledTextField/controlledTextField'
 import { Button } from '@/common/components/ui/button'
+import { Image } from '@/common/components/ui/image/Image'
 import { Typography } from '@/common/components/ui/typography'
 import { uploadImageSchema } from '@/feature/cards/ui/addCard/cardForm/cardFormField/uploadImageSchema'
 import { CardFormValues } from '@/feature/cards/ui/addCard/cardForm/useCardForm'
@@ -63,7 +64,7 @@ export const CardFormField = ({
       />
       {imageUrl && (
         <div className={s.imageWrapper}>
-          <img alt={'Card image'} src={imageUrl} />
+          <Image alt={'Card image'} imageUrl={imageUrl} />
         </div>
       )}
       <Button

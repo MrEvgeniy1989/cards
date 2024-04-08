@@ -30,16 +30,6 @@ export type CardsParams = {
   orderBy?: string
   question?: string
 }
-export type CardResponse = Omit<Card, 'userId'>
-export type RandomCardRequest = {
-  id: string
-  previousCardId?: string
-}
-export type CardRateRequest = {
-  cardId: string
-  deckId: string
-  grade: number
-}
 
 export type Sort = {
   direction: 'asc' | 'desc'

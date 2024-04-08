@@ -1,3 +1,4 @@
+import { Image } from '@/common/components/ui/image/Image'
 import { Rating } from '@/common/components/ui/rating'
 import { Table } from '@/common/components/ui/table'
 import { TableHeader } from '@/common/components/ui/table/tableHeader/TableHeader'
@@ -26,13 +27,17 @@ export const CardsTable = ({ cards, isOwner, onSort, sort }: Props) => {
                 <Table.Row className={s.tableRow} key={card.id}>
                   <Table.Cell className={s.cellQuestion}>
                     {card.questionImg && (
-                      <img alt={'Card image'} className={s.cardImg} src={card.questionImg} />
+                      <Image
+                        alt={'Question image'}
+                        className={s.cardImg}
+                        imageUrl={card.questionImg}
+                      />
                     )}
                     {card.question}
                   </Table.Cell>
                   <Table.Cell className={s.cellAnswer}>
                     {card.answerImg && (
-                      <img alt={'Card image'} className={s.cardImg} src={card.answerImg} />
+                      <Image alt={'Answer image'} className={s.cardImg} imageUrl={card.answerImg} />
                     )}
                     {card.answer}
                   </Table.Cell>

@@ -7,7 +7,7 @@
 .content {
   position: fixed;
   z-index: 9999;
-  top: 50%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -19,14 +19,14 @@
 }
 
 .imageContent {
-  min-width: 800px;
-  max-width: 1260px;
-  max-height: 1260px;
+  width: 1280px;
+  height: 720px;
 
-  background: #171717;
+  object-fit: contain;
+  background-color: var(--color-dark-500);
   border-radius: 2%;
 
-  image-rendering: pixelated;
+  image-rendering: optimizequality;
 }
 
 @keyframes content-show {

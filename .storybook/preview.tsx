@@ -4,6 +4,18 @@ import '@/app/styles/index.scss'
 import type { Preview } from '@storybook/react'
 
 const preview: Preview = {
+  decorators: [
+    (Story) => (
+      <div className="light-theme">
+        <Story />
+        </div>
+    ),
+    (Story) => (
+      <div className="dark-theme">
+        <Story />
+        </div>
+    ),
+  ],
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {

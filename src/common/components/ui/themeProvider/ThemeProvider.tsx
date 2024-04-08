@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react'
 
 import { MoonIcon } from '@/assets/icons/moonIcon'
 import { SunIcon } from '@/assets/icons/sunIcon'
@@ -10,9 +10,11 @@ type Props = {
   children: ReactNode
 }
 
+const ThemeContext = createContext<'dark' | 'light'>('dark')
+
 export const ThemeProvider = ({ children }: Props) => {
-  const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('theme')
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    const savedTheme = localStorage.getItem('theme') as 'dark' | 'light'
 
     return savedTheme || 'dark'
   })
@@ -32,17 +34,22 @@ export const ThemeProvider = ({ children }: Props) => {
   }, [theme])
 
   return (
-    <div className={s.themeProvider}>
-      <Button
-        className={s.themeButton}
-        id={'themeButton'}
-        onClick={toggleTheme}
-        // style={{ boxShadow: '0 0 10px 0 rgb(140 97 255 / 100%)' }}
-        title={theme === 'dark' ? 'Switch to light theme.' : 'Switch to dark theme.'}
-      >
-        {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-      </Button>
-      {children}
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <div className={s.themeProvider}>
+        <Button
+          className={s.themeButton}
+          id={'themeButton'}
+          onClick={toggleTheme}
+          title={theme === 'dark' ? 'Switch to light theme.' : 'Switch to dark theme.'}
+        >
+          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+        </Button>
+        {children}
+      </div>
+    </ThemeContext.Provider>
   )
+}
+
+export const useTheme = () => {
+  return useContext(ThemeContext)
 }

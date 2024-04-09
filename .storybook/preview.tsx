@@ -2,18 +2,17 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/700.css'
 import '@/app/styles/index.scss'
 import type { Preview } from '@storybook/react'
+import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 
 const preview: Preview = {
   decorators: [
     Story => (
-      <div className="dark-theme">
-        <Story />
-      </div>
-    ),
-    Story => (
-      <div className="light-theme">
-        <Story />
-      </div>
+      <MemoryRouter>
+        <div className="dark-theme">
+          <Story />
+        </div>
+      </MemoryRouter>
     ),
   ],
   parameters: {

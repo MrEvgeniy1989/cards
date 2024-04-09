@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { Provider } from 'react-redux'
+
+import { store } from '@/app/store'
 import { PersonalInformation } from '@/feature/profile/ui/personalInformation/PersonalInformation'
 
 const meta = {
@@ -17,4 +20,11 @@ export const PersonalInformationStory: Story = {
     email: 'j&johnson@gmail.com',
     name: 'Ivan',
   },
+  decorators: [
+    Story => (
+      <Provider store={store}>
+        <Story />
+      </Provider>
+    ),
+  ],
 }

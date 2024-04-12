@@ -1,4 +1,4 @@
-.dark-theme {
+:root[data-theme='dark'] {
   // accent
   --color-accent-100: #bea6ff;
   --color-accent-300: #a280ff;
@@ -52,7 +52,7 @@
   --color-user-head: #fcd09f;
 }
 
-.light-theme {
+:root[data-theme='light'] {
   // accent
   --color-accent-100: #382766;
   --color-accent-300: #704ecc;

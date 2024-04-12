@@ -27,10 +27,7 @@ export const ThemeProvider = ({ children }: Props) => {
   }
 
   useEffect(() => {
-    const currentTheme = theme === 'light' ? 'light-theme' : 'dark-theme'
-
-    document.body.classList.remove('light-theme', 'dark-theme')
-    document.body.classList.add(currentTheme)
+    document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
   return (

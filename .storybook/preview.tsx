@@ -2,21 +2,29 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/700.css'
 import '@/app/styles/index.scss'
 import type { Preview } from '@storybook/react'
+import { MemoryRouter } from 'react-router-dom'
+import { ThemeProvider } from '../src/common/components/ui/themeProvider/ThemeProvider'
 
 const preview: Preview = {
   decorators: [
     Story => (
-      <div className="dark-theme">
-        <Story />
-      </div>
-    ),
-    Story => (
-      <div className="light-theme">
-        <Story />
-      </div>
+      <MemoryRouter>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </MemoryRouter>
     ),
   ],
   parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        {
+          name: 'dark',
+          value: 'var(--color-dark-900)',
+        },
+      ],
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {

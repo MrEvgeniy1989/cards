@@ -1,18 +1,9 @@
-import type { DecoratorFn, Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { MemoryRouter, Route, Routes } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
+import { store } from '@/app/store'
 import { Header } from '@/common/components/ui/header/index'
-
-const reactRouterDecorator: DecoratorFn = Story => {
-  return (
-    <MemoryRouter>
-      <Routes>
-        <Route element={<Story />} path={'/*'} />
-      </Routes>
-    </MemoryRouter>
-  )
-}
 
 const meta = {
   argTypes: {
@@ -23,7 +14,6 @@ const meta = {
   },
 
   component: Header,
-  decorators: [reactRouterDecorator],
   tags: ['autodocs'],
   title: 'Components/Header',
 } satisfies Meta<typeof Header>
@@ -39,10 +29,24 @@ export const IsLoggedIn: Story = {
     toProfile: () => {},
     userName: 'yourName',
   },
+  decorators: [
+    Story => (
+      <Provider store={store}>
+        <Story />
+      </Provider>
+    ),
+  ],
 }
 
 export const NoLoggedIn: Story = {
   args: {
     isLoggedIn: false,
   },
+  decorators: [
+    Story => (
+      <Provider store={store}>
+        <Story />
+      </Provider>
+    ),
+  ],
 }

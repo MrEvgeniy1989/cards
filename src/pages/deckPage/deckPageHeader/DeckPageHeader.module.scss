@@ -24,3 +24,9 @@
     object-fit: cover;
   }
 }
+
+@media (width <= 375px) {
+  .deckOwnerWrapper {
+    gap: 0;
+  }
+}

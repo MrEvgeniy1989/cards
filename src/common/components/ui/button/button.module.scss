@@ -88,3 +88,8 @@
     box-shadow: 0 2px 10px 0 rgb(109 109 109 / 25%);
   }
 }
+@media (width <= 375px) {
+  .button {
+    padding: 5px 15px;
+  }
+}

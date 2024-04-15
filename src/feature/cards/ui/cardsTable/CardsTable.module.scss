@@ -51,3 +51,23 @@
     }
   }
 }
+
+@media (width <= 650px) {
+  .cardsTable {
+    width: 300px;
+  }
+
+  .tableBody {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .tableRow {
+    border: solid 1px var(--color-dark-500);
+  }
+
+  .cellUpdated {
+    max-width: none;
+  }
+}

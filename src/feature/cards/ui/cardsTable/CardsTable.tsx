@@ -21,7 +21,7 @@ export const CardsTable = ({ cards, isOwner, onSort, sort }: Props) => {
       {!!cards?.length && (
         <Table.Root className={s.cardsTable}>
           <TableHeader columns={columnsData} onSort={onSort} sort={sort} />
-          <Table.Body>
+          <Table.Body className={s.tableBody}>
             {cards?.map(card => {
               return (
                 <Table.Row className={s.tableRow} key={card.id}>

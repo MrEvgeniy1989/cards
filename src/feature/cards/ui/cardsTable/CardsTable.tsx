@@ -26,6 +26,7 @@ export const CardsTable = ({ cards, isOwner, onSort, sort }: Props) => {
               return (
                 <Table.Row className={s.tableRow} key={card.id}>
                   <Table.Cell className={s.cellQuestion}>
+                    <label className={s.cellForMobile}>Question</label>
                     {card.questionImg && (
                       <Image
                         alt={'Question image'}
@@ -33,18 +34,21 @@ export const CardsTable = ({ cards, isOwner, onSort, sort }: Props) => {
                         imageUrl={card.questionImg}
                       />
                     )}
-                    {card.question}
+                    <label className={s.dd}>{card.question}</label>
                   </Table.Cell>
                   <Table.Cell className={s.cellAnswer}>
+                    <label className={s.cellForMobile}>Answer</label>
                     {card.answerImg && (
                       <Image alt={'Answer image'} className={s.cardImg} imageUrl={card.answerImg} />
                     )}
                     {card.answer}
                   </Table.Cell>
                   <Table.Cell className={s.cellUpdated}>
+                    <label className={s.cellForMobile}>Last Updated</label>
                     {new Date(card.updated).toLocaleDateString('ru-RU')}
                   </Table.Cell>
                   <Table.Cell>
+                    <label className={s.cellForMobile}>Grade</label>
                     <Rating rating={card.grade} />
                   </Table.Cell>
                   {isOwner && (
@@ -55,6 +59,7 @@ export const CardsTable = ({ cards, isOwner, onSort, sort }: Props) => {
                   )}
                 </Table.Row>
               )
+              // <Table.Row></Table.Row>
             })}
           </Table.Body>
         </Table.Root>

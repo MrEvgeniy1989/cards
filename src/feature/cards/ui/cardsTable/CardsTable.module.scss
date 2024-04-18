@@ -2,6 +2,7 @@
   align-items: flex-start;
   width: 100%;
   margin-bottom: 24px;
+  border-bottom: none;
 }
 
 .tableRow {
@@ -69,7 +70,6 @@
 
   .cardsTable {
     width: 100%;
-    border-bottom: none;
   }
 
   .tableBody {
@@ -80,6 +80,7 @@
 
   .tableRow {
     border: solid 1px var(--color-dark-500);
+    border-bottom: none;
   }
 
   .cellUpdated {
